@@ -10,4 +10,4 @@ This project uses Next.js.
 Check out [this repo](https://github.com/zeit/next.js/) to learn how to develop with Next.js
 
 ## Mockup
-![alt text][images/mentor-mockups.pdf]
+![Mentor Weekly web page mockup](./images/mentor-mockups.pdf)
