@@ -11,11 +11,11 @@ Check out [this repo](https://github.com/zeit/next.js/) to learn how to develop 
 
 ## Mockups
 
-###Landing Page:
+### Landing Page:
 ![Mentor Weekly landing page mockup](./images/mentor-mockups-landingpage.jpg)
 
-###Mentee Dashboard:
+### Mentee Dashboard:
 ![Mentor Weekly mentee dashboard mockup](./images/mentor-mockups-mentee-dashboard.jpg)
 
-###Mentor Dashboard:
+### Mentor Dashboard:
 ![Mentor Weekly mentor dashboard mockup](./images/mentor-mockups-mentor-dashboard.jpg)
