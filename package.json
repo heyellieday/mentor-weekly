@@ -2,6 +2,7 @@
   "name": "mentor-weekly",
   "private": true,
   "dependencies": {
+    "express": "^4.16.2",
     "next": "^4.2.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
@@ -14,8 +15,8 @@
     "parser": "babel-eslint"
   },
   "scripts": {
-    "dev": "next",
+    "dev": "node server.js",
     "build": "next build",
-    "start": "next start"
+    "start": "NODE_ENV=production node server.js"
   }
 }
