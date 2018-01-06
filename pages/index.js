@@ -27,6 +27,9 @@ export default class extends React.Component {
           <Largequote textA="When mentors invest"
                       textOrange=" 30 minutes a week "
                       textB="advising and professional just starting in tech, employers, mentors, and mentees win." />
+                      <Largequote textA="Mentor Weekly"
+                                  textOrange=" 30 minutes a week "
+                                  textB="advising and professional just starting in tech, employers, mentors, and mentees win." />
         </div>
         <style jsx>{`
             .landing-page {
