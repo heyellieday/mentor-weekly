@@ -5,6 +5,7 @@ import Navbar from '../components/navbar';
 import Button from '../components/button';
 import Infographic from '../components/infographic';
 import Largequote from '../components/largequote';
+import Bubblequote from '../components/bubblequote';
 
 //import landingImage from '../images/landing-image.jpg';
 export default class extends React.Component {
@@ -39,6 +40,11 @@ export default class extends React.Component {
                       textB="based on their strengths and goals." />
           <div className="screenshot-div">
             <img className="screenshot" src="/static/dashboard-screen-shot.jpg" />
+          </div>
+          <div className="bubblequotes-div">
+            <Bubblequote author="Vanessa Hurst" role="Co-founder of " org="Girl Develop It" text="“Feeling a little uncomfortable with your skills is a sign of learning, and continuous learning is what the tech industry thrives on! It’s important to seek out environments where you are supported, but where you have the chance to be uncomfortable and learn new things.”" />
+            <Bubblequote author="Ellie Day" role="Founder of " org="Mentor Weekly" text="“If you want to grow as a Software Engineer, teach what you’ve learned to others as soon as possible.”" />
+            <Bubblequote author="Emily Whiting" role="Assistant Professor, " org="Dartmouth" text="“Without having mentors at an authoritative level saying, ‘You deserve this sort of experience; you should apply for this program, because you’re strong enough; those are the sorts of things I wouldn’t necessarily have done without a strong mentoring voice to push me.”" />
           </div>
           <Largequote textA="When mentors invest"
                       textOrange=" 30 minutes a week "
@@ -81,8 +87,14 @@ export default class extends React.Component {
             .screenshot{
               display: block;
               width: 80%;
-              margin: 0 auto;
+              margin: 0 auto 120px auto;
               filter: drop-shadow(0 0 15px #9E9E9E);
+            }
+            .bubblequotes-div{
+              background-color: Turquoise;
+              clear: both;
+              padding: 30px;
+              height: 500px;
             }
 
             @media only screen and (max-width: 700px) {
