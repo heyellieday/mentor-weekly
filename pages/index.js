@@ -42,9 +42,9 @@ export default class extends React.Component {
             <img className="screenshot" src="/static/dashboard-screen-shot.jpg" />
           </div>
           <div className="bubblequotes-div">
-            <Bubblequote author="Vanessa Hurst" role="Co-founder of " org="Girl Develop It" text="“Feeling a little uncomfortable with your skills is a sign of learning, and continuous learning is what the tech industry thrives on! It’s important to seek out environments where you are supported, but where you have the chance to be uncomfortable and learn new things.”" />
-            <Bubblequote author="Ellie Day" role="Founder of " org="Mentor Weekly" text="“If you want to grow as a Software Engineer, teach what you’ve learned to others as soon as possible.”" />
-            <Bubblequote author="Emily Whiting" role="Assistant Professor, " org="Dartmouth" text="“Without having mentors at an authoritative level saying, ‘You deserve this sort of experience; you should apply for this program, because you’re strong enough; those are the sorts of things I wouldn’t necessarily have done without a strong mentoring voice to push me.”" />
+            <Bubblequote width="40%" float="left" author="Vanessa Hurst" role="Co-founder of " org="Girl Develop It" text="“Feeling a little uncomfortable with your skills is a sign of learning, and continuous learning is what the tech industry thrives on! It’s important to seek out environments where you are supported, but where you have the chance to be uncomfortable and learn new things.”" />
+            <Bubblequote width="20%" center="true" float="none" author="Ellie Day" role="Founder of " org="Mentor Weekly" text="“If you want to grow as a Software Engineer, teach what you’ve learned to others as soon as possible.”" />
+            <Bubblequote width="40%" float="right" author="Emily Whiting" role="Assistant Professor, " org="Dartmouth" text="“Without having mentors at an authoritative level saying, ‘You deserve this sort of experience; you should apply for this program, because you’re strong enough; those are the sorts of things I wouldn’t necessarily have done without a strong mentoring voice to push me.”" />
           </div>
           <Largequote textA="When mentors invest"
                       textOrange=" 30 minutes a week "
@@ -92,9 +92,9 @@ export default class extends React.Component {
             }
             .bubblequotes-div{
               background-color: Turquoise;
+
               clear: both;
-              padding: 30px;
-              height: 500px;
+
             }
 
             @media only screen and (max-width: 700px) {
