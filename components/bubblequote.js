@@ -5,9 +5,12 @@ export default function Bubblequote(props) {
          <div className="text">{props.text}</div>
         </div>
         <div className="cite-div">
+          <div className="speech-bubble">
+            <img src="/static/speech-bubble.svg" />
+          </div>
           <div className="author-div" >{props.author}</div>
           {props.role}
-          {props.org}
+          <em>{props.org}</em>
         </div>
       <style jsx>{`
         .bubblequote-div {
@@ -34,7 +37,7 @@ export default function Bubblequote(props) {
           height: 260px;
           width: 100%;
           padding: 25px;
-          margin-bottom: 30px;
+          
         }
         .text{
           position: relative;
@@ -42,7 +45,10 @@ export default function Bubblequote(props) {
           transform: translateY(-50%);
         }
         .cite-div{
-          margin-top: 30px;
+
+        }
+        .author-div{
+          font-weight: normal;
         }
 
         @media only screen and (max-width: 500px) {
