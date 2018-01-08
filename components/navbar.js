@@ -1,3 +1,5 @@
+import Button from '../components/button';
+
 export default function Navbar(props) {
   return (
     <div>
@@ -6,19 +8,20 @@ export default function Navbar(props) {
           <img className="mw-logo" src='../static/mentor-weekly-logo.svg' width="100%" alt="wocintech stock photo" />
         </div>
         <div className="right">
-          { props.loggedin? "Log out" : "Sign up" }
-          { props.loggedin? "Help" : "Log in" }
+          <Button size="small" color="#303030" text={ props.loggedin? "help" : "log in" } border="none"/>
+          <Button size="small" color="Turquoise" text={ props.loggedin? "log out" : "sign up" } />
         </div>
       </div>
       <style jsx>{`
         .nav {
-          border: 1px solid lightgray;
+          border-bottom: 1px solid lightgray;
           height: 65px;
           font-family: "helvetica-neue";
-          position: absolute;
+          position: relative;
           top: 0px;
           right: 0px;
           left: 0px;
+          padding: 0 20px;
         }
         .right{
           position: absolute;
@@ -28,7 +31,7 @@ export default function Navbar(props) {
         .logo{
           position: absolute;
           left: 30px;
-          top: 18px;
+          top: 15px;
         }
         .mw-logo{
           height: 40px;
