@@ -1,6 +1,6 @@
 export default function Largequote(props) {
   return (
-    <div>
+    <div className="largequote-div">
       <div className='largequote'>
         {props.textA}
         <span className="orange">{props.textOrange}</span>
@@ -11,8 +11,9 @@ export default function Largequote(props) {
           color: grey;
           font: 23px "Helvetica Neue", "Segoe UI", Helvetica, sans-serif;
           font-weight: 200;
-          padding: 70px;
+          padding: 90px;
           text-align: center;
+          clear: both;
         }
         .orange{
           color: coral;
