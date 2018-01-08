@@ -30,12 +30,14 @@ export default class extends React.Component {
             <Button size="large" color="Turquoise" text="get involved"/>
             <Button size="large" color="Coral" text="learn more"/>
           </div>
-          <Infographic title="gain candidates" text="As the tech industry continues to grow and innovate, employers need a way to access quality candidates. Mentor Weekly provides employers with a potential hiring pool of professionals that their employees already have experience with. Mentors gain leadership skills, and companies invest in the future of the field. " />
-          <Infographic title="gain experience" text="Professionals new to tech need experience, advice, and most importantly, networking opportunities. Mentoring gives junior engineers valuable insights not only into coding, but into the roles, tools, and strategies that are essential to their chosen field." />
-            <Largequote textA="Mentor Weekly"
+          <div>
+            <Infographic textFloat="right" url="https://c2.staticflickr.com/2/1720/25167694534_a664058532_b.jpg" title="gain candidates" text="As the tech industry continues to grow and innovate, employers need a way to access quality candidates. Mentor Weekly provides employers with a potential hiring pool of professionals that their employees already have experience with. Mentors gain leadership skills, and companies invest in the future of the field. " />
+            <Infographic textFloat="left" url="https://c2.staticflickr.com/2/1581/25171573743_72588bb84d_b.jpg" title="gain experience" text="Professionals new to tech need experience, advice, and most importantly, networking opportunities. Mentoring gives junior engineers valuable insights not only into coding, but into the roles, tools, and strategies that are essential to their chosen field." />
+          </div>
+        ] <Largequote textA="Mentor Weekly"
                       textOrange=" matches mentors & mentees "
                       textB="based on their strengths and goals." />
-            <Largequote textA="When mentors invest"
+          <Largequote textA="When mentors invest"
                       textOrange=" 30 minutes a week "
                       textB="advising and professional just starting in tech, employers, mentors, and mentees win." />
 
@@ -45,7 +47,7 @@ export default class extends React.Component {
               font-family: "Helvetica Neue", "Segoe UI", Helvetica, sans-serif;
             }
             .landing-image-div {
-              background-image: url('../static/landing-image.jpg');
+              background-image: url('/static/landing-image.jpg');
               background-size: cover;
               background-repeat: no-repeat;
               height: 550px;
@@ -67,6 +69,7 @@ export default class extends React.Component {
             .tagline{
               font-weight: 200;
               margin: 0;
+              color: #ffdacc;
             }
             .entry-point-button-area{
               text-align: center;
