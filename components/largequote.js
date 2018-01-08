@@ -9,7 +9,7 @@ export default function Largequote(props) {
       <style jsx>{`
         .largequote {
           color: grey;
-          font: 23px "Segoe UI", "Helvetica Neue", Helvetica, sans-serif;
+          font: 23px "Helvetica Neue", "Segoe UI", Helvetica, sans-serif;
           font-weight: 200;
           padding: 70px;
           text-align: center;

@@ -3,6 +3,7 @@ import Router from 'next/router'
 import Header from '../components/header';
 import Navbar from '../components/navbar';
 import Button from '../components/button';
+import Infographic from '../components/infographic';
 import Largequote from '../components/largequote';
 
 //import landingImage from '../images/landing-image.jpg';
@@ -19,11 +20,18 @@ export default class extends React.Component {
       <div>
         <Navbar loggedin={false}/>
         <div className="landing-page">
-          <img className="landing-image" src='../static/landing-image.jpg' width="100%" alt="wocintech stock photo" />
+          <div className="landing-image-div">
+            <div className="title-div">
+              <h1 className="title">mentor weekly</h1>
+              <h2 className="tagline">a better mentoring platform for those in tech</h2>
+            </div>
+          </div>
           <div className="entry-point-button-area">
             <Button size="large" color="Turquoise" text="get involved"/>
             <Button size="large" color="Coral" text="learn more"/>
           </div>
+          <Infographic title="gain candidates" text="As the tech industry continues to grow and innovate, employers need a way to access quality candidates. Mentor Weekly provides employers with a potential hiring pool of professionals that their employees already have experience with. Mentors gain leadership skills, and companies invest in the future of the field. " />
+          <Infographic title="gain experience" text="Professionals new to tech need experience, advice, and most importantly, networking opportunities. Mentoring gives junior engineers valuable insights not only into coding, but into the roles, tools, and strategies that are essential to their chosen field." />
             <Largequote textA="Mentor Weekly"
                       textOrange=" matches mentors & mentees "
                       textB="based on their strengths and goals." />
@@ -33,12 +41,46 @@ export default class extends React.Component {
 
         </div>
         <style jsx>{`
-            .landing-page {
-              
+            .landing-page{
+              font-family: "Helvetica Neue", "Segoe UI", Helvetica, sans-serif;
+            }
+            .landing-image-div {
+              background-image: url('../static/landing-image.jpg');
+              background-size: cover;
+              background-repeat: no-repeat;
+              height: 550px;
+              text-align: center;
+              position: relative;
+            }
+            .title-div{
+              color: white;
+              position: relative;
+              top: 50%;
+              transform: translateY(-50%);
+              margin: 0 auto;
+            }
+            .title{
+              font-weight: 100;
+              font-size: 3.5em;
+              margin: 0;
+            }
+            .tagline{
+              font-weight: 200;
+              margin: 0;
             }
             .entry-point-button-area{
               text-align: center;
               padding: 60px;
+            }
+
+            @media only screen and (max-width: 700px) {
+              .landing-image-div {
+                height: 400px;
+              }
+            @media only screen and (max-width: 500px) {
+              .landing-image-div {
+                height: 300px;
+              }
             }
         `}</style>
         </div>
