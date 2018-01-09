@@ -36,7 +36,7 @@ export default function Infographic(props) {
           background-color: #1e1e1e;
           color: white;
           font-family: "Segoe UI", "Helvetica Neue", Helvetica, sans-serif;
-          font-size: 16px;
+          font-size: 18px;
           text-align: center;
           padding: 70px;
           float: ${props.textFloat};
@@ -48,7 +48,7 @@ export default function Infographic(props) {
         }
         .header{
           color: Turquoise;
-          font-size: 2.1em;
+          font-size: 2.2em;
           font-weight: 100;
           margin-top: 0;
         }

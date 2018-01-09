@@ -5,7 +5,7 @@ export default function Button(props) {
     } else if (props.size === "large") {
       return "23px";
     } else {
-      return "18px";
+      return "20px";
     }
   }
 
@@ -15,7 +15,7 @@ export default function Button(props) {
     } else if (props.size === "large") {
       return "6px 40px";
     } else {
-      return "6px 40px";
+      return "6px 80px";
     }
   }
 
@@ -39,6 +39,9 @@ export default function Button(props) {
         .button-div{
           display: inline;
           text-align: center;
+        }
+        .button-span{
+          display: ${props.block ? "block" : "inline"};
         }
       `}</style>
     </span>
