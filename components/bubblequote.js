@@ -17,7 +17,7 @@ export default function Bubblequote(props) {
           position: relative;
           background-color: Turquoise;
           padding: 45px ${props.center ? 0 : ""};
-          height: 440px;
+          height: 500px;
           box-sizing: border-box;
           color: white;
           display: inline-block;
@@ -37,7 +37,7 @@ export default function Bubblequote(props) {
           height: 260px;
           width: 100%;
           padding: 25px;
-          
+
         }
         .text{
           position: relative;
@@ -51,6 +51,14 @@ export default function Bubblequote(props) {
           font-weight: normal;
         }
 
+        @media only screen and (max-width: 450px) {
+          .bubblequote-div {
+            height: 420px;
+          }
+          .bubblequote{
+            height: 320px;
+          }
+        }
         @media only screen and (max-width: 500px) {
           .bubblequote{
             height: 300px;
@@ -65,11 +73,17 @@ export default function Bubblequote(props) {
           .bubblequote-div {
             width: 100%;
             padding: 45px;
-            height: 400px;
+            height: 460px;
           }
           .bubblequote{
             height: 200px;
           }
+        }
+        @media only screen and (max-width: 975px) {
+          .bubblequote{
+            height: 300px;
+          }
+
         }
       `}</style>
     </div>

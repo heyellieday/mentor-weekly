@@ -16,7 +16,7 @@ export default function Navbar(props) {
         .nav {
           border-bottom: 1px solid lightgray;
           height: 65px;
-          font-family: "helvetica-neue";
+          font: "Helvetica Neue", "Segoe UI", Helvetica, sans-serif;
           position: relative;
           top: 0px;
           right: 0px;

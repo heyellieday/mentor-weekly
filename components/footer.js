@@ -1,40 +1,52 @@
 import Button from '../components/button';
 
-export default function Navbar(props) {
+export default function Footer(props) {
   return (
     <div>
-      <div className='nav'>
+      <div className='footer-div'>
         <div className="logo">
-          <img className="mw-logo" src='../static/mentor-weekly-logo.svg' width="100%" alt="wocintech stock photo" />
+          <img className="mw-logo" src='../static/mw-logo.svg' width="100%" alt="wocintech stock photo" />
         </div>
-        <div className="right">
-          <Button size="small" color="#303030" text={ props.loggedin? "help" : "log in" } border="none"/>
-          <Button size="small" color="Turquoise" text={ props.loggedin? "log out" : "sign up" } />
+        <div className="buttons">
+          <Button footer="true" size="small" color="Turquoise" text="2018 Mentor Weekly" border="none" />
+          <p className="bullet">·</p>
+          <Button footer="true" size="small" color="Turquoise" text="Photo Credits" border="none" />
         </div>
       </div>
       <style jsx>{`
-        .nav {
-          border-bottom: 1px solid lightgray;
+        .footer-div {
+          background-color: #1e1e1e;
           height: 65px;
-          font-family: "helvetica-neue";
+          font: "Helvetica Neue", "Segoe UI", Helvetica, sans-serif;
           position: relative;
           top: 0px;
           right: 0px;
           left: 0px;
           padding: 0 20px;
+
         }
-        .right{
-          position: absolute;
-          right:0;
-          top:15px;
+        .buttons{
+          display: block;
+          padding: 13px;
+          width: 100%;
+          margin: 0 auto;
+          text-align: center;
         }
         .logo{
           position: absolute;
-          left: 30px;
-          top: 15px;
+          left: 20px;
+          top: 20px;
         }
         .mw-logo{
-          height: 40px;
+          height: 30px;
+        }
+        .bullet{
+          display: inline;
+          font: 18px sans-serif;
+          color: Turquoise;
+          width: 5px;
+          margin: 0;
+
         }
       `}</style>
     </div>

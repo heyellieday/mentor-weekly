@@ -27,7 +27,7 @@ export default function Button(props) {
       <style jsx>{`
         .button{
           box-sizing: border-box;
-          background-color: white;
+          background-color: ${props.footer ? "#1e1e1e" : "white"};
           color: ${props.color};
           border: ${props.border ? props.border : "1px solid "+ props.color};
           font: ${buttonSize()} "Helvetica Neue", Helvetica, sans-serif;
@@ -38,10 +38,6 @@ export default function Button(props) {
         }
         .button-div{
           display: inline;
-
-          text-align: center;
-        }
-        .button-span{
           text-align: center;
         }
       `}</style>
