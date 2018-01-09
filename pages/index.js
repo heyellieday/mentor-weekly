@@ -77,13 +77,15 @@ export default class extends React.Component {
             }
             .title{
               font-weight: 100;
-              font-size: 3.5em;
+              font-size: 4.5em;
               margin: 0;
             }
             .tagline{
               font-weight: 200;
-              margin: 0;
+              font-size: 1.4em;
+              margin: 0 auto;
               color: #ffdacc;
+              width: 450px;
             }
             .entry-point-button-area{
               text-align: center;

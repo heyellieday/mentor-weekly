@@ -1,4 +1,6 @@
 import Button from '../components/button';
+import MenteeForm from '../components/mentor-form';
+import MentorForm from '../components/mentor-form';
 
 export default function Signup(props) {
   return (
@@ -22,12 +24,13 @@ export default function Signup(props) {
         <input type="email" name="email" className="block block-input"></input>
         <label htmlFor="goals" className="block">please describe your goals and what you&#39;d like to gain from a mentorship:</label>
         <input type="text" name="goals" className="block block-input"></input>
+        <MentorForm />
         <Button block="true" color="white" backgroundColor="turquoise" text="join mentor weekly" />
       </form>
       <style jsx>{`
           h2{
             font-weight: 100;
-            font-size: 1.8em;
+            font-size: 2.2em;
             border-bottom: 1px solid white;
             width: 200px;
             margin: 30px auto;

@@ -1,24 +1,19 @@
-export default function Signup(props) {
+export default function MenteeForm(props) {
   return (
-    <div className="signup">
-      <form className="signup-form">
-        <label htmlFor="email" className="block">which email address can we use to contact you about a mentorship?</label>
-        <input type="email" name="email" className="block block-input"></input>
-        <label htmlFor="goals" className="block">please describe your goals and what you&#39;d like to gain from a mentorship:</label>
-        <input type="text" name="goals" className="block block-input"></input>
-        <Button block="true" color="white" backgroundColor="turquoise" text="join mentor weekly" />
-      </form>
+    <div className="mentee-div">
+        <label htmlFor="portfolio" className="block">please enter the url for your portfolio or website:</label>
+        <input type="text" name="portfolio" className="block block-input"></input>
+        <label htmlFor="background" className="block">please briefly describe your background/training:</label>
+        <input type="text" name="background" className="block block-input"></input>
+        <label htmlFor="languages" className="block">which coding languages and tools are you familiar with?</label>
+        <input type="text" name="languages" className="block block-input"></input>
+        <label htmlFor="experience" className="block">what is your focus and experience level?</label>
+        <input type="text" name="experience" className="block block-input"></input>
+        <label htmlFor="org" className="block">what sort of organizations and positions would you like to learn more about?</label>
+        <input type="text" name="org" className="block block-input"></input>
+        <label htmlFor="schedule" className="block">what times are you available to meet with a mentor for 30 minutes?</label>
+        <input type="text" name="schedule" className="block block-input"></input>
       <style jsx>{`
-          .signup {
-            position: relative;
-            background-color: Turquoise;
-            padding: 45px;
-            box-sizing: border-box;
-            color: white;
-            font: 18px "Helvetica Neue", "Segoe UI", Helvetica, sans-serif;
-            font-weight: 200;
-            text-align: center;
-          }
           input{
             margin: 5px 10px 20px 10px;
             border: 1px solid white;
