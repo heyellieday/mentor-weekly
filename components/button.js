@@ -27,7 +27,7 @@ export default function Button(props) {
       <style jsx>{`
         .button{
           box-sizing: border-box;
-          background-color: ${props.footer ? "#1e1e1e" : "white"};
+          background-color: ${props.backgroundColor};
           color: ${props.color};
           border: ${props.border ? props.border : "1px solid "+ props.color};
           font: ${buttonSize()} "Helvetica Neue", Helvetica, sans-serif;

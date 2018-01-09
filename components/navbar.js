@@ -8,8 +8,8 @@ export default function Navbar(props) {
           <img className="mw-logo" src='../static/mentor-weekly-logo.svg' width="100%" alt="wocintech stock photo" />
         </div>
         <div className="right">
-          <Button size="small" color="#303030" text={ props.loggedin? "help" : "log in" } border="none"/>
-          <Button size="small" color="Turquoise" text={ props.loggedin? "log out" : "sign up" } />
+          <Button size="small" color="#303030" backgroundColor="white" text={ props.loggedin? "help" : "log in" } border="none"/>
+          <Button size="small" color="Turquoise" backgroundColor="white" text={ props.loggedin? "log out" : "sign up" } />
         </div>
       </div>
       <style jsx>{`

@@ -6,6 +6,7 @@ import Button from '../components/button';
 import Infographic from '../components/infographic';
 import Largequote from '../components/largequote';
 import Bubblequote from '../components/bubblequote';
+import Signup from '../components/signup';
 import Footer from '../components/footer';
 
 //import landingImage from '../images/landing-image.jpg';
@@ -51,7 +52,7 @@ export default class extends React.Component {
             <Largequote textA="When mentors invest"
                         textOrange=" 30 minutes a week "
                         textB="advising and professional just starting in tech, employers, mentors, and mentees win." />
-
+            <Signup />
           </div>
         </div>
         <Footer />
