@@ -8,7 +8,7 @@ export default function Navbar(props) {
         </div>
         <div className="right">
           <Button size="small" color="#303030" backgroundColor="white" text={ props.loggedin? "help" : "log in" } border="none"/>
-          <Button size="small" color="Turquoise" backgroundColor="white" text={ props.loggedin? "log out" : "sign up" } />
+          <Button size="small" color="Turquoise" backgroundColor="white" text={ props.loggedin? "log out" : "sign up" }/>
         </div>
 
       <style jsx>{`

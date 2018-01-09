@@ -19,6 +19,14 @@ export default function Button(props) {
     }
   }
 
+  function borderwidth() {
+    if (props.size) {
+      return ("1px");
+    } else {
+      return ("2px");
+    }
+  }
+
   return (
     <span className='button-span'>
       <div className='button-div'>
@@ -29,7 +37,7 @@ export default function Button(props) {
           box-sizing: border-box;
           background-color: ${props.backgroundColor};
           color: ${props.color};
-          border: ${props.border ? props.border : "1px solid "+ props.color};
+          border: ${props.border ? props.border : borderwidth() + " solid "+ props.color};
           font: ${buttonSize()} "Helvetica Neue", Helvetica, sans-serif;
           font-weight: 200;
           padding: ${buttonPadding()};

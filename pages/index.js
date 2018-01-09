@@ -10,7 +10,6 @@ import Footer from '../components/footer';
 
 //import landingImage from '../images/landing-image.jpg';
 export default class extends React.Component {
-
   // static getInitialProps ({ query }) {
   //   return {
   //     name: query.name,
