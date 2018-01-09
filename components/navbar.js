@@ -13,6 +13,7 @@ export default function Navbar(props) {
 
       <style jsx>{`
         .nav {
+          background-color: white;
           border-bottom: 1px solid lightgray;
           height: 65px;
           font: "Helvetica Neue", "Segoe UI", Helvetica, sans-serif;
