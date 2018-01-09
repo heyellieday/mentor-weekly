@@ -8,7 +8,7 @@ export default function Footer(props) {
           <img className="mw-logo" src='../static/mw-logo.svg' width="100%" alt="wocintech stock photo" />
         </div>
         <div className="buttons">
-          <Button backgroundColor="#1e1e1e" size="small" color="Turquoise" text="2018 Mentor Weekly" border="none" />
+          <Button backgroundColor="#1e1e1e" size="small" color="Turquoise" text="	&#169;2018 Mentor Weekly" border="none" />
           <p className="bullet">·</p>
           <Button backgroundColor="#1e1e1e" size="small" color="Turquoise" text="Photo Credits" border="none" />
         </div>
@@ -33,9 +33,7 @@ export default function Footer(props) {
           text-align: center;
         }
         .logo{
-          position: absolute;
-          left: 20px;
-          top: 20px;
+          display: none;
         }
         .mw-logo{
           height: 30px;
@@ -47,6 +45,15 @@ export default function Footer(props) {
           width: 5px;
           margin: 0;
 
+        }
+
+        @media only screen and (min-width: 410px) {
+          .logo{
+            display: inline;
+            position: absolute;
+            left: 20px;
+            top: 20px;
+          }
         }
       `}</style>
     </div>

@@ -36,7 +36,7 @@ export default class extends React.Component {
             </div>
             <div>
               <Infographic textFloat="right" url="https://c2.staticflickr.com/2/1720/25167694534_a664058532_b.jpg" title="gain candidates" text="As the tech industry continues to grow and innovate, employers need a way to access quality candidates. Mentor Weekly provides employers with a potential hiring pool of professionals that their employees already have experience with. Mentors gain leadership skills, and companies invest in the future of the field. " />
-              <Infographic textFloat="left" url="https://c2.staticflickr.com/2/1581/25171573743_72588bb84d_b.jpg" title="gain experience" text="Professionals new to tech need experience, advice, and most importantly, networking opportunities. Mentoring gives junior engineers valuable insights not only into coding, but into the roles, tools, and strategies that are essential to their chosen field." />
+              <Infographic textFloat="left" url="https://c2.staticflickr.com/2/1581/25171573743_72588bb84d_b.jpg" title="gain connections" text="Professionals new to tech need experience, advice, and most importantly, networking opportunities. Mentoring gives junior engineers valuable insights not only into coding, but into the roles, tools, and strategies that are essential to their chosen field." />
             </div>
             <Largequote textA="Mentor Weekly"
                         textOrange=" matches mentors & mentees "
@@ -47,11 +47,11 @@ export default class extends React.Component {
             <div className="bubblequotes-div">
               <Bubblequote width="40%" float="left" author="Vanessa Hurst" role="Co-founder of " org="Girl Develop It" text="“Feeling a little uncomfortable with your skills is a sign of learning, and continuous learning is what the tech industry thrives on! It’s important to seek out environments where you are supported, but where you have the chance to be uncomfortable and learn new things.”" />
               <Bubblequote width="20%" center="true" float="none" author="Ellie Day" role="Founder of " org="Mentor Weekly" text="“If you want to grow as a Software Engineer, teach what you’ve learned to others as soon as possible.”" />
-              <Bubblequote width="40%" float="right" author="Emily Whiting" role="Assistant Professor, " org="Dartmouth" text="“Without having mentors at an authoritative level saying, ‘You deserve this sort of experience; you should apply for this program, because you’re strong enough; those are the sorts of things I wouldn’t necessarily have done without a strong mentoring voice to push me.”" />
+              <Bubblequote width="40%" float="right" author="Emily Whiting" role="Asst. Professor of Computer Science, " org="Dartmouth" text="“Without having mentors at an authoritative level saying, ‘You deserve this sort of experience; you should apply for this program, because you’re strong enough‘; those are the sorts of things I wouldn’t necessarily have done without a strong mentoring voice to push me.”" />
             </div>
             <Largequote textA="When mentors invest"
                         textOrange=" 30 minutes a week "
-                        textB="advising and professional just starting in tech, employers, mentors, and mentees win." />
+                        textB="advising a professional just starting in tech, employers, mentors, and mentees win." />
             <Signup />
           </div>
         </div>
@@ -85,7 +85,7 @@ export default class extends React.Component {
               font-size: 1.4em;
               margin: 0 auto;
               color: #ffdacc;
-              width: 450px;
+              width: 250px;
             }
             .entry-point-button-area{
               text-align: center;
@@ -111,6 +111,12 @@ export default class extends React.Component {
             }
             .footer, .wrap:after{
               height: 65px;
+            }
+
+            @media only screen and (min-width: 440px) {
+              .tagline{
+                width: 450px;
+              }
             }
 
             @media only screen and (max-width: 700px) {

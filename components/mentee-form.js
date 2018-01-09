@@ -22,11 +22,31 @@ export default function MenteeForm(props) {
           .block{
             display: block;
             margin: 5px auto;
-            width: 550px;
+            width: 300px;
           }
           .block-input{
             margin: 5px auto 20px auto;
+            height: 50px;
           }
+
+          @media only screen and (min-width: 440px) {
+            .block{
+              width: 330px;
+            }
+          }
+
+          @media only screen and (min-width: 500px) {
+            .block{
+              width: 400px;
+            }
+
+          @media only screen and (min-width: 661px) {
+            .block{
+              width: 550px;
+            }
+            .block-input{
+              height: 20px;
+            }
         `}</style>
     </div>
 );

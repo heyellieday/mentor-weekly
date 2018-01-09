@@ -8,15 +8,21 @@ export default function Largequote(props) {
       </div>
       <style jsx>{`
         .largequote {
-          color: grey;
+          color: #1e1e1e;
           font: 23px "Helvetica Neue", "Segoe UI", Helvetica, sans-serif;
           font-weight: 200;
-          padding: 90px;
+          padding: 90px 40px;
           text-align: center;
           clear: both;
         }
         .orange{
           color: coral;
+        }
+
+        @media only screen and (min-width: 440px) {
+          .largequote {
+            padding: 90px;
+          }
         }
       `}</style>
     </div>

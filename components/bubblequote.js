@@ -17,7 +17,7 @@ export default function Bubblequote(props) {
           position: relative;
           background-color: Turquoise;
           padding: 45px ${props.center ? 0 : ""};
-          height: 500px;
+          height: 550px;
           box-sizing: border-box;
           color: white;
           display: inline-block;
@@ -26,7 +26,6 @@ export default function Bubblequote(props) {
           width: ${props.width};
           text-align: center;
           float: left;
-
         }
         .bubblequote{
           position: relative;
@@ -37,43 +36,26 @@ export default function Bubblequote(props) {
           height: 260px;
           width: 100%;
           padding: 25px;
-
         }
         .text{
           position: relative;
           top: 50%;
           transform: translateY(-50%);
         }
-        .cite-div{
-
-        }
         .author-div{
           font-weight: normal;
         }
 
-        @media only screen and (max-width: 450px) {
+        @media only screen and (min-width: 560px) {
           .bubblequote-div {
-            height: 420px;
-          }
-          .bubblequote{
-            height: 320px;
-          }
-        }
-        @media only screen and (max-width: 500px) {
-          .bubblequote{
-            height: 300px;
-          }
-        }
-        @media only screen and (max-width: 700px) {
-          .bubblequote{
-            height: 180px;
+            height: 500px;
           }
         }
         @media only screen and (max-width: 900px) {
           .bubblequote-div {
             width: 100%;
             padding: 45px;
-            height: 460px;
+
           }
           .bubblequote{
             height: 200px;

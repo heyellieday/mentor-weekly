@@ -1,5 +1,5 @@
 import Button from '../components/button';
-import MenteeForm from '../components/mentor-form';
+import MenteeForm from '../components/mentee-form';
 import MentorForm from '../components/mentor-form';
 
 export default function Signup(props) {
@@ -9,13 +9,13 @@ export default function Signup(props) {
       <form className="signup-form">
         <div className="radio-div">
           <legend>Which role are you interested in?</legend>
-          <input type="radio" name="signup"/>
+          <input type="radio" name="signup" className="radio-button"/>
           <label htmlFor="signup">be a mentor</label>
-          <input type="radio" name="signup"/>
+          <input type="radio" name="signup" className="radio-button"/>
           <label htmlFor="signup">be a mentee</label>
         </div>
         <div className="name-labels-div">
-          <label htmlFor="firstName" className="name-label">first name</label>
+          <label htmlFor="firstName" className="name-label first-name">first</label>
           <label htmlFor="lastName" className="name-label">last name</label>
         </div>
         <input type="text" name="firstName" className="name-input"></input>
@@ -24,7 +24,7 @@ export default function Signup(props) {
         <input type="email" name="email" className="block block-input"></input>
         <label htmlFor="goals" className="block">please describe your goals and what you&#39;d like to gain from a mentorship:</label>
         <input type="text" name="goals" className="block block-input"></input>
-        <MentorForm />
+        <MenteeForm />
         <Button block="true" color="white" backgroundColor="turquoise" text="join mentor weekly" />
       </form>
       <style jsx>{`
@@ -54,24 +54,57 @@ export default function Signup(props) {
             border: 1px solid white;
             border-radius: 3px;
           }
+          .radio-button{
+            position: relative;
+            bottom: 2px;
+          }
           .radio-div{
             margin-bottom: 5px;
           }
           .block{
             display: block;
             margin: 5px auto;
-            width: 550px;
+            width: 300px;
           }
           .block-input{
             margin: 5px auto 20px auto;
+            height: 50px;
           }
-          .name-label{
-            margin: 0 110px;
-            top: 5px;
+          .first-name:after{
+            content: " & ";
           }
           .name-input{
-            width: 262px;
+            width: 300px;
+          }
 
+          @media only screen and (min-width: 440px) {
+            .block, .name-input{
+              width: 330px;
+            }
+          }
+
+          @media only screen and (min-width: 500px) {
+            .block, .name-input{
+              width: 400px;
+            }
+          }
+
+          @media only screen and (min-width: 661px) {
+            .block{
+              width: 550px;
+            }
+            .block-input{
+              height: 20px;
+            }
+            .name-label{
+              margin: 0 110px;
+            }
+            .name-input{
+              width: 262px;
+            }
+            .first-name:after{
+              content: " name";
+            }
           }
         `}</style>
     </div>
