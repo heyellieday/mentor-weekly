@@ -1,3 +1,6 @@
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import ReactDOM from 'react-dom';
+
 export default function Button(props) {
   function buttonSize() {
     if (props.size === "small") {
@@ -24,6 +27,11 @@ export default function Button(props) {
       return ("1px");
     } else {
       return ("2px");
+    }
+  }
+  function link() {
+    if (props.text === "help") {
+      return ("/help");
     }
   }
 

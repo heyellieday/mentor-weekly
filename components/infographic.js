@@ -67,7 +67,7 @@ export default function Infographic(props) {
           }
         }
 
-        @media only screen and (max-width: 1080px) {
+        @media only screen and (max-width: 1079px) {
           .text-div, .image-div{
             width: 100%;
           }

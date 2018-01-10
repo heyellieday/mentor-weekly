@@ -1,5 +1,4 @@
-import React from 'react'
-import Router from 'next/router'
+import React from 'react';
 import Navbar from '../components/navbar';
 import Button from '../components/button';
 import Infographic from '../components/infographic';

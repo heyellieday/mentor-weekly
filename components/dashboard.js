@@ -5,7 +5,7 @@ export default function Dashboard(props) {
   return (
     <div className="dashboard">
       <Navbar dashboard={props.dashboard} loggedin={props.loggedin}/>
-      <Sidebar user={props.user} profilePhoto="/static/sample-photo-1.jpg" />
+      <Sidebar user={props.user} />
       <h1 className="title">{props.title}</h1>
       <style jsx>{`
         .dashboard{

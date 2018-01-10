@@ -24,7 +24,7 @@ export default function Signup(props) {
         <input type="email" name="email" className="block block-input"></input>
         <label htmlFor="goals" className="block">please describe your goals and what you&#39;d like to gain from a mentorship:</label>
         <input type="text" name="goals" className="block block-input"></input>
-        <MenteeForm />
+        <MentorForm />
         <Button block="true" color="white" backgroundColor="turquoise" text="join mentor weekly" />
       </form>
       <style jsx>{`

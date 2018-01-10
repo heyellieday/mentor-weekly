@@ -26,6 +26,8 @@ export default function Helpform(props) {
             font: 18px "Helvetica Neue", "Segoe UI", Helvetica, sans-serif;
             font-weight: 200;
             text-align: center;
+            left: 300px;
+          
           }
           legend{
             margin-bottom: 5px;
@@ -58,17 +60,17 @@ export default function Helpform(props) {
             width: 300px;
           }
 
-          @media only screen and (min-width: 440px) {
+          @media only screen and (min-width: 740px) {
             .block, .name-input{
               width: 330px;
             }
           }
-          @media only screen and (min-width: 500px) {
+          @media only screen and (min-width: 800px) {
             .block, .name-input{
               width: 400px;
             }
           }
-          @media only screen and (min-width: 661px) {
+          @media only screen and (min-width: 961px) {
             .block{
               width: 550px;
             }

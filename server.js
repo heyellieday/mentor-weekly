@@ -1,6 +1,9 @@
 const express = require('express')
 const next = require('next')
 
+import React from 'react';
+import ReactDOM from 'react-dom';
+
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()

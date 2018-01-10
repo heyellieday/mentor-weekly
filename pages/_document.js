@@ -14,6 +14,7 @@ export default class MyDocument extends Document {
       <html>
         <Head>
           <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
+          <link rel="icon" type="image/x-icon" href="/static/logo.ico?v=2" />
         </Head>
         <body>
           <Main />
