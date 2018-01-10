@@ -37,7 +37,9 @@ export default function Button(props) {
         return ("/mentor-dashboard");
     } else if (props.text === "learn more") {
         return ("/#infographic");
-    } else {
+    } else if (props.text === "log in") {
+        return ("/");
+    } else if (props.text === "sign up" || "get involved") {
       return ("/#signup");
     }
   }
@@ -47,7 +49,7 @@ export default function Button(props) {
       <div className='button-div'>
         <Link href={link()} >
           <a>
-            <button className="button">{props.text}</button>
+            <button className="button" onClick={props.onClick ? props.onClick : ""}>{props.text}</button>
           </a>
         </Link>
       </div>

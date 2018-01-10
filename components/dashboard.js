@@ -7,6 +7,7 @@ export default function Dashboard(props) {
       <Navbar user={props.user} dashboard={props.dashboard} loggedin={props.loggedin}/>
       <Sidebar user={props.user} />
       <h1 className="title">{props.title}</h1>
+      <div className="children">{props.children}</div>
       <style jsx>{`
         .dashboard{
           font-family: "Helvetica Neue", "Segoe UI", Helvetica, sans-serif;
@@ -14,13 +15,29 @@ export default function Dashboard(props) {
           background-color: #F4F4F4;
           left: 250px;
           text-align: center;
+          height: 100%;
         }
         .title{
           display: inline-block;
           margin: 80px auto;
           font-weight: 100;
           font-size: 2.5em;
+          clear: right;
         }
+        .children{
+        }
+
+        @media only screen and (min-width: 558px) {
+          .title{
+            display: none;
+          }
+        }
+        @media only screen and (min-width: 775px) {
+          .title{
+            display: inline-block;
+          }
+        }
+
       `}</style>
     </div>
 );

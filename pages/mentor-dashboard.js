@@ -1,5 +1,6 @@
 import React from 'react'
 import Dashboard from '../components/dashboard';
+import MatchInfo from '../components/match-info';
 
 export default class extends React.Component {
   constructor(props) {
@@ -46,12 +47,10 @@ export default class extends React.Component {
     // const { url, name } = this.props
     return (
       <div>
-      <Dashboard user={this.state.users[0]} title="my mentee info" dashboard={true} loggedin="true"/>
+        <Dashboard user={this.state.users[1]} title="my mentee info" dashboard={true} loggedin="true">
+        <MatchInfo user={this.state.users[0]} />
+        </Dashboard>
         <style jsx>{`
-            .landing-page{
-              margin-top: 80px;
-            }
-
         `}</style>
         </div>
       )

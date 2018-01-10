@@ -36,7 +36,7 @@ export default function Infographic(props) {
           background-color: #1e1e1e;
           color: white;
           font-family: "Segoe UI", "Helvetica Neue", Helvetica, sans-serif;
-          font-size: 18px;
+          font-size: 17px;
           text-align: center;
           padding: 70px;
           float: ${props.textFloat};

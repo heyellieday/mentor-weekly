@@ -42,8 +42,9 @@ export default class extends React.Component {
   render () {
     return (
       <div className="help-page">
-        <Dashboard user={this.state.users[0]} title="get some help" dashboard={true} loggedin="true"/>
+        <Dashboard user={this.state.users[0]} title="get some help" dashboard={true} loggedin="true">
         <Helpform />
+        </Dashboard>
         <style jsx>{`
 
         `}</style>

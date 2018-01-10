@@ -5,10 +5,25 @@ import Infographic from '../components/infographic';
 import Largequote from '../components/largequote';
 import Bubblequote from '../components/bubblequote';
 import Signup from '../components/signup';
+import Login from '../components/login';
 import Footer from '../components/footer';
 
 //import landingImage from '../images/landing-image.jpg';
 export default class extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      popUpIsOpen: false
+    };
+  }
+  // getInitialState: function() {
+  //       return  (popUpIsOpen: false);
+  //   }
+  //
+    togglePopUp() {
+        this.setState({ popUpIsOpen: !popUpIsOpen });
+        console.log("toggle attempted");
+    }
   // static getInitialProps ({ query }) {
   //   return {
   //     name: query.name,
@@ -19,9 +34,10 @@ export default class extends React.Component {
     return (
       <div>
         <div className="wrap">
-          <Navbar loggedin={false}/>
+          <Navbar loggedin={false} onClick={() => this.togglePopUp()}/>
           <div className="landing-page">
             <div className="landing-image-div">
+              {this.state.popUpIsOpen && <Login/>}
               <div className="title-div">
                 <h1 className="title">mentor weekly</h1>
                 <h2 className="tagline">a better mentoring platform for those in tech</h2>

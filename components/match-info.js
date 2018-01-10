@@ -1,6 +1,6 @@
 import Button from '../components/button';
 
-export default function Sidebar(props) {
+export default function MatchInfo(props) {
 
   function profilePhoto() {
     console.log(props.user);
@@ -11,14 +11,16 @@ export default function Sidebar(props) {
   }
 
   return (
-    <div className="sidebar">
+    <div className="match-info-div">
         <div className="profile">
-          <div className="profile-photo-container">
-              <img className="profile-photo" src={profilePhoto()} alt="profile photo" />
+          <div className="profile-photo-name-div">
+            <div className="profile-photo-container">
+                <img className="profile-photo" src={profilePhoto()} alt="profile photo" />
+            </div>
+                <h2 className="username">{props.user.userName.firstName + " " + props.user.userName.lastName}</h2>
+                <h3 className="role">{props.user.role}</h3>
+                <Button size="small" text={(props.user.role === "mentee")?"remove mentee":"change mentor"} color="coral" backgroundColor="white" border="none"/>
           </div>
-          <h2 className="username">{props.user.userName.firstName + " " + props.user.userName.lastName}</h2>
-          <h3 className="role">{props.user.role}</h3>
-          <Button size="small" text="update profile" color="#ffdacc" backgroundColor="#00C1B8"/>
           <div className="profile-info-div">
             <p><b>Goals: </b>{props.user.goals}</p>
             <p><b>Experience: </b>{props.user.experience}</p>
@@ -30,13 +32,13 @@ export default function Sidebar(props) {
           </div>
         </div>
       <style jsx>{`
-        .sidebar{
+        .match-info-div{
           box-sizing: border-box;
           position: relative;
-          background-color: #00C1B8;
+          background-color: white;
           padding: 70px 45px;
           height: 100%;
-          color: white;
+          color: #1e1e1e;
           display: inline-block;
           font-family: "Helvetica Neue", "Segoe UI", Helvetica, sans-serif;
           font-weight: 200;
@@ -44,10 +46,9 @@ export default function Sidebar(props) {
           text-align: center;
           margin: 0 auto;
         }
-
         .profile-photo-container{
           width: 150px;
-          height: 100%;
+          height: 150px;
           border-radius: 50%;
           overflow: hidden;
           margin: 0 auto;
@@ -68,11 +69,29 @@ export default function Sidebar(props) {
           text-align: left
         }
 
-        @media only screen and (min-width: 660px) {
-          .sidebar{
-            top: 0;
-            left:0;
-            bottom: 0;
+        @media only screen and (min-width: 726px) {
+          .match-info-div{
+
+            width: 100%;
+            margin: 0;
+          }
+        }
+        @media only screen and (min-width: 900px) {
+          .match-info-div{
+            padding: 30px;
+            width: 70%;
+            margin: 0 auto;
+          }
+          .profile-photo-container{
+            float: left;
+            margin: 20px;
+          }
+          .profile-info-div{
+            text-align: left;
+            font-size: 14px;
+            margin: 0 auto;
+          }
+          .profile-photo-name-div{
             float: left;
           }
         }

@@ -19,15 +19,13 @@ export default function Helpform(props) {
   <style jsx>{`
           .helpform{
             position: relative;
-            background-color: #F4F4F4;
             padding: 45px;
             box-sizing: border-box;
             color: #1e1e1e;
             font: 18px "Helvetica Neue", "Segoe UI", Helvetica, sans-serif;
             font-weight: 200;
             text-align: center;
-            left: 300px;
-          
+            margin: 0 auto;
           }
           legend{
             margin-bottom: 5px;
@@ -61,6 +59,9 @@ export default function Helpform(props) {
           }
 
           @media only screen and (min-width: 740px) {
+            .helpform{
+              left: 30px;
+            }
             .block, .name-input{
               width: 330px;
             }

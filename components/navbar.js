@@ -8,8 +8,8 @@ export default function Navbar(props) {
         </div>
         <div className="right">
           { props.loggedin ? <Button size="small" color="#303030" backgroundColor="white" text="dashboard" border="none"/> : ""}
-          {(props.loggedin && props.user.role === "mentor") ? <Button size="small" color="#303030" backgroundColor="white" text="pick a mentee" border="none"/> : ""}
-          <Button size="small" color="#303030" backgroundColor="white" text={ props.loggedin? "help" : "log in" } border="none"/>
+          {(props.loggedin && props.user.role === "mentor") ? <Button size="small" color="#303030" backgroundColor="white" text="pick a mentee" border="none"/> : null}
+          <Button size="small" color="#303030" backgroundColor="white" text={ props.loggedin? "help" : "log in" } onClick={props.onClick?props.onClick:null}border="none"/>
           <Button size="small" color="Turquoise" backgroundColor="white" text={ props.loggedin? "log out" : "sign up" }/>
         </div>
 
