@@ -1,6 +1,6 @@
 export default function Infographic(props) {
   return (
-    <div className="infographic">
+    <div id="infographic" className="infographic">
       <div className="image-div">
       </div>
       <div className='text-div'>

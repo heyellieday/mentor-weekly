@@ -1,5 +1,4 @@
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
-import ReactDOM from 'react-dom';
+import Link from 'next/link'
 
 export default function Button(props) {
   function buttonSize() {
@@ -32,13 +31,25 @@ export default function Button(props) {
   function link() {
     if (props.text === "help") {
       return ("/help");
+    } else if (props.text === "log out") {
+        return ("/");
+    } else if (props.text === "dashboard") {
+        return ("/mentor-dashboard");
+    } else if (props.text === "learn more") {
+        return ("/#infographic");
+    } else {
+      return ("/#signup");
     }
   }
 
   return (
     <span className='button-span'>
       <div className='button-div'>
-        <button className="button">{props.text}</button>
+        <Link href={link()} >
+          <a>
+            <button className="button">{props.text}</button>
+          </a>
+        </Link>
       </div>
       <style jsx>{`
         .button{

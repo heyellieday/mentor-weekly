@@ -7,6 +7,8 @@ export default function Navbar(props) {
           <img className="mw-logo" src='../static/mentor-weekly-logo.svg' width="100%" alt="wocintech stock photo" />
         </div>
         <div className="right">
+          { props.loggedin ? <Button size="small" color="#303030" backgroundColor="white" text="dashboard" border="none"/> : ""}
+          {(props.loggedin && props.user.role === "mentor") ? <Button size="small" color="#303030" backgroundColor="white" text="pick a mentee" border="none"/> : ""}
           <Button size="small" color="#303030" backgroundColor="white" text={ props.loggedin? "help" : "log in" } border="none"/>
           <Button size="small" color="Turquoise" backgroundColor="white" text={ props.loggedin? "log out" : "sign up" }/>
         </div>

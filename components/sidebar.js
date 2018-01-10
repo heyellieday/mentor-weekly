@@ -25,7 +25,7 @@ export default function Sidebar(props) {
             <p><b>{(props.user.role === "mentor")?"Expertise: ": "Skills: "} </b>{props.user.skills}</p>
             {(props.user.role === "mentor") ? "" : <p><b>Portfolio: </b>{props.user.portfolioUrl}</p>}
             {(props.user.role === "mentor") ? "" : <p><b>Interested in: </b>{props.user.organization}</p>}
-            {(props.user.role === "mentor")? "" : <p><b>Availability: </b>{props.user.availability}</p>}
+            {(props.user.role === "mentor")? "" : "<p><b>Availability: </b>{props.user.availability}</p>"}
             <p><b>Contact: </b>{props.user.contact}</p>
           </div>
         </div>

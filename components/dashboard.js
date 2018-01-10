@@ -4,7 +4,7 @@ import Sidebar from '../components/sidebar';
 export default function Dashboard(props) {
   return (
     <div className="dashboard">
-      <Navbar dashboard={props.dashboard} loggedin={props.loggedin}/>
+      <Navbar user={props.user} dashboard={props.dashboard} loggedin={props.loggedin}/>
       <Sidebar user={props.user} />
       <h1 className="title">{props.title}</h1>
       <style jsx>{`

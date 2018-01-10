@@ -4,7 +4,7 @@ import MentorForm from '../components/mentor-form';
 
 export default function Signup(props) {
   return (
-    <div className="signup">
+    <div id="signup" className="signup">
       <h2>get involved</h2>
       <form className="signup-form">
         <div className="radio-div">
