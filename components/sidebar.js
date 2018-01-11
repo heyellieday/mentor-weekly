@@ -3,7 +3,6 @@ import Button from '../components/button';
 export default function Sidebar(props) {
 
   function profilePhoto() {
-    console.log(props.user);
     if (props.user.photoUrl) {
       return props.user.photoUrl;
     } else {
@@ -18,7 +17,7 @@ export default function Sidebar(props) {
           </div>
           <h2 className="username">{props.user.userName.firstName + " " + props.user.userName.lastName}</h2>
           <h3 className="role">{props.user.role}</h3>
-          <Button size="small" text="update profile" color="#ffdacc" backgroundColor="#00C1B8"/>
+          <Button size="small" text="update profile" color="#ffdacc" backgroundColor="#00C1B8" onClick={props.onClick}/>
           <div className="profile-info-div">
             <p><b>Goals: </b>{props.user.goals}</p>
             <p><b>Experience: </b>{props.user.experience}</p>
@@ -47,7 +46,7 @@ export default function Sidebar(props) {
 
         .profile-photo-container{
           width: 150px;
-          height: 100%;
+          height: 150px;
           border-radius: 50%;
           overflow: hidden;
           margin: 0 auto;

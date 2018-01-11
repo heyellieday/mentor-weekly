@@ -3,7 +3,6 @@ import Button from '../components/button';
 export default function MatchInfo(props) {
 
   function profilePhoto() {
-    console.log(props.user);
     if (props.user.photoUrl) {
       return props.user.photoUrl;
     } else {

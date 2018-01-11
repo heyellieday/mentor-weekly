@@ -15,25 +15,30 @@ export default function Login(props) {
       <style jsx>{`
         .login-div {
           background-color: #1e1e1e;
-          height: 150px;
+          height: 135px;
           font: "Helvetica Neue", "Segoe UI", Helvetica, sans-serif;
           position: absolute;
-          top: 25px;
-          right: 57px;
-          width: 200px;
-          padding: 16px 16px 12px 16px;
+          top: 24px;
+          right: 52px;
+          width: 205px;
+          padding: 8px 16px 8px 16px;
+          z-index: 1;
+          filter: drop-shadow(0 0 5px #000000);
         }
         .login-point{
           position: absolute;
           top: 0px;
           right: 157px;
+          z-index: 1;
+          filter: drop-shadow(0 0 5px #000000);
+
         }
         input{
           display: block;
           margin: 16px auto 8px auto;
           border: 1px solid white;
           border-radius: 3px;
-          width: 162px;
+          width: 160px;
           padding: 1px 5px;
         }
         input::placeholder{

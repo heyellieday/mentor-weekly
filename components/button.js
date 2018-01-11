@@ -1,4 +1,3 @@
-import Link from 'next/link'
 
 export default function Button(props) {
   function buttonSize() {
@@ -37,8 +36,8 @@ export default function Button(props) {
         return ("/mentor-dashboard");
     } else if (props.text === "learn more") {
         return ("/#infographic");
-    } else if (props.text === "log in") {
-        return ("/");
+    } else if (props.text === "log in" || "update profile") {
+        return ("");
     } else if (props.text === "sign up" || "get involved") {
       return ("/#signup");
     }
@@ -47,11 +46,7 @@ export default function Button(props) {
   return (
     <span className='button-span'>
       <div className='button-div'>
-        <Link href={link()} >
-          <a>
             <button className="button" onClick={props.onClick ? props.onClick : ""}>{props.text}</button>
-          </a>
-        </Link>
       </div>
       <style jsx>{`
         .button{

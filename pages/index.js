@@ -22,7 +22,6 @@ export default class extends React.Component {
   //
     togglePopUp() {
         this.setState({ popUpIsOpen: !this.state.popUpIsOpen });
-        console.log("toggle attempted");
     }
   // static getInitialProps ({ query }) {
   //   return {

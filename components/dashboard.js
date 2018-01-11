@@ -27,16 +27,18 @@ export default function Dashboard(props) {
         .children{
         }
 
-        @media only screen and (min-width: 558px) {
+        @media only screen and (min-width: 726px) {
           .title{
-            display: none;
+
+            width: 100%;
+
           }
         }
-        @media only screen and (min-width: 775px) {
+        @media only screen and (min-width: 900px) {
           .title{
-            display: inline-block;
+            width: 70%;
+          
           }
-        }
 
       `}</style>
     </div>
