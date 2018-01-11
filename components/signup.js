@@ -2,16 +2,29 @@ import Button from '../components/button';
 import MenteeForm from '../components/mentee-form';
 import MentorForm from '../components/mentor-form';
 
-export default function Signup(props) {
+export default class Signup extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        isMentorForm: true
+      }
+    }
+
+  form(value) {
+    this.setState({isMentorForm: value});
+    console.log(isMentorForm);
+  }
+
+  render () {
   return (
     <div id="signup" className="signup">
       <h2>get involved</h2>
       <form className="signup-form">
         <div className="radio-div">
           <legend>Which role are you interested in?</legend>
-          <input type="radio" name="signup" className="radio-button"/>
+          <input type="radio" name="signup" className="radio-button" onClick={() => this.form(true)} value="mentor"/>
           <label htmlFor="signup">be a mentor</label>
-          <input type="radio" name="signup" className="radio-button"/>
+          <input type="radio" name="signup" className="radio-button" onClick={() => this.form(false)} value="mentee"/>
           <label htmlFor="signup">be a mentee</label>
         </div>
         <div className="name-labels-div">
@@ -24,7 +37,7 @@ export default function Signup(props) {
         <input type="email" name="email" className="block block-input"></input>
         <label htmlFor="goals" className="block">please describe your goals and what you&#39;d like to gain from a mentorship:</label>
         <input type="text" name="goals" className="block block-input"></input>
-        <MentorForm />
+        { this.state.isMentorForm ? <MentorForm /> : <MenteeForm /> }
         <Button block="true" color="white" backgroundColor="turquoise" text="join mentor weekly" />
       </form>
       <style jsx>{`
@@ -109,4 +122,4 @@ export default function Signup(props) {
         `}</style>
     </div>
 );
-}
+}}

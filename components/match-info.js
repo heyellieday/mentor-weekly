@@ -10,6 +10,14 @@ export default function MatchInfo(props) {
       return ('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png');    }
   }
 
+  if (!props.user) {
+  return(
+    <div className="match-info-div">
+      <h2>Welcome to Mentor Weekly!</h2>
+      <p>You will find your mentee info here.</p>
+      <p>Mentor Weekly will send you an email when we have found you the right match.</p>
+    </div>);
+  } else {
   return (
     <div className="match-info-div">
         <div className="profile">
@@ -71,7 +79,7 @@ export default function MatchInfo(props) {
 
         @media only screen and (min-width: 726px) {
           .match-info-div{
-
+            filter: drop-shadow(0 0 15px #9E9E9E);
             width: 100%;
             margin: 0;
           }
@@ -98,4 +106,4 @@ export default function MatchInfo(props) {
       `}</style>
     </div>
 );
-}
+}}

@@ -21,7 +21,7 @@ export default class extends React.Component {
   //   }
   //
     togglePopUp() {
-        this.setState({ popUpIsOpen: !popUpIsOpen });
+        this.setState({ popUpIsOpen: !this.state.popUpIsOpen });
         console.log("toggle attempted");
     }
   // static getInitialProps ({ query }) {
@@ -37,7 +37,7 @@ export default class extends React.Component {
           <Navbar loggedin={false} onClick={() => this.togglePopUp()}/>
           <div className="landing-page">
             <div className="landing-image-div">
-              {this.state.popUpIsOpen && <Login/>}
+              {this.state.popUpIsOpen ? <Login/> : ""}
               <div className="title-div">
                 <h1 className="title">mentor weekly</h1>
                 <h2 className="tagline">a better mentoring platform for those in tech</h2>
