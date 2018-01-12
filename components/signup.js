@@ -28,7 +28,7 @@ export default class Signup extends React.Component {
           <label htmlFor="signup">be a mentee</label>
         </div>
         { this.state.isMentorForm ? <MentorForm /> : <MenteeForm /> }
-        <Button block="true" color="white" backgroundColor="turquoise" text="join mentor weekly" />
+        <Button block="true" color="white" backgroundColor="turquoise" text="join mentor weekly" onClick={(e) => e.preventDefault()}/>
       </form>
       <style jsx>{`
           h2{

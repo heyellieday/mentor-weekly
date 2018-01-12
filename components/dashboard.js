@@ -5,7 +5,7 @@ export default function Dashboard(props) {
   return (
     <div className="dashboard">
       <Navbar user={props.user} dashboard={props.dashboard} loggedin={props.loggedin}/>
-      <Sidebar user={props.user} />
+      <Sidebar user={props.user} onClick={props.onClick}/>
       <h1 className="title">{props.title}</h1>
       <div className="children">{props.children}</div>
       <style jsx>{`
@@ -37,7 +37,7 @@ export default function Dashboard(props) {
         @media only screen and (min-width: 900px) {
           .title{
             width: 70%;
-          
+
           }
 
       `}</style>

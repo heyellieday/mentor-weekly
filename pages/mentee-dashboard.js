@@ -7,6 +7,7 @@ export default class extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+        currentDashboardPage: "dashboard",
         updateModalIsOpen: false,
         users: [{
           "userId": "alinal",
@@ -45,19 +46,24 @@ export default class extends React.Component {
   //     name: query.name,
   //   }
   // }
-  toggleModal(event) {
+  openModal(event) {
     event.preventDefault();
-    updateModalIsOpen = !updateModalIsOpen;
+    this.setState({updateModalIsOpen: true});
+  }
+
+  closeModal(event) {
+    event.preventDefault();
+    this.setState({updateModalIsOpen: false});
   }
 
   render () {
     // const { url, name } = this.props
     return (
       <div>
-        <Dashboard user={this.state.users[0]} title="my mentor info" dashboard={true} loggedin="true" onClick={(e) => this.toggleModal(e)}>
+        <Dashboard user={this.state.users[0]} title="my mentor info" dashboard={true} loggedin="true" onClick={(e) => this.openModal(e)}>
         <MatchInfo user={this.state.users[1]} />
         </Dashboard>
-        {this.state.updateModalIsOpen ? <UpdateProfileModal role="mentee"/> : null}
+        {this.state.updateModalIsOpen ? <UpdateProfileModal role="mentee" onClick={(e) => this.closeModal(e)} /> : null}
         <style jsx>{`
         `}</style>
         </div>
