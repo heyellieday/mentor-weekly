@@ -4,12 +4,15 @@
 ## Incomplete Tasks:
 
 ###Front-end:
-- autofill profile MenteeForm
+- autofill profile Form: mentee
+- autofill profile Form: mentor
+- add placeholders to signup Form
 - add "linkTo" buttonlink props
 - condense mentor & mentee form styles
-- try adding {() =>} onClicks with no func
-- pick a mentee page
+- try adding onClick={() =>} to buttons with no func yet
+- build pick a mentee page
 - responsive nav bar (search: component)
+- dashboard hidden overflow issue
 
 ###Auth:
 - Read Auth0 tutorial

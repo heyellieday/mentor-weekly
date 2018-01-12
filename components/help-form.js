@@ -3,18 +3,19 @@ import Button from '../components/button';
 export default function Helpform(props) {
   return (
     <div className="helpform">
+      <p className="message">Use this form to get in contact with someone at Mentor Weekly.  We are happy to help!</p>
       <div className="name-labels-div">
         <label htmlFor="firstName" className="name-label first-name">first</label>
         <label htmlFor="lastName" className="name-label">last name</label>
       </div>
         <input type="text" name="firstName" className="name-input"></input>
         <input type="text" name="lastName" className="name-input"></input>
-        <label htmlFor="portfolio" className="block">please enter the url for your portfolio or website:</label>
-        <input type="text" name="portfolio" className="block block-input"></input>
-        <label htmlFor="background" className="block">please briefly describe your background/training:</label>
-        <input type="text" name="background" className="block block-input"></input>
-        <label htmlFor="languages" className="block">which coding languages and tools are you familiar with?</label>
-        <input type="text" name="languages" className="block block-input"></input>
+        <label htmlFor="email" className="block">email address</label>
+        <input type="text" name="email" className="block block-input"></input>
+        <label htmlFor="subject" className="block">message subject</label>
+        <input type="text" name="subject" className="block block-input"></input>
+        <label htmlFor="issue" className="block">please describe your issue here:</label>
+        <input type="text" name="issue" className="block block-input issue"></input>
         <div className="extra"></div>
         <Button text="send message" color="turquoise" backgroundColor="#F4F4F4" />
   <style jsx>{`
@@ -30,23 +31,26 @@ export default function Helpform(props) {
             width: 300px;
             height: 100vh;
           }
-          legend{
-            margin-bottom: 5px;
-          }
           input{
             margin: 5px 0 20px 0;
             border: 1px solid turquoise;
             border-radius: 3px;
           }
-          .block{
+          .block, .message{
             display: block;
             margin: 0 auto;
             width: 300px;
+          }
+          .message{
+            margin: 0 auto 50px auto;
           }
           .block-input{
             display: block;
             margin: 5px auto 20px auto;
             height: 50px;
+          }
+          .issue{
+            height: 200px;
           }
           .first-name:after{
             content: " & ";
@@ -59,12 +63,15 @@ export default function Helpform(props) {
             .helpform{
               width: 600px;
             }
-            .block{
+            .block, .message{
               width: 550px;
             }
             .block-input{
               height: 20px;
               width: 550px;
+            }
+            .issue{
+              height: 140px;
             }
             .name-label{
               margin: 0 110px;
