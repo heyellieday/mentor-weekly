@@ -91,7 +91,7 @@ export default class extends React.Component {
   render () {
     // const { url, name } = this.props
     return (
-      <div>
+      <div className="dashboard-div">
         <Dashboard
             user={this.state.users[0]}
             title="my mentor info"
@@ -105,6 +105,9 @@ export default class extends React.Component {
         </Dashboard>
         {this.state.updateModalIsOpen ? <UpdateProfileModal role="mentee" closeModal={(e) => this.closeModal(e)} /> : null}
         <style jsx>{`
+          .dashboard-div{
+            height: 100%;
+          }
         `}</style>
         </div>
       )

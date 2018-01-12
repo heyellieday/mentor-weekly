@@ -1,6 +1,7 @@
 import React from 'react'
 import Dashboard from '../components/dashboard';
 import Helpform from '../components/help-form';
+import UpdateProfileModal from '../components/update-profile-modal';
 
 export default class extends React.Component {
   constructor(props) {

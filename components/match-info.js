@@ -1,4 +1,5 @@
 import Button from '../components/button';
+import ButtonLink from '../components/button-link';
 
 export default function MatchInfo(props) {
 
@@ -26,7 +27,7 @@ export default function MatchInfo(props) {
             </div>
                 <h2 className="username">{props.user.userName.firstName + " " + props.user.userName.lastName}</h2>
                 <h3 className="role">{props.user.role}</h3>
-                <Button size="small" text={(props.user.role === "mentee")?"remove mentee":"change mentor"} color="coral" backgroundColor="white" border="none"/>
+                <ButtonLink size="small" text={(props.user.role === "mentee")?"remove mentee":"change mentor"} color="coral" backgroundColor="white" border="none"/>
           </div>
           <div className="profile-info-div">
             <p><b>Goals: </b>{props.user.goals}</p>
@@ -51,7 +52,7 @@ export default function MatchInfo(props) {
           font-weight: 200;
           width: 300px;
           text-align: center;
-          margin: 0 auto;
+          margin: 0 auto 60px auto;
         }
         .profile-photo-container{
           width: 150px;
@@ -80,7 +81,6 @@ export default function MatchInfo(props) {
           .match-info-div{
             padding: 30px;
             width: 65%;
-            margin: 0 auto;
             filter: drop-shadow(0 0 15px #9E9E9E);
           }
           .profile-photo-container{

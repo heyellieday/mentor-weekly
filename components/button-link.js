@@ -29,7 +29,7 @@ export default function ButtonLink(props) {
     }
   }
   function link() {
-    if (props.text === "help") {
+    if (props.text === "help" || props.text === "change mentor") {
       return ("/help");
     } else if (props.text === "log out") {
         return ("/");

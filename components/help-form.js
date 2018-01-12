@@ -44,7 +44,7 @@ export default function Helpform(props) {
           }
           .block-input{
             display: block;
-            margin: 0 auto 20px auto;
+            margin: 5px auto 20px auto;
             height: 50px;
           }
           .first-name:after{
