@@ -9,13 +9,14 @@ export default function UpdateProfileModal(props) {
       <div className="dark">
       </div>
       <div className="modal">
-        <button className="close-button" onClick={props.onClick}>
+        <button className="close-button" onClick={props.closeModal}>
           <img src="static/close-button.svg" />
         </button>
         <h1 className="title">my profile</h1>
         <form className="">
         {(props.role === "mentor") ? <MentorForm coloredInputBorder="true" /> : <MenteeForm coloredInputBorder="true" />}
         <Button color="turquoise" text="save changes" />
+        <Button color="#1e1e1e" text="cancel" onClick={props.closeModal} block="true"/>
         </form>
         <style jsx>{`
           .modal {

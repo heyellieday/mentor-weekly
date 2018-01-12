@@ -15,40 +15,36 @@ export default function Helpform(props) {
         <input type="text" name="background" className="block block-input"></input>
         <label htmlFor="languages" className="block">which coding languages and tools are you familiar with?</label>
         <input type="text" name="languages" className="block block-input"></input>
+        <div className="extra"></div>
         <Button text="send message" color="turquoise" backgroundColor="#F4F4F4" />
   <style jsx>{`
           .helpform{
+            display: inline-block;
             position: relative;
-            padding: 45px;
             box-sizing: border-box;
             color: #1e1e1e;
             font: 18px "Helvetica Neue", "Segoe UI", Helvetica, sans-serif;
             font-weight: 200;
             text-align: center;
             margin: 0 auto;
+            width: 300px;
           }
           legend{
             margin-bottom: 5px;
           }
           input{
-            margin: 5px 10px 20px 10px;
+            margin: 5px 0 20px 0;
             border: 1px solid turquoise;
             border-radius: 3px;
           }
-          .radio-button{
-            position: relative;
-            bottom: 2px;
-          }
-          .radio-div{
-            margin-bottom: 5px;
-          }
           .block{
             display: block;
-            margin: 5px auto;
+            margin: 0 auto;
             width: 300px;
           }
           .block-input{
-            margin: 5px auto 20px auto;
+            display: block;
+            margin: 0 auto 20px auto;
             height: 50px;
           }
           .first-name:after{
@@ -58,34 +54,29 @@ export default function Helpform(props) {
             width: 300px;
           }
 
-          @media only screen and (min-width: 740px) {
-            .helpform{
-              left: 30px;
-            }
-            .block, .name-input{
-              width: 330px;
-            }
-          }
-          @media only screen and (min-width: 800px) {
-            .block, .name-input{
-              width: 400px;
-            }
-          }
           @media only screen and (min-width: 961px) {
+            .helpform{
+              width: 600px;
+            }
             .block{
               width: 550px;
             }
             .block-input{
               height: 20px;
+              width: 550px;
             }
             .name-label{
               margin: 0 110px;
             }
             .name-input{
               width: 262px;
+              margin: 5px 10px 20px 10px;
             }
             .first-name:after{
               content: " name";
+            }
+            .extra{
+              height: 20px;
             }
           }
         `}</style>

@@ -6,6 +6,7 @@ export default class extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+        updateModalIsOpen: false,
         users: [{
           "userId": "alinal",
           "userName": {
@@ -39,12 +40,30 @@ export default class extends React.Component {
     }
   }
 
+  openModal(event) {
+    event.preventDefault();
+    this.setState({updateModalIsOpen: true});
+  }
+
+  closeModal(event) {
+    event.preventDefault();
+    this.setState({updateModalIsOpen: false});
+  }
+
+
   render () {
     return (
       <div className="help-page">
-        <Dashboard user={this.state.users[0]} title="get some help" dashboard={true} loggedin="true">
+        <Dashboard
+            user={this.state.users[0]}
+            title="get some help"
+            dashboard={true}
+            loggedin="true"
+            openUpdateModal={(e) => this.openModal(e)}
+        >
         <Helpform />
         </Dashboard>
+        {this.state.updateModalIsOpen ? <UpdateProfileModal role="mentee" closeModal={(e) => this.closeModal(e)} /> : null}
         <style jsx>{`
 
         `}</style>

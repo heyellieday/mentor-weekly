@@ -2,12 +2,13 @@ import React from 'react'
 import Dashboard from '../components/dashboard';
 import MatchInfo from '../components/match-info';
 import UpdateProfileModal from '../components/update-profile-modal';
+import Helpform from '../components/help-form';
 
 export default class extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        currentDashboardPage: "dashboard",
+        currentPage: "dashboard",
         updateModalIsOpen: false,
         users: [{
           "userId": "alinal",
@@ -40,6 +41,7 @@ export default class extends React.Component {
           "contact": "ellie@email.com"
         }]
     }
+    this.navigate = this.navigate.bind(this);
   }
   // static getInitialProps ({ query }) {
   //   return {
@@ -56,14 +58,52 @@ export default class extends React.Component {
     this.setState({updateModalIsOpen: false});
   }
 
+  goToHelp(event) {
+    event.preventDefault();
+    this.setState({currentPage: "help"});
+    console.log("help nav button clicked");
+  }
+
+  goToDashboard(event) {
+    event.preventDefault();
+    this.setState({currentPage: "dashboard"});
+    console.log("dashboard nav button clicked");
+  }
+
+  goToPickMentee(event) {
+    event.preventDefault();
+    this.setState({currentPage: "pick a mentee"});
+  }
+
+  navigate() {
+    if (this.state.currentPage === "dashboard") {
+      return <MatchInfo user={this.state.users[1]} />;
+    }
+    if (this.state.currentPage === "help") {
+      return <HelpForm />;
+    }
+    if (this.state.currentPage === "pick a mentee") {
+      return "";
+    }
+  }
+
+
   render () {
     // const { url, name } = this.props
     return (
       <div>
-        <Dashboard user={this.state.users[0]} title="my mentor info" dashboard={true} loggedin="true" onClick={(e) => this.openModal(e)}>
+        <Dashboard
+            user={this.state.users[0]}
+            title="my mentor info"
+            dashboard={true}
+            loggedin="true"
+            openUpdateModal={(e) => this.openModal(e)}
+            goToHelp={(e) => this.goToHelp(e)}
+            goToDashboard={(e) => this.goToDashboard(e)}
+            >
         <MatchInfo user={this.state.users[1]} />
         </Dashboard>
-        {this.state.updateModalIsOpen ? <UpdateProfileModal role="mentee" onClick={(e) => this.closeModal(e)} /> : null}
+        {this.state.updateModalIsOpen ? <UpdateProfileModal role="mentee" closeModal={(e) => this.closeModal(e)} /> : null}
         <style jsx>{`
         `}</style>
         </div>

@@ -76,18 +76,12 @@ export default function MatchInfo(props) {
           text-align: left
         }
 
-        @media only screen and (min-width: 726px) {
-          .match-info-div{
-            filter: drop-shadow(0 0 15px #9E9E9E);
-            width: 100%;
-            margin: 0;
-          }
-        }
         @media only screen and (min-width: 900px) {
           .match-info-div{
             padding: 30px;
-            width: 70%;
+            width: 65%;
             margin: 0 auto;
+            filter: drop-shadow(0 0 15px #9E9E9E);
           }
           .profile-photo-container{
             float: left;

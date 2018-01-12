@@ -15,9 +15,21 @@ export default function Button(props) {
       return "3px 18px";
     } else if (props.size === "large") {
       return "6px 40px";
+    } else if (props.text === "cancel") {
+      return "6px 110px";
     } else {
       return "6px 80px";
     }
+  }
+
+  function buttonMargin() {
+    if (props.size === "small") {
+      return "8px 15px";
+    } else if (props.text === "cancel") {
+    return "0 27px 27px 27px";
+  } else {
+    return "27px";
+  }
   }
 
   function borderwidth() {
@@ -27,26 +39,11 @@ export default function Button(props) {
       return ("2px");
     }
   }
-  function link() {
-    if (props.text === "help") {
-      return ("/help");
-    } else if (props.text === "log out") {
-        return ("/");
-    } else if (props.text === "dashboard") {
-        return ("/mentor-dashboard");
-    } else if (props.text === "learn more") {
-        return ("/#infographic");
-    } else if (props.text === "log in" || "update profile") {
-        return ("");
-    } else if (props.text === "sign up" || "get involved") {
-      return ("/#signup");
-    }
-  }
 
   return (
     <span className='button-span'>
       <div className='button-div'>
-            <button className="button" onClick={props.onClick ? props.onClick : ""}>{props.text}</button>
+            <button className="button" onClick={props.onClick ? props.onClick : null}>{props.text}</button>
       </div>
       <style jsx>{`
         .button{
@@ -57,7 +54,7 @@ export default function Button(props) {
           font: ${buttonSize()} "Helvetica Neue", Helvetica, sans-serif;
           font-weight: 200;
           padding: ${buttonPadding()};
-          margin: ${(props.size === "small") ? "8px 15px" : "27px" };
+          margin: ${buttonMargin()};
           text-align: center;
         }
         .button-div{

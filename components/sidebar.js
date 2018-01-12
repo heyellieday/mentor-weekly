@@ -17,7 +17,12 @@ export default function Sidebar(props) {
           </div>
           <h2 className="username">{props.user.userName.firstName + " " + props.user.userName.lastName}</h2>
           <h3 className="role">{props.user.role}</h3>
-          <Button size="small" text="update profile" color="#ffdacc" backgroundColor="#00C1B8" onClick={props.onClick}/>
+          <Button
+              size="small"
+              text="update profile"
+              color="#ffdacc"
+              backgroundColor="#00C1B8"
+              onClick={props.openUpdateModal}/>
           <div className="profile-info-div">
             <p><b>Goals: </b>{props.user.goals}</p>
             <p><b>Experience: </b>{props.user.experience}</p>
@@ -67,7 +72,7 @@ export default function Sidebar(props) {
           text-align: left
         }
 
-        @media only screen and (min-width: 660px) {
+        @media only screen and (min-width: 600px) {
           .sidebar{
             top: 0;
             left:0;

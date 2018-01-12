@@ -2,11 +2,13 @@ import React from 'react'
 import Dashboard from '../components/dashboard';
 import MatchInfo from '../components/match-info';
 import UpdateProfileModal from '../components/update-profile-modal';
+import Helpform from '../components/help-form';
 
 export default class extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+        currentPage: "dashboard",
         updateModalIsOpen: false,
         users: [{
           "userId": "alinal",
@@ -59,10 +61,10 @@ export default class extends React.Component {
     // const { url, name } = this.props
     return (
       <div>
-        <Dashboard user={this.state.users[1]} title="my mentee info" dashboard={true} loggedin="true" onClick={(e) => this.openModal(e)}>
+        <Dashboard user={this.state.users[1]} title="my mentee info" dashboard={true} loggedin="true" openUpdateModal={(e) => this.openModal(e)}>
         <MatchInfo user={this.state.users[0]} />
         </Dashboard>
-        {this.state.updateModalIsOpen ? <UpdateProfileModal role="mentor" onClick={(e) => this.closeModal(e)} /> : null}
+        {this.state.updateModalIsOpen ? <UpdateProfileModal role="mentor" closeModal={(e) => this.closeModal(e)} /> : null}
         <style jsx>{`
         `}</style>
         </div>

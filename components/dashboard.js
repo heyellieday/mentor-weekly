@@ -4,8 +4,15 @@ import Sidebar from '../components/sidebar';
 export default function Dashboard(props) {
   return (
     <div className="dashboard">
-      <Navbar user={props.user} dashboard={props.dashboard} loggedin={props.loggedin}/>
-      <Sidebar user={props.user} onClick={props.onClick}/>
+      <Navbar
+          user={props.user}
+          dashboard={props.dashboard}
+          loggedin={props.loggedin}
+          goToHelp={props.goToHelp}
+          goToDashboard={props.goToDashboard}
+          goToPickMentee={props.goToPickMentee}
+          />
+      <Sidebar user={props.user} openUpdateModal={props.openUpdateModal}/>
       <h1 className="title">{props.title}</h1>
       <div className="children">{props.children}</div>
       <style jsx>{`
@@ -19,26 +26,16 @@ export default function Dashboard(props) {
         }
         .title{
           display: inline-block;
-          margin: 80px auto;
+          margin: 60px auto;
           font-weight: 100;
           font-size: 2.5em;
           clear: right;
+          width: 300px;
         }
-        .children{
+
+        @media only screen and (min-width: 961px) {
+
         }
-
-        @media only screen and (min-width: 726px) {
-          .title{
-
-            width: 100%;
-
-          }
-        }
-        @media only screen and (min-width: 900px) {
-          .title{
-            width: 70%;
-
-          }
 
       `}</style>
     </div>
