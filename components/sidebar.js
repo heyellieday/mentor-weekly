@@ -74,10 +74,14 @@ export default function Sidebar(props) {
 
         @media only screen and (min-width: 600px) {
           .sidebar{
-            top: 0;
+            top: 66px;
             left:0;
             bottom: 0;
             float: left;
+            position: fixed;
+            background-color: #00C1B8;
+            padding: 70px 45px;
+            height: 100%;
           }
         }
       `}</style>

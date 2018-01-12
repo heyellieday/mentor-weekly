@@ -45,7 +45,6 @@ export default function MatchInfo(props) {
           position: relative;
           background-color: white;
           padding: 70px 45px;
-          height: 100%;
           color: #1e1e1e;
           display: inline-block;
           font-family: "Helvetica Neue", "Segoe UI", Helvetica, sans-serif;
@@ -80,12 +79,12 @@ export default function MatchInfo(props) {
         @media only screen and (min-width: 900px) {
           .match-info-div{
             padding: 30px;
-            width: 65%;
+            width: 80%;
             filter: drop-shadow(0 0 15px #9E9E9E);
           }
           .profile-photo-container{
             float: left;
-            margin: 20px;
+            margin: 0 20px 20px 20px;
           }
           .profile-info-div{
             text-align: left;
@@ -94,6 +93,7 @@ export default function MatchInfo(props) {
           }
           .profile-photo-name-div{
             float: left;
+            padding: 0 20px 20px 0;
           }
         }
       `}</style>

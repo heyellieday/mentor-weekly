@@ -3,7 +3,6 @@ import MentorForm from '../components/mentor-form';
 import Button from '../components/button';
 
 export default function UpdateProfileModal(props) {
-
   return (
     <div className="update-profile-div">
       <div className="dark">
@@ -14,7 +13,7 @@ export default function UpdateProfileModal(props) {
         </button>
         <h1 className="title">my profile</h1>
         <form className="">
-        {(props.role === "mentor") ? <MentorForm coloredInputBorder="true" /> : <MenteeForm coloredInputBorder="true" />}
+        {(props.role === "mentor") ? <MentorForm user={props.user} coloredInputBorder="true" /> : <MenteeForm user={props.user} coloredInputBorder="true" />}
         <Button color="turquoise" text="save changes" />
         <Button color="#1e1e1e" text="cancel" onClick={props.closeModal} block="true"/>
         </form>

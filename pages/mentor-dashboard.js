@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import Dashboard from '../components/dashboard';
 import MatchInfo from '../components/match-info';
 import UpdateProfileModal from '../components/update-profile-modal';
@@ -60,12 +60,15 @@ export default class extends React.Component {
   render () {
     // const { url, name } = this.props
     return (
-      <div>
+      <div className="mentor-dashboard-div">
         <Dashboard user={this.state.users[1]} title="my mentee info" dashboard={true} loggedin="true" openUpdateModal={(e) => this.openModal(e)}>
         <MatchInfo user={this.state.users[0]} />
         </Dashboard>
-        {this.state.updateModalIsOpen ? <UpdateProfileModal role="mentor" closeModal={(e) => this.closeModal(e)} /> : null}
+        {this.state.updateModalIsOpen ? <UpdateProfileModal role="mentor" user={this.state.users[1]} closeModal={(e) => this.closeModal(e)} /> : null}
         <style jsx>{`
+          .mentor-dashboard-div{
+            height: 100vh;
+          }
         `}</style>
         </div>
       )

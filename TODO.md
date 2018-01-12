@@ -5,12 +5,14 @@
 
 ###Front-end:
 - autofill profile MenteeForm
+- add "linkTo" buttonlink props
 - condense mentor & mentee form styles
-- try moving onClicks into ternary operators to fix console errors
+- try adding {() =>} onClicks with no func
+- pick a mentee page
+- responsive nav bar (search: component)
 
-- change "help" component to be conditional in the dashboards, not an endpoint?
-- figure out why match-info photo is too low
-- fix dashboard length?
+###Auth:
+- Read Auth0 tutorial
 
 ## Complete Tasks:
 
@@ -23,3 +25,5 @@
 - fix dashboard responsiveness
 - link "change mentor" button to help page
 - link profile modal to help page sidebar
+- figure out why match-info photo is too low
+- fix dashboard length?

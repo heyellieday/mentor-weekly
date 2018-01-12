@@ -20,9 +20,7 @@ export default function Dashboard(props) {
           font-family: "Helvetica Neue", "Segoe UI", Helvetica, sans-serif;
           font-weight: 100;
           background-color: #F4F4F4;
-          left: 250px;
           text-align: center;
-          height: 100%;
         }
         .title{
           display: inline-block;
@@ -32,9 +30,30 @@ export default function Dashboard(props) {
           clear: right;
           width: 300px;
         }
+        .children{
+          height: 100%;
+          right: 0;
+          position: relative;
+          margin: 0 auto;
+        }
 
-        @media only screen and (min-width: 961px) {
-
+        @media only screen and (min-width: 600px) {
+          .dashboard{
+            left: 0;
+            bottom: 0;
+            top: 0;
+            right: 0;
+            position: fixed;
+          }
+          .title{
+            display: inline-block;
+            margin: 60px auto;
+            padding-left: 300px;
+          }
+          .children{
+            left: 300px;
+            position: fixed;
+          }
         }
 
       `}</style>

@@ -28,6 +28,7 @@ export default function Helpform(props) {
             text-align: center;
             margin: 0 auto;
             width: 300px;
+            height: 100vh;
           }
           legend{
             margin-bottom: 5px;

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import Dashboard from '../components/dashboard';
 import MatchInfo from '../components/match-info';
 import UpdateProfileModal from '../components/update-profile-modal';
@@ -58,23 +58,6 @@ export default class extends React.Component {
     this.setState({updateModalIsOpen: false});
   }
 
-  goToHelp(event) {
-    event.preventDefault();
-    this.setState({currentPage: "help"});
-    console.log("help nav button clicked");
-  }
-
-  goToDashboard(event) {
-    event.preventDefault();
-    this.setState({currentPage: "dashboard"});
-    console.log("dashboard nav button clicked");
-  }
-
-  goToPickMentee(event) {
-    event.preventDefault();
-    this.setState({currentPage: "pick a mentee"});
-  }
-
   navigate() {
     if (this.state.currentPage === "dashboard") {
       return <MatchInfo user={this.state.users[1]} />;
@@ -98,12 +81,10 @@ export default class extends React.Component {
             dashboard={true}
             loggedin="true"
             openUpdateModal={(e) => this.openModal(e)}
-            goToHelp={(e) => this.goToHelp(e)}
-            goToDashboard={(e) => this.goToDashboard(e)}
             >
         <MatchInfo user={this.state.users[1]} />
         </Dashboard>
-        {this.state.updateModalIsOpen ? <UpdateProfileModal role="mentee" closeModal={(e) => this.closeModal(e)} /> : null}
+        {this.state.updateModalIsOpen ? <UpdateProfileModal role="mentee" user={this.state.users[0]} closeModal={(e) => this.closeModal(e)} /> : null}
         <style jsx>{`
           .dashboard-div{
             height: 100%;
