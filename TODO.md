@@ -13,6 +13,8 @@
 - build pick a mentee page
 - responsive nav bar (search: component)
 - dashboard hidden overflow issue
+- create an empty dashboard message
+- photo url line on form
 
 ###Auth:
 - Read Auth0 tutorial

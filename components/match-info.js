@@ -25,7 +25,7 @@ export default function MatchInfo(props) {
             <div className="profile-photo-container">
                 <img className="profile-photo" src={profilePhoto()} alt="profile photo" />
             </div>
-                <h2 className="username">{props.user.userName.firstName + " " + props.user.userName.lastName}</h2>
+                <h2 className="username">{props.user.name.firstName + " " + props.user.name.lastName}</h2>
                 <h3 className="role">{props.user.role}</h3>
                 <ButtonLink size="small" text={(props.user.role === "mentee")?"remove mentee":"change mentor"} color="coral" backgroundColor="white" border="none"/>
           </div>
@@ -88,7 +88,6 @@ export default function MatchInfo(props) {
           }
           .profile-info-div{
             text-align: left;
-            font-size: 14px;
             margin: 0 auto;
           }
           .profile-photo-name-div{

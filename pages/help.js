@@ -10,7 +10,7 @@ export default class extends React.Component {
         updateModalIsOpen: false,
         users: [{
           "userId": "alinal",
-          "userName": {
+          "name": {
             "firstName": "Alina",
             "lastName": "Lodahl"},
           "photoUrl": "https://scontent.fsnc1-1.fna.fbcdn.net/v/t1.0-9/253094_10101142302648164_1065808377_n.jpg?oh=a3499a650864ce68161cd02ff675761b&oe=5AB28440",
@@ -25,7 +25,7 @@ export default class extends React.Component {
           "contact": "alina@email.com"
         },{
           "userId": "ellied",
-          "userName": {
+          "name": {
             "firstName": "Ellie",
             "lastName": "Day"},
           "photoUrl": "https://media.licdn.com/media/AAEAAQAAAAAAAApxAAAAJGVhMDUwOTk1LTliMzUtNDZlZS05YzFmLWFlNDkzYzY3OWFiMQ.jpg",

@@ -15,7 +15,7 @@ export default function Sidebar(props) {
           <div className="profile-photo-container">
               <img className="profile-photo" src={profilePhoto()} alt="profile photo" />
           </div>
-          <h2 className="username">{props.user.userName.firstName + " " + props.user.userName.lastName}</h2>
+          <h2 className="username">{props.user.name.firstName + " " + props.user.name.lastName}</h2>
           <h3 className="role">{props.user.role}</h3>
           <Button
               size="small"

@@ -4,6 +4,7 @@ import Button from '../components/button';
 export default class MenteeForm extends React.Component {
   constructor(props) {
     super(props);
+    console.log(this.props);
     this.state = {
     }
   }
@@ -33,7 +34,7 @@ export default class MenteeForm extends React.Component {
             <input type="text" name="org" className={this.props.coloredInputBorder? "colored-input-border block block-input":"block block-input"}></input>
             <label htmlFor="schedule" className="block">what times are you available to meet with a mentor for 30 minutes?</label>
             <input type="text" name="schedule" className={this.props.coloredInputBorder? "colored-input-border block block-input":"block block-input"}></input>
-            <Button block="true" color="white" backgroundColor="turquoise" text="join mentor weekly" onClick={(e) => e.preventDefault()}/>
+            {this.props.user ? null: <Button block="true" color="white" backgroundColor="turquoise" text="join mentor weekly" onClick={(e) => e.preventDefault()}/>}
           <style jsx>{`
               input{
                 margin: 5px 10px 20px 10px;
