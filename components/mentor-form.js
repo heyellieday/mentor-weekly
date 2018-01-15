@@ -15,7 +15,8 @@ export default class MentorForm extends React.Component {
         org: this.props.user.organization,
         experience: this.props.user.experience,
         skills: this.props.user.skills,
-        lookingFor: this.props.user.lookingFor
+        lookingFor: this.props.user.lookingFor,
+        photoUrl: this.props.user.photoUrl
       }
     }
 
@@ -86,6 +87,13 @@ export default class MentorForm extends React.Component {
             type="text"
             name="looking-for"
             className={this.props.coloredInputBorder? "colored-input-border block block-input":"block block-input"}></input>
+            <label htmlFor="photoUrl" className="block">paste the url of the photo you want as your profile picture (you can add this later):</label>
+            <input
+                value={this.state.availability}
+                onChange={() => this.setState({photoUrl: event.target.value})}
+                type="text"
+                name="photoUrl"
+                className={this.props.coloredInputBorder? "colored-input-border block block-input":"block block-input"}></input>
         {this.props.user ? null: <Button block="true" color="white" backgroundColor="turquoise" text="join mentor weekly" onClick={(e) => e.preventDefault()}/>}
         <style jsx>{`
           input{
@@ -151,27 +159,6 @@ export default class MentorForm extends React.Component {
             }
             .first-name:after{
               content: " name";
-            }
-          }
-
-          @media only screen and (min-width: 440px) {
-            .block{
-              width: 330px;
-            }
-          }
-
-          @media only screen and (min-width: 500px) {
-            .block{
-              width: 400px;
-            }
-          }
-
-          @media only screen and (min-width: 661px) {
-            .block{
-              width: 550px;
-            }
-            .block-input{
-              height: 20px;
             }
           }
           `}</style>

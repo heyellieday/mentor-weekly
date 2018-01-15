@@ -5,14 +5,10 @@
 
 ###Front-end:
 - add placeholders to signup Form
-- add "linkTo" buttonlink props
-- condense mentor & mentee form styles
-- try adding onClick={() =>} to buttons with no func yet
 - build pick a mentee page
 - responsive nav bar (search: component)
 - dashboard hidden overflow issue
 - create an empty dashboard message
-- photo url line on form
 
 ###Auth:
 
@@ -31,6 +27,11 @@
 - fix dashboard length
 - autofill profile Form: mentor
 - autofill profile Form: mentee
+- try adding onClick={() =>} to buttons with no func yet
+  (removed onClick from ButtonLinks)
+- add "linkTo" buttonlink props
+- condense mentor & mentee form styles
+- photo url line on form
 
 ###Auth:
 - Read Auth0 tutorial
