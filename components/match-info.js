@@ -28,7 +28,8 @@ export default function MatchInfo(props) {
                 <h2 className="username">{props.user.name.firstName + " " + props.user.name.lastName}</h2>
                 <h3 className="role">{props.user.role}</h3>
                 {(props.user.role === "mentor")? <ButtonLink size="small" text="change mentor" linkTo="/help" color="coral" backgroundColor="white" border="none"/> : null}
-                {(props.user.role === "mentee")? <Button size="small" text="remove mentee" onClick={(e) => e.preventDefault()} color="coral" backgroundColor="white" border="none"/> : null}
+                {(props.user.role === "mentee" && props.pickMentee)? <Button size="small" text="add mentee" onClick={(e) => e.preventDefault()} color="turquoise" backgroundColor="white"/> : null}
+                {(props.user.role === "mentee" && !props.pickMentee)? <Button size="small" text="remove mentee" onClick={(e) => e.preventDefault()} color="coral" backgroundColor="white" border="none"/> : null}
           </div>
           <div className="profile-info-div">
             <p><b>Goals: </b>{props.user.goals}</p>

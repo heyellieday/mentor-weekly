@@ -5,7 +5,6 @@
 
 ###Front-end:
 - add placeholders to signup Form
-- build pick a mentee page
 - responsive nav bar (search: component)
 - dashboard hidden overflow issue
 - create an empty dashboard message
@@ -32,6 +31,7 @@
 - add "linkTo" buttonlink props
 - condense mentor & mentee form styles
 - photo url line on form
+- build pick a mentee page (add map func for mentee list)
 
 ###Auth:
 - Read Auth0 tutorial

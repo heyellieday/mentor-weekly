@@ -2,7 +2,6 @@ import React from 'react';
 import Dashboard from '../components/dashboard';
 import MatchInfo from '../components/match-info';
 import UpdateProfileModal from '../components/update-profile-modal';
-import Helpform from '../components/help-form';
 
 export default class extends React.Component {
   constructor(props) {
