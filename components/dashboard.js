@@ -7,10 +7,7 @@ export default function Dashboard(props) {
       <Navbar
           user={props.user}
           dashboard={props.dashboard}
-          loggedin={props.loggedin}
-          goToHelp={props.goToHelp}
-          goToDashboard={props.goToDashboard}
-          goToPickMentee={props.goToPickMentee}
+          loggedin={props.loggedin} 
           />
       <Sidebar user={props.user} openUpdateModal={props.openUpdateModal}/>
       <h1 className="title">{props.title}</h1>

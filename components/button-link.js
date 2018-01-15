@@ -28,28 +28,13 @@ export default function ButtonLink(props) {
       return ("2px");
     }
   }
-  function link() {
-    if (props.text === "help" || props.text === "change mentor") {
-      return ("/help");
-    } else if (props.text === "log out") {
-        return ("/");
-    } else if (props.text === "dashboard" && props.role === "mentor") {
-        return ("/mentor-dashboard");
-    } else if (props.text === "dashboard"&& props.role === "mentee")  {
-        return ("/mentee-dashboard");
-    } else if (props.text === "learn more") {
-        return ("/#infographic");
-    } else if (props.text === "sign up"|| props.text === "get involved") {
-      return ("/#signup");
-    }
-  }
 
   return (
     <span className='button-span'>
       <div className='button-div'>
-      <Link href={link()}>
+      <Link href={props.linkTo}>
         <a>
-          <button className="button" onClick={props.onClick ? props.onClick : ""}>{props.text}</button>
+          <button className="button" >{props.text}</button>
         </a>
       </Link>
       </div>

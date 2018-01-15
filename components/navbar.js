@@ -8,11 +8,11 @@ export default function Navbar(props) {
           <img className="mw-logo" src='../static/mentor-weekly-logo.svg' width="100%" alt="wocintech stock photo" />
         </div>
         <div className="right">
-          { props.loggedin ? <ButtonLink size="small" color="#303030" backgroundColor="white" text="dashboard" border="none" role={props.user.role} onClick={props.goToDashboard}/> : null}
-          {(props.loggedin && props.user.role === "mentor") ? <Button size="small" color="#303030" backgroundColor="white" text="pick a mentee" border="none" onClick={props.goToPickMentee} /> : null}
-          { props.loggedin ? null : <Button size="small" color="#303030" backgroundColor="white" text="log in" onClick={props.onClick?props.onClick:null} border="none"/>}
-          { props.loggedin ? <ButtonLink size="small" color="#303030" backgroundColor="white" text="help" border="none" onClick={props.goToHelp}/> : null }
-          <ButtonLink size="small" color="Turquoise" backgroundColor="white" text={ props.loggedin? "log out" : "sign up" }/>
+          { props.loggedin ? <ButtonLink linkTo={(props.user.role === "mentor") ? "/mentor-dashboard" : "/mentee-dashboard"} size="small" color="#303030" backgroundColor="white" text="dashboard" border="none" role={props.user.role} /> : null}
+          {(props.loggedin && props.user.role === "mentor") ? <Button size="small" color="#303030" backgroundColor="white" text="pick a mentee" border="none" /> : null}
+          { props.loggedin ? null : <Button size="small" color="#303030" backgroundColor="white" text="log in" onClick={props.onClick} border="none"/>}
+          { props.loggedin ? <ButtonLink linkTo="/help" size="small" color="#303030" backgroundColor="white" text="help" border="none" /> : null }
+          { props.loggedin ? <ButtonLink linkTo="/" size="small" color="Turquoise" backgroundColor="white" text="log out"/> : <ButtonLink linkTo="#signup" size="small" color="Turquoise" backgroundColor="white" text="sign up" /> }
         </div>
 
       <style jsx>{`

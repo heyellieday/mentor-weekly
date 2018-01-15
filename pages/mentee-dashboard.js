@@ -8,7 +8,6 @@ export default class extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        currentPage: "dashboard",
         updateModalIsOpen: false,
         users: [{
           "userId": "alinal",
@@ -42,7 +41,6 @@ export default class extends React.Component {
           "contact": "ellie@email.com"
         }]
     }
-    this.navigate = this.navigate.bind(this);
   }
   // static getInitialProps ({ query }) {
   //   return {
@@ -58,19 +56,6 @@ export default class extends React.Component {
     event.preventDefault();
     this.setState({updateModalIsOpen: false});
   }
-
-  navigate() {
-    if (this.state.currentPage === "dashboard") {
-      return <MatchInfo user={this.state.users[1]} />;
-    }
-    if (this.state.currentPage === "help") {
-      return <HelpForm />;
-    }
-    if (this.state.currentPage === "pick a mentee") {
-      return "";
-    }
-  }
-
 
   render () {
     // const { url, name } = this.props

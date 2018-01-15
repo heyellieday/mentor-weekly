@@ -44,8 +44,8 @@ export default class extends React.Component {
               </div>
             </div>
             <div className="entry-point-button-area">
-              <ButtonLink size="large" color="Turquoise" text="get involved"/>
-              <ButtonLink size="large" color="Coral" text="learn more"/>
+              <ButtonLink linkTo="/#signup" size="large" color="Turquoise" text="get involved"/>
+              <ButtonLink linkTo="#infographic" size="large" color="Coral" text="learn more"/>
             </div>
             <div>
               <Infographic textFloat="right" url="https://c2.staticflickr.com/2/1720/25167694534_a664058532_b.jpg" title="gain candidates" text="As the tech industry continues to grow and innovate, employers need a way to access quality candidates. Mentor Weekly provides employers with a potential hiring pool of professionals that their employees already have experience with. Mentors gain leadership skills, and companies invest in the future of the field. " />
