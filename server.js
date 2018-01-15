@@ -1,21 +1,37 @@
 const express = require('express');
 const next = require('next');
+const morgan = require('morgan');
+const bodyParser = require('body-parser');
+//const cors = require('cors');
+//const {CLIENT_ORIGIN} = require('./config');
+//const {router: usersRouter} = require('./users');
 
 const dev = process.env.NODE_ENV !== 'production'
-const app = next({ dev })
-const handle = app.getRequestHandler()
+const nextApp = next({ dev })
+const handle = nextApp.getRequestHandler()
 
-app.prepare().then(() => {
-  const server = express()
+nextApp.prepare().then(() => {
+  const app = express()
 
-  server.get('/hello', (req, res) => {
+  app.use(morgan('common'));
+  app.use(bodyParser.urlencoded({ extended: false }))
+  app.use(bodyParser.json());
+  //app.use('/users', usersRouter);
+  // app.use(
+  //     cors({
+  //         origin: CLIENT_ORIGIN
+  //     })
+  // );
+
+  app.get('/hello', (req, res) => {
     return res.status(200).json({
       hi: "world"
     })
   })
 
-  server.get('*', (req, res) => {
+
+  app.get('*', (req, res) => {
     handle(req, res)
   })
-  server.listen(3000)
+  app.listen(3000)
 })
