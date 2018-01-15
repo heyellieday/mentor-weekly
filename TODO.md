@@ -4,7 +4,6 @@
 ## Incomplete Tasks:
 
 ###Front-end:
-- add placeholders to signup Form
 - responsive nav bar (search: component)
 - dashboard hidden overflow issue
 - create an empty dashboard message
@@ -32,6 +31,7 @@
 - condense mentor & mentee form styles
 - photo url line on form
 - build pick a mentee page (add map func for mentee list)
+- add placeholders to signup Form
 
 ###Auth:
 - Read Auth0 tutorial

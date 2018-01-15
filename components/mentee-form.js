@@ -32,18 +32,21 @@ export default class MenteeForm extends React.Component {
               <label htmlFor="lastName" className="name-label">last name</label>
             </div>
             <input
+                placeholder={this.props.user?"":"first name"}
                 value={this.state.firstName}
                 onChange={() => this.setState({firstName: event.target.value})}
                 type="text" name="firstName"
                 className={this.props.coloredInputBorder? "colored-input-border name-input":"name-input"}>
             </input>
             <input
+                placeholder={this.props.user?"":"last name"}
                 value={this.state.lastName}
                 onChange={() => this.setState({lastName: event.target.value})}
                 type="text" name="lastName" className={this.props.coloredInputBorder? "colored-input-border name-input":"name-input"}>
             </input>
             <label htmlFor="email" className="block">which email address can we use to contact you about a mentorship?</label>
             <input
+                placeholder={this.props.user?"":"ex: someone@yahoo.com"}
                 value={this.state.email}
                 onChange={() => this.setState({email: event.target.value})}
                 type="email"
@@ -52,6 +55,7 @@ export default class MenteeForm extends React.Component {
             </input>
             <label htmlFor="goals" className="block">please describe your goals and what you&#39;d like to gain from a mentorship:</label>
             <input
+                placeholder={this.props.user?"":"ex: I'd like career advice about a career in data-science"}
                 value={this.state.goals}
                 onChange={() => this.setState({goals: event.target.value})}
                 type="text"
@@ -61,6 +65,7 @@ export default class MenteeForm extends React.Component {
 
             <label htmlFor="portfolio" className="block">please enter the url for your portfolio or website:</label>
             <input
+                placeholder={this.props.user?"":"ex: github.com/myrepo"}
                 value={this.state.portfolio}
                 onChange={() => this.setState({portfolio: event.target.value})}
                 type="text"
@@ -69,6 +74,7 @@ export default class MenteeForm extends React.Component {
             </input>
             <label htmlFor="background" className="block">please briefly describe your background/training:</label>
             <input
+                placeholder={this.props.user?"":"ex: I have a Bachelors in Business, and I've taken 1 web design course"}
                 value={this.state.background}
                 onChange={() => this.setState({background: event.target.value})}
                 type="text"
@@ -77,6 +83,7 @@ export default class MenteeForm extends React.Component {
             </input>
             <label htmlFor="experience" className="block">what is your focus and experience level?</label>
             <input
+                placeholder={this.props.user?"":"ex: front-end design, 2 months of html & css"}
                 value={this.state.experience}
                 onChange={() => this.setState({experience: event.target.value})}
                 type="text"
@@ -85,6 +92,7 @@ export default class MenteeForm extends React.Component {
             </input>
             <label htmlFor="skills" className="block">which coding languages and tools are you familiar with?</label>
             <input
+                placeholder={this.props.user?"":"ex: PHP and GitHub"}
                 value={this.state.skills}
                 onChange={() => this.setState({skills: event.target.value})}
                 type="text"
@@ -93,6 +101,7 @@ export default class MenteeForm extends React.Component {
             </input>
             <label htmlFor="org" className="block">what sort of organizations and positions would you like to learn more about?</label>
             <input
+                placeholder={this.props.user?"":"ex: freelancing, small companies"}
                 value={this.state.org}
                 onChange={() => this.setState({org: event.target.value})}
                 type="text"
@@ -101,18 +110,20 @@ export default class MenteeForm extends React.Component {
             </input>
             <label htmlFor="availability" className="block">what times are you available to meet with a mentor for 30 minutes?</label>
             <input
+                placeholder={this.props.user?"":"ex: Mon and Wed 5-6pm PST"}
                 value={this.state.availability}
                 onChange={() => this.setState({availability: event.target.value})}
                 type="text"
                 name="availability"
                 className={this.props.coloredInputBorder? "colored-input-border block block-input":"block block-input"}></input>
                 <label htmlFor="photoUrl" className="block">paste the url of the photo you want as your profile picture (you can add this later):</label>
-                <input
-                    value={this.state.availability}
-                    onChange={() => this.setState({photoUrl: event.target.value})}
-                    type="text"
-                    name="photoUrl"
-                    className={this.props.coloredInputBorder? "colored-input-border block block-input":"block block-input"}></input>
+            <input
+                placeholder={this.props.user?"":"ex: https://www.instagram.com/p/JeQ1KKXpkbw/"}
+                value={this.state.availability}
+                onChange={() => this.setState({photoUrl: event.target.value})}
+                type="text"
+                name="photoUrl"
+                className={this.props.coloredInputBorder? "colored-input-border block block-input":"block block-input"}></input>
             {this.props.user ? null: <Button block="true" color="white" backgroundColor="turquoise" text="join mentor weekly" onClick={(e) => e.preventDefault()}/>}
           <style jsx>{`
               input{
@@ -122,6 +133,11 @@ export default class MenteeForm extends React.Component {
                 text-align: center;
                 font-weight: 200;
                 color: coral;
+                font-size: 16px;
+              }
+              input::placeholder{
+                font-style: italic;
+                color: gray;
               }
               .block{
                 display: block;

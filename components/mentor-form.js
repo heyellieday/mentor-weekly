@@ -30,18 +30,21 @@ export default class MentorForm extends React.Component {
         <label htmlFor="lastName" className="name-label">last name</label>
         </div>
         <input
+            placeholder={this.props.user?"":"first name"}
             value={this.state.firstName}
             onChange={() => this.setState({firstName: event.target.value})}
             type="text" name="firstName"
             className={this.props.coloredInputBorder? "colored-input-border name-input":"name-input"}>
         </input>
         <input
+            placeholder={this.props.user?"":"last name"}
             value={this.state.lastName}
             onChange={() => this.setState({lastName: event.target.value})}
             type="text" name="lastName" className={this.props.coloredInputBorder? "colored-input-border name-input":"name-input"}>
         </input>
         <label htmlFor="email" className="block">which email address can we use to contact you about a mentorship?</label>
         <input
+            placeholder={this.props.user?"":"ex: someone@yahoo.com"}
             value={this.state.email}
             onChange={() => this.setState({email: event.target.value})}
             type="email"
@@ -50,6 +53,7 @@ export default class MentorForm extends React.Component {
         </input>
         <label htmlFor="goals" className="block">please describe your goals and what you&#39;d like to gain from a mentorship:</label>
         <input
+            placeholder={this.props.user?"":"ex: meet aspiring front-end engineers"}
             value={this.state.goals}
             onChange={() => this.setState({goals: event.target.value})}
             type="text"
@@ -58,6 +62,7 @@ export default class MentorForm extends React.Component {
         </input>
         <label htmlFor="org" className="block">which organization do you currently work for?</label>
         <input
+            placeholder={this.props.user?"":"ex: freelance, yelp"}
             value={this.state.org}
             onChange={() => this.setState({org: event.target.value})}
             type="text"
@@ -66,6 +71,7 @@ export default class MentorForm extends React.Component {
         </input>
         <label htmlFor="experience" className="block">how many years of experience do you have?</label>
         <input
+            placeholder={this.props.user?"":"ex: 8 years as a QA engineer"}
             value={this.state.experience}
             onChange={() => this.setState({experience: event.target.value})}
             type="text"
@@ -74,6 +80,7 @@ export default class MentorForm extends React.Component {
         </input>
         <label htmlFor="expertise" className="block">what areas of expertise could you share with a mentee?</label>
         <input
+            placeholder={this.props.user?"":"ex: career advice, JavaScript, NodeJS, GIT, SQL, NoSQL, React"}
             value={this.state.skills}
             onChange={() => this.setState({skills: event.target.value})}
             type="text"
@@ -82,14 +89,16 @@ export default class MentorForm extends React.Component {
         </input>
         <label htmlFor="looking-for" className="block">what are you looking for in a mentee?</label>
         <input
+            placeholder={this.props.user?"":"ex: interest in QA testing"}
             value={this.state.lookingFor}
             onChange={() => this.setState({lookingFor: event.target.value})}
             type="text"
             name="looking-for"
             className={this.props.coloredInputBorder? "colored-input-border block block-input":"block block-input"}></input>
-            <label htmlFor="photoUrl" className="block">paste the url of the photo you want as your profile picture (you can add this later):</label>
+            <label htmlFor="photoUrl" className="block">paste the url of the photo you want as your profile picture here (you can add this later):</label>
             <input
-                value={this.state.availability}
+                placeholder={this.props.user?"":"ex: https://www.instagram.com/p/JeQ1KKXpkbw/"}
+                value={this.state.photoUrl}
                 onChange={() => this.setState({photoUrl: event.target.value})}
                 type="text"
                 name="photoUrl"
@@ -102,7 +111,12 @@ export default class MentorForm extends React.Component {
             border-radius: 3px;
             text-align: center;
             font-weight: 200;
+            font-size: 16px;
             color: coral;
+          }
+          input::placeholder{
+            font-style: italic;
+            color: gray;
           }
           .block{
             display: block;
