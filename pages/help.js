@@ -20,6 +20,7 @@ export default class extends React.Component {
           "experience": "7 months of JS, HTML, CSS.  Almost done with the Thinkful Full-stack Bootcamp",
           "skills": "JavaScript, NodeJS, React, CSS, HTML, JSX, GIT",
           "portfolioUrl": "https://github.com/alodahl",
+          "background": "BA in Visual Art, Teacher for Art and Preschool",
           "organization": "any size, ideally with an emphasis visual arts or positive impact",
           "availability": "M-F 3-5pm",
           "contact": "alina@email.com"

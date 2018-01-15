@@ -4,8 +4,6 @@
 ## Incomplete Tasks:
 
 ###Front-end:
-- autofill profile Form: mentee
-- autofill profile Form: mentor
 - add placeholders to signup Form
 - add "linkTo" buttonlink props
 - condense mentor & mentee form styles
@@ -17,7 +15,6 @@
 - photo url line on form
 
 ###Auth:
-- Read Auth0 tutorial
 
 ## Complete Tasks:
 
@@ -31,4 +28,9 @@
 - link "change mentor" button to help page
 - link profile modal to help page sidebar
 - figure out why match-info photo is too low
-- fix dashboard length?
+- fix dashboard length
+- autofill profile Form: mentor
+- autofill profile Form: mentee
+
+###Auth:
+- Read Auth0 tutorial
