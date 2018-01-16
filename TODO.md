@@ -11,10 +11,11 @@
 - credit photos in popup button on footer
 
 ###API:
-- test in postman
 - commit and make API branch before moving on!
+- code ajax calls
 
 ###Auth:
+- start coding from example
 
 ## Complete Tasks:
 
@@ -46,6 +47,7 @@
 ###API:
 - remove passport code from user router
 - code Router
+- test in postman
 
 ###Auth:
 - Read Auth0 tutorial

@@ -10,6 +10,8 @@ const jsonParser = bodyParser.json();
 router.get('/',(req, res) => {
   User
     .find()
+    //.populate("mentees")
+    //.populate("mentors")
     .then(users => res.json(users.map(user => user.apiRepr())))
     .catch(err => {
       console.error(err);
@@ -100,18 +102,18 @@ router.delete('/:mentorId/:menteeId', (req, res) => {
   User
     .findOneById(req.params.mentorId)
     .then(mentor => {
-      for (let i=0; i<mentor.menteeIds.length; i++) {
-        if (mentor.menteeIds[i] === req.params.menteeId) {
-          mentor.menteeIds.splice(i, 1);
+      for (let i=0; i<mentor.mentees.length; i++) {
+        if (mentor.mentees[i] === req.params.menteeId) {
+          mentor.mentees.splice(i, 1);
         }
       }
       return mentor.save();
     })
     .findOneById(req.params.menteeId)
     .then(mentee => {
-      for (let i=0; i<mentee.mentorIds.length; i++) {
-        if (mentee.mentorIds[i] === req.params.mentorId) {
-          mentee.mentorIds.splice(i, 1);
+      for (let i=0; i<mentee.mentors.length; i++) {
+        if (mentee.mentors[i] === req.params.mentorId) {
+          mentee.mentors.splice(i, 1);
         }
       }
       return mentee.save();
@@ -126,14 +128,14 @@ router.delete('/:mentorId/:menteeId', (req, res) => {
 });
 
 router.put('/:userId',(req, res) => {
-  if (!(req.params.userId && req.body.userId && req.params.userId === req.body.userId)) {
+  if (!(req.params.userId && req.body.id && req.params.userId === req.body.id)) {
     res.status(400).json({
       error: 'Request path id and request body id values must match'
     });
   }
 
   const updated = {};
-  const updateableFields = ['name', 'photoUrl', 'creationDate', 'role', 'goals', 'experience', 'skills', 'organization', 'contact', 'portfolioUrl', 'lookingFor', 'background', 'availability'];
+  const updateableFields = ['name', 'photoUrl', 'creationDate', 'role', 'goals', 'experience', 'skills', 'organization', 'contact', 'portfolioUrl', 'lookingFor', 'background', 'availability', 'mentees', 'mentors'];
   updateableFields.forEach(field => {
     if (field in req.body) {
       updated[field] = req.body[field];

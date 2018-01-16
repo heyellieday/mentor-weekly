@@ -14,8 +14,8 @@ const userSchema = mongoose.Schema({
   organization: {type: String, required: true},
   contact: {type: String, required: true},
   portfolioUrl: {type: String},
-  menteeIds: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
-  mentorIds: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
+  mentees: [{type: mongoose.Schema.Types.ObjectId, ref: 'users'}],
+  mentors: [{type: mongoose.Schema.Types.ObjectId, ref: 'users'}],
   //mentor fields only
   lookingFor: {type: String},
   //mentee fields only
@@ -36,8 +36,8 @@ userSchema.methods.apiRepr = function() {
     organization: this.organization,
     contact: this.contact,
     portfolioUrl: this.portfolioUrl,
-    menteeIds: this.menteeIds,
-    mentorIds: this.mentorIds
+    mentees: this.mentees,
+    mentors: this.mentors
   }
   if (this.role === "mentor") {
     userdata.lookingFor = this.lookingFor;
