@@ -1,5 +1,6 @@
 import React from 'react';
 import Dashboard from '../components/dashboard';
+import DefaultMessage from '../components/default-message';
 import MatchInfo from '../components/match-info';
 import UpdateProfileModal from '../components/update-profile-modal';
 
@@ -67,7 +68,7 @@ export default class extends React.Component {
             loggedin="true"
             openUpdateModal={(e) => this.openModal(e)}
             >
-        <MatchInfo user={this.state.users[1]} />
+        {this.state.users?<MatchInfo user={this.state.users[1]} />:<DefaultMessage />}
         </Dashboard>
         {this.state.updateModalIsOpen ? <UpdateProfileModal role="mentee" user={this.state.users[0]} closeModal={(e) => this.closeModal(e)} /> : null}
         <style jsx>{`

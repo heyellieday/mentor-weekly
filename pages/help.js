@@ -67,7 +67,6 @@ export default class extends React.Component {
         </Dashboard>
         {this.state.updateModalIsOpen ? <UpdateProfileModal role="mentee" closeModal={(e) => this.closeModal(e)} /> : null}
         <style jsx>{`
-
         `}</style>
       </div>
     )

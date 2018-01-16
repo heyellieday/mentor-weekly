@@ -1,5 +1,6 @@
 import React from 'react';
 import Dashboard from '../components/dashboard';
+import DefaultMessage from '../components/default-message';
 import MatchInfo from '../components/match-info';
 import UpdateProfileModal from '../components/update-profile-modal';
 
@@ -62,12 +63,31 @@ export default class extends React.Component {
     return (
       <div className="mentor-dashboard-div">
         <Dashboard user={this.state.users[1]} title="my mentee info" dashboard={true} loggedin="true" openUpdateModal={(e) => this.openModal(e)}>
-        <MatchInfo user={this.state.users[0]} />
+        {this.state.users?<MatchInfo user={this.state.users[0]} />:<DefaultMessage />}
         </Dashboard>
         {this.state.updateModalIsOpen ? <UpdateProfileModal role="mentor" user={this.state.users[1]} closeModal={(e) => this.closeModal(e)} /> : null}
         <style jsx>{`
           .mentor-dashboard-div{
             height: 100vh;
+          }
+          .default-message{
+            background-color: white;
+            padding: 70px 45px;
+            color: #1e1e1e;
+            display: inline-block;
+            font-family: "Helvetica Neue", "Segoe UI", Helvetica, sans-serif;
+            font-weight: 200;
+            width: 70%;
+            filter: drop-shadow(0 0 15px #9E9E9E);
+          }
+          .default-header{
+            font-weight: 100px;
+            color: #00C1B8;
+          }
+          @media only screen and (min-width: 600px) {
+            .default-message{
+              width: 70%;
+            }
           }
         `}</style>
         </div>

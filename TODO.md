@@ -6,7 +6,16 @@
 ###Front-end:
 - responsive nav bar (search: component)
 - dashboard hidden overflow issue
-- create an empty dashboard message
+
+- move profile modal buttons to forms
+- change inputs to text area
+- change first & last name inputs/labels
+- credit photos in popup button on footer
+- differentiate pick a mentee from my info page: darker bkgrnd?
+
+###API:
+- test in postman
+- commit and make API branch before moving on!
 
 ###Auth:
 
@@ -32,6 +41,11 @@
 - photo url line on form
 - build pick a mentee page (add map func for mentee list)
 - add placeholders to signup Form
+- create an empty dashboard message
+
+###API:
+- remove passport code from user router
+- code Router
 
 ###Auth:
 - Read Auth0 tutorial

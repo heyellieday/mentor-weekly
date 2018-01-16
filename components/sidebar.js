@@ -82,6 +82,7 @@ export default function Sidebar(props) {
             background-color: #00C1B8;
             padding: 70px 45px;
             height: 100%;
+            overflow: auto;
           }
         }
       `}</style>

@@ -118,7 +118,7 @@ export default class MenteeForm extends React.Component {
                 className={this.props.coloredInputBorder? "colored-input-border block block-input":"block block-input"}></input>
                 <label htmlFor="photoUrl" className="block">paste the url of the photo you want as your profile picture (you can add this later):</label>
             <input
-                placeholder={this.props.user?"":"ex: https://www.instagram.com/p/JeQ1KKXpkbw/"}
+                placeholder={this.props.user?"":"ex: https://instagram.fsnc1-1.fna.fbcdn.net/n680_n.jpg"}
                 value={this.state.availability}
                 onChange={() => this.setState({photoUrl: event.target.value})}
                 type="text"

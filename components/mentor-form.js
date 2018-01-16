@@ -97,13 +97,13 @@ export default class MentorForm extends React.Component {
             className={this.props.coloredInputBorder? "colored-input-border block block-input":"block block-input"}></input>
             <label htmlFor="photoUrl" className="block">paste the url of the photo you want as your profile picture here (you can add this later):</label>
             <input
-                placeholder={this.props.user?"":"ex: https://www.instagram.com/p/JeQ1KKXpkbw/"}
+                placeholder={this.props.user?"":"ex: https://instagram.fsnc1-1.fna.fbcdn.net/n680_n.jpg"}
                 value={this.state.photoUrl}
                 onChange={() => this.setState({photoUrl: event.target.value})}
                 type="text"
                 name="photoUrl"
                 className={this.props.coloredInputBorder? "colored-input-border block block-input":"block block-input"}></input>
-        {this.props.user ? null: <Button block="true" color="white" backgroundColor="turquoise" text="join mentor weekly" onClick={(e) => e.preventDefault()}/>}
+        {this.props.user ? "": <Button block="true" color="white" backgroundColor="turquoise" text="join mentor weekly" onClick={(e) => e.preventDefault()}/>}
         <style jsx>{`
           input{
             margin: 5px 10px 20px 10px;

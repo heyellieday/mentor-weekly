@@ -2,12 +2,13 @@ import Navbar from '../components/navbar';
 import Sidebar from '../components/sidebar';
 
 export default function Dashboard(props) {
+
   return (
     <div className="dashboard">
       <Navbar
           user={props.user}
           dashboard={props.dashboard}
-          loggedin={props.loggedin} 
+          loggedin={props.loggedin}
           />
       <Sidebar user={props.user} openUpdateModal={props.openUpdateModal}/>
       <h1 className="title">{props.title}</h1>
@@ -50,6 +51,8 @@ export default function Dashboard(props) {
           .children{
             left: 300px;
             position: fixed;
+            overflow: auto;
+            margin-bottom: 30px;
           }
         }
 
