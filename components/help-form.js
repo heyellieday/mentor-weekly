@@ -4,18 +4,16 @@ export default function Helpform(props) {
   return (
     <div className="helpform">
       <p className="message">Use this form to get in contact with someone at Mentor Weekly.  We are happy to help!</p>
-      <div className="name-labels-div">
-        <label htmlFor="firstName" className="name-label first-name">first</label>
+        <label htmlFor="firstName" className="name-label first-name">first name</label>
+        <input type="text" name="firstName" className="block block-input"></input>
         <label htmlFor="lastName" className="name-label">last name</label>
-      </div>
-        <input type="text" name="firstName" className="name-input"></input>
-        <input type="text" name="lastName" className="name-input"></input>
+        <input type="text" name="lastName" className="block block-input"></input>
         <label htmlFor="email" className="block">email address</label>
         <input type="text" name="email" className="block block-input"></input>
         <label htmlFor="subject" className="block">message subject</label>
         <input type="text" name="subject" className="block block-input"></input>
         <label htmlFor="issue" className="block">please describe your issue here:</label>
-        <input type="text" name="issue" className="block block-input issue"></input>
+        <textarea type="text" name="issue" className="block block-input issue"></textarea>
         <div className="extra"></div>
         <Button text="send message" color="turquoise" backgroundColor="#F4F4F4" />
   <style jsx>{`
@@ -31,10 +29,12 @@ export default function Helpform(props) {
             width: 300px;
             height: 100vh;
           }
-          input{
+          input, textarea{
             margin: 5px 0 20px 0;
             border: 1px solid turquoise;
             border-radius: 3px;
+            font: 16px "Helvetica Neue", "Segoe UI", Helvetica, sans-serif;
+            text-align: center;
           }
           .block, .message{
             display: block;
@@ -47,16 +47,11 @@ export default function Helpform(props) {
           .block-input{
             display: block;
             margin: 5px auto 20px auto;
-            height: 50px;
+
           }
           .issue{
             height: 200px;
-          }
-          .first-name:after{
-            content: " & ";
-          }
-          .name-input{
-            width: 300px;
+            text-align: left;
           }
 
           @media only screen and (min-width: 961px) {
@@ -66,7 +61,7 @@ export default function Helpform(props) {
             .block, .message{
               width: 550px;
             }
-            .block-input{
+            .block-input, .name-label{
               height: 20px;
               width: 550px;
             }
@@ -74,14 +69,7 @@ export default function Helpform(props) {
               height: 140px;
             }
             .name-label{
-              margin: 0 110px;
-            }
-            .name-input{
-              width: 262px;
-              margin: 5px 10px 20px 10px;
-            }
-            .first-name:after{
-              content: " name";
+              clear: both;
             }
             .extra{
               height: 20px;
