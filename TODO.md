@@ -7,7 +7,6 @@
 - responsive nav bar (search: component)
 - dashboard hidden overflow issue
 
-- move profile modal buttons to forms
 - change inputs to text area
 - change first & last name inputs/labels
 - credit photos in popup button on footer
@@ -42,6 +41,7 @@
 - add placeholders to signup Form
 - create an empty dashboard message
 - differentiate pick a mentee from my info page: darker bkgrnd?
+- move profile modal buttons to forms
 
 ###API:
 - remove passport code from user router
