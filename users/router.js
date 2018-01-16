@@ -19,8 +19,8 @@ router.get('/',(req, res) => {
 
 router.get('/:userId', (req, res) => {
   User
-    .findOneById(req.params.userId)
-    .then(users => {
+    .findById(req.params.userId)
+    .then(user => {
       res.json(user.apiRepr());
     })
     .catch(err => {
@@ -73,7 +73,6 @@ router.post('/', (req, res) => {
       background: req.body.background,
       availability: req.body.availability
     })
-    .then(() => res.sendStatus(200))
     .then(user => res.status(201).json(user.apiRepr()))
     .catch(err => {
         console.error(err);
