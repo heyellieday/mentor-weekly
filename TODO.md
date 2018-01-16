@@ -11,7 +11,6 @@
 - change inputs to text area
 - change first & last name inputs/labels
 - credit photos in popup button on footer
-- differentiate pick a mentee from my info page: darker bkgrnd?
 
 ###API:
 - test in postman
@@ -42,6 +41,7 @@
 - build pick a mentee page (add map func for mentee list)
 - add placeholders to signup Form
 - create an empty dashboard message
+- differentiate pick a mentee from my info page: darker bkgrnd?
 
 ###API:
 - remove passport code from user router

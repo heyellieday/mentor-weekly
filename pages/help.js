@@ -57,7 +57,7 @@ export default class extends React.Component {
     return (
       <div className="help-page">
         <Dashboard
-            user={this.state.users[0]}
+            user={this.state.users[1]}
             title="get some help"
             dashboard={true}
             loggedin="true"

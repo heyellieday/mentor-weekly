@@ -4,14 +4,14 @@ import Sidebar from '../components/sidebar';
 export default function Dashboard(props) {
 
   return (
-    <div className="dashboard">
+    <div className={props.pickMentee?"dashboard pick-mentee":"dashboard"}>
       <Navbar
           user={props.user}
           dashboard={props.dashboard}
           loggedin={props.loggedin}
           />
       <Sidebar user={props.user} openUpdateModal={props.openUpdateModal}/>
-      <h1 className="title">{props.title}</h1>
+      <h1 className={props.pickMentee?"title title-teal":"title"}>{props.title}</h1>
       <div className="children">{props.children}</div>
       <style jsx>{`
         .dashboard{
@@ -20,6 +20,9 @@ export default function Dashboard(props) {
           background-color: #F4F4F4;
           text-align: center;
         }
+        .pick-mentee{
+          background-color: #7C7C7C;
+        }
         .title{
           display: inline-block;
           margin: 60px auto;
@@ -27,6 +30,10 @@ export default function Dashboard(props) {
           font-size: 2.5em;
           clear: right;
           width: 300px;
+        }
+        .title-teal{
+          color: white;
+          font-width: normal;
         }
         .children{
           height: 100%;

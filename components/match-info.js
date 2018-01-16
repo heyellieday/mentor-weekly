@@ -19,7 +19,7 @@ export default function MatchInfo(props) {
     </div>);
   } else {
   return (
-    <div className="match-info-div">
+    <div className={props.pickMentee?"match-info-div no-shadow":"match-info-div"}>
         <div className="profile">
           <div className="profile-photo-name-div">
             <div className="profile-photo-container">
@@ -80,6 +80,9 @@ export default function MatchInfo(props) {
         @media only screen and (min-width: 600px) {
           .match-info-div{
             filter: drop-shadow(0 0 15px #9E9E9E);
+          }
+          .no-shadow{
+            filter: drop-shadow(0 0 0px #9E9E9E);
           }
         @media only screen and (min-width: 900px) {
           .match-info-div{

@@ -80,7 +80,13 @@ export default class extends React.Component {
 
     return (
       <div className="mentor-dashboard-div">
-        <Dashboard user={this.state.users[1]} title="pick a mentee" dashboard={true} loggedin="true" openUpdateModal={(e) => this.openModal(e)}>
+        <Dashboard
+            user={this.state.users[1]}
+            title="pick a mentee"
+            pickMentee={true}
+            dashboard={true}
+            loggedin={true} 
+            openUpdateModal={(e) => this.openModal(e)}>
         {mentees}
         </Dashboard>
         {this.state.updateModalIsOpen ? <UpdateProfileModal role="mentor" user={this.state.users[1]} closeModal={(e) => this.closeModal(e)} /> : null}
