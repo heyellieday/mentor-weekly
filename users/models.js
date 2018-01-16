@@ -4,9 +4,9 @@ const userSchema = mongoose.Schema({
   name: {
     firstName: {type: String, required: true},
     lastName: {type: String, required: true}
-  }
-  photoUrl: {type: String, default: ""},
-  creationDate: {type: String, default: new date()}
+  },
+  photoUrl: {type: String, default: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"},
+  creationDate: {type: String, default: new Date()},
   role: {type: String,  enum: ['mentor', 'mentee']},
   goals: {type: String, required: true},
   experience: {type: String, required: true},
@@ -14,6 +14,8 @@ const userSchema = mongoose.Schema({
   organization: {type: String, required: true},
   contact: {type: String, required: true},
   portfolioUrl: {type: String},
+  menteeIds: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
+  mentorIds: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
   //mentor fields only
   lookingFor: {type: String},
   //mentee fields only
@@ -27,13 +29,15 @@ userSchema.methods.apiRepr = function() {
     name: this.name,
     photoUrl: this.photoUrl,
     creationDate: this.creationDate,
-    role: this.name,
-    goals: this.name,
-    experience: this.name,
-    skills: this.name,
-    organization: this.name,
-    contact: this.name,
-    portfolioUrl: this.name,
+    role: this.role,
+    goals: this.goals,
+    experience: this.experience,
+    skills: this.skills,
+    organization: this.organization,
+    contact: this.contact,
+    portfolioUrl: this.portfolioUrl,
+    menteeIds: this.menteeIds,
+    mentorIds: this.mentorIds
   }
   if (this.role === "mentor") {
     userdata.lookingFor = this.lookingFor;

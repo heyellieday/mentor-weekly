@@ -25,22 +25,21 @@ export default class MentorForm extends React.Component {
   render () {
     return (
       <div className="mentor-div">
-        <div className="name-labels-div">
-        <label htmlFor="firstName" className="name-label first-name">first</label>
-        <label htmlFor="lastName" className="name-label">last name</label>
-        </div>
+        <label htmlFor="firstName" className="name-label first-name">first name</label>
         <input
             placeholder={this.props.user?"":"first name"}
             value={this.state.firstName}
             onChange={() => this.setState({firstName: event.target.value})}
             type="text" name="firstName"
-            className={this.props.coloredInputBorder? "colored-input-border name-input":"name-input"}>
+            className={this.props.coloredInputBorder? "colored-input-border narrow-input":"narrow-input"}>
         </input>
+        <label htmlFor="lastName" className="name-label">last name</label>
         <input
             placeholder={this.props.user?"":"last name"}
             value={this.state.lastName}
             onChange={() => this.setState({lastName: event.target.value})}
-            type="text" name="lastName" className={this.props.coloredInputBorder? "colored-input-border name-input":"name-input"}>
+            type="text" name="lastName"
+            className={this.props.coloredInputBorder? "colored-input-border narrow-input":"narrow-input"}>
         </input>
         <label htmlFor="email" className="block">which email address can we use to contact you about a mentorship?</label>
         <input
@@ -49,7 +48,7 @@ export default class MentorForm extends React.Component {
             onChange={() => this.setState({email: event.target.value})}
             type="email"
             name="email"
-            className={this.props.coloredInputBorder? "colored-input-border block block-input":"block block-input"}>
+            className={this.props.coloredInputBorder? "colored-input-border  narrow-input":"narrow-input"}>
         </input>
         <label htmlFor="goals" className="block">please describe your goals and what you&#39;d like to gain from a mentorship:</label>
         <input
@@ -60,7 +59,7 @@ export default class MentorForm extends React.Component {
             name="goals"
             className={this.props.coloredInputBorder? "colored-input-border block block-input":"block block-input"}>
         </input>
-        <label htmlFor="org" className="block">which organization do you currently work for?</label>
+        <label htmlFor="org" className="block">which organization do you currently work for? What is the main mission/product?</label>
         <input
             placeholder={this.props.user?"":"ex: freelance, yelp"}
             value={this.state.org}
@@ -137,10 +136,7 @@ export default class MentorForm extends React.Component {
             margin: 5px auto 20px auto;
             height: 50px;
           }
-          .first-name:after{
-            content: " & ";
-          }
-          .name-input{
+          .narrow-input{
             width: 300px;
           }
           .colored-input-border{
@@ -148,13 +144,13 @@ export default class MentorForm extends React.Component {
           }
 
           @media only screen and (min-width: 440px) {
-            .block, .name-input{
+            .block, .narrow-input{
               width: 330px;
             }
           }
 
           @media only screen and (min-width: 500px) {
-            .block, .name-input{
+            .block, .narrow-input{
               width: 400px;
             }
           }
@@ -169,8 +165,8 @@ export default class MentorForm extends React.Component {
             .name-label{
               margin: 0 110px;
             }
-            .name-input{
-              width: 262px;
+            .narrow-input{
+              width: 550px;
             }
             .first-name:after{
               content: " name";

@@ -27,22 +27,20 @@ export default class MenteeForm extends React.Component {
   render () {
       return (
         <div className="mentee-div">
-            <div className="name-labels-div">
-              <label htmlFor="firstName" className="name-label first-name">first</label>
-              <label htmlFor="lastName" className="name-label">last name</label>
-            </div>
+              <label htmlFor="firstName" className="name-label first-name">first name</label>
             <input
                 placeholder={this.props.user?"":"first name"}
                 value={this.state.firstName}
                 onChange={() => this.setState({firstName: event.target.value})}
                 type="text" name="firstName"
-                className={this.props.coloredInputBorder? "colored-input-border name-input":"name-input"}>
+                className={this.props.coloredInputBorder? "colored-input-border narrow-input":"narrow-input"}>
             </input>
+            <label htmlFor="lastName" className="name-label">last name</label>
             <input
                 placeholder={this.props.user?"":"last name"}
                 value={this.state.lastName}
                 onChange={() => this.setState({lastName: event.target.value})}
-                type="text" name="lastName" className={this.props.coloredInputBorder? "colored-input-border name-input":"name-input"}>
+                type="text" name="lastName" className={this.props.coloredInputBorder? "colored-input-border narrow-input":"narrow-input"}>
             </input>
             <label htmlFor="email" className="block">which email address can we use to contact you about a mentorship?</label>
             <input
@@ -51,7 +49,16 @@ export default class MenteeForm extends React.Component {
                 onChange={() => this.setState({email: event.target.value})}
                 type="email"
                 name="email"
-                className={this.props.coloredInputBorder? "colored-input-border block block-input":"block block-input"}>
+                className={this.props.coloredInputBorder? "colored-input-border narrow-input":"narrow-input"}>
+            </input>
+            <label htmlFor="portfolio" className="block">please enter the url for your portfolio or website:</label>
+            <input
+                placeholder={this.props.user?"":"ex: github.com/myrepo"}
+                value={this.state.portfolio}
+                onChange={() => this.setState({portfolio: event.target.value})}
+                type="text"
+                name="portfolio"
+                className={this.props.coloredInputBorder? "colored-input-border narrow-input":"narrow-input"}>
             </input>
             <label htmlFor="goals" className="block">please describe your goals and what you&#39;d like to gain from a mentorship:</label>
             <input
@@ -60,16 +67,6 @@ export default class MenteeForm extends React.Component {
                 onChange={() => this.setState({goals: event.target.value})}
                 type="text"
                 name="goals"
-                className={this.props.coloredInputBorder? "colored-input-border block block-input":"block block-input"}>
-            </input>
-
-            <label htmlFor="portfolio" className="block">please enter the url for your portfolio or website:</label>
-            <input
-                placeholder={this.props.user?"":"ex: github.com/myrepo"}
-                value={this.state.portfolio}
-                onChange={() => this.setState({portfolio: event.target.value})}
-                type="text"
-                name="portfolio"
                 className={this.props.coloredInputBorder? "colored-input-border block block-input":"block block-input"}>
             </input>
             <label htmlFor="background" className="block">please briefly describe your background/training:</label>
@@ -158,10 +155,7 @@ export default class MenteeForm extends React.Component {
                 margin: 5px auto 20px auto;
                 height: 50px;
               }
-              .first-name:after{
-                content: " & ";
-              }
-              .name-input{
+              .narrow-input{
                 width: 300px;
               }
               .colored-input-border{
@@ -169,19 +163,19 @@ export default class MenteeForm extends React.Component {
               }
 
               @media only screen and (min-width: 440px) {
-                .block, .name-input{
+                .block, .narrow-input{
                   width: 330px;
                 }
               }
 
               @media only screen and (min-width: 500px) {
-                .block, .name-input{
+                .block, .narrow-input{
                   width: 400px;
                 }
               }
 
               @media only screen and (min-width: 661px) {
-                .block{
+                .block, .narrow-input{
                   width: 550px;
                 }
                 .block-input{
@@ -189,9 +183,6 @@ export default class MenteeForm extends React.Component {
                 }
                 .name-label{
                   margin: 0 110px;
-                }
-                .name-input{
-                  width: 262px;
                 }
                 .first-name:after{
                   content: " name";

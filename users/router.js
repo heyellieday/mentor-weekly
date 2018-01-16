@@ -1,20 +1,27 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const passport = require('passport');
 
 const {User} = require('./models');
 
 const router = express.Router();
-
 const jsonParser = bodyParser.json();
 
 
-router.get('/',
-passport.authenticate('jwt', {session: false}), (req, res) => {
-  Timer
-    .find({user: req.user.id})
-    .then(timers => {
-      res.json(timers.map(timer => timer.apiRepr()));
+router.get('/',(req, res) => {
+  User
+    .find()
+    .then(users => res.json(users.map(user => user.apiRepr())))
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({error: 'something went horribly awry'});
+    });
+});
+
+router.get('/:userId', (req, res) => {
+  User
+    .findOneById(req.params.userId)
+    .then(users => {
+      res.json(user.apiRepr());
     })
     .catch(err => {
       console.error(err);
@@ -22,21 +29,21 @@ passport.authenticate('jwt', {session: false}), (req, res) => {
     });
 });
 
-router.get('/:id',
-passport.authenticate('jwt', {session: false}), (req, res) => {
-  Timer
-    .findById(req.params.id)
-    .then(timer => res.json(timer.apiRepr()))
-    .catch(err => {
-      console.error(err);
-      res.status(500).json({error: 'something went horribly awry'});
-    });
-});
+// router.get('/:userId', (req, res) => {
+//   Users
+//     .findById(req.params.userId)
+//     .then(users => {
+//       res.json(users.map(user => user.apiRepr()));
+//     })
+//     .catch(err => {
+//       console.error(err);
+//       res.status(500).json({error: 'something went wrong with the server!'});
+//     });
+// });
 
 ////The required fields will be everything but "logs" & "totalTimeInSeconds"
-router.post('/',
-passport.authenticate('jwt', {session: false}), (req, res) => {
-  const requiredFields = ['label'];
+router.post('/', (req, res) => {
+  const requiredFields = ['name', 'role', 'goals', 'experience', 'skills', 'organization', 'contact'];
   for (let i=0; i<requiredFields.length; i++) {
     const field = requiredFields[i];
     if (!(field in req.body)) {
@@ -46,15 +53,28 @@ passport.authenticate('jwt', {session: false}), (req, res) => {
     }
   }
 
-  Timer
+  User
     .create({
-      label: req.body.label,
-      category: req.body.category,
-      creationDate: req.body.creationDate,
-      projectNotes: req.body.projectNotes,
-      user: req.user.id
+      name: {
+        firstName: req.body.name.firstName,
+        lastName: req.body.name.lastName
+      },
+      photoUrl: req.body.photoUrl,
+      role: req.body.role,
+      goals: req.body.goals,
+      experience: req.body.experience,
+      skills: req.body.skills,
+      organization: req.body.organization,
+      contact: req.body.contact,
+      portfolioUrl: req.body.portfolioUrl,
+      //mentor fields only
+      lookingFor: req.body.lookingFor,
+      //mentee fields only
+      background: req.body.background,
+      availability: req.body.availability
     })
-    .then(timer => res.status(201).json(timer.apiRepr()))
+    .then(() => res.sendStatus(200))
+    .then(user => res.status(201).json(user.apiRepr()))
     .catch(err => {
         console.error(err);
         res.status(500).json({error: 'Something went wrong'});
@@ -62,10 +82,9 @@ passport.authenticate('jwt', {session: false}), (req, res) => {
 
 });
 
-router.delete('/:id',
-passport.authenticate('jwt', {session: false}), (req, res) => {
-  Timer
-    .findByIdAndRemove(req.params.id)
+router.delete('/:userId', (req, res) => {
+  User
+    .findByIdAndRemove(req.params.userId)
     .then(() => {
       res.status(204).json({message: 'success'});
     })
@@ -75,62 +94,102 @@ passport.authenticate('jwt', {session: false}), (req, res) => {
     });
 });
 
-router.put('/:id',
-passport.authenticate('jwt', {session: false}), (req, res) => {
-  if (!(req.params.id && req.body.id && req.params.id === req.body.id)) {
+router.delete('/:mentorId/:menteeId', (req, res) => {
+//remove self from mentee matchId list,
+//then remove mentee from own matchId list,
+//then respond with a success message
+  User
+    .findOneById(req.params.mentorId)
+    .then(mentor => {
+      for (let i=0; i<mentor.menteeIds.length; i++) {
+        if (mentor.menteeIds[i] === req.params.menteeId) {
+          mentor.menteeIds.splice(i, 1);
+        }
+      }
+      return mentor.save();
+    })
+    .findOneById(req.params.menteeId)
+    .then(mentee => {
+      for (let i=0; i<mentee.mentorIds.length; i++) {
+        if (mentee.mentorIds[i] === req.params.mentorId) {
+          mentee.mentorIds.splice(i, 1);
+        }
+      }
+      return mentee.save();
+    })
+    .then(() => {
+      res.status(204).json({message: 'success'});
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({error: 'something went terribly wrong'});
+    });
+});
+
+router.put('/:userId',(req, res) => {
+  if (!(req.params.userId && req.body.userId && req.params.userId === req.body.userId)) {
     res.status(400).json({
       error: 'Request path id and request body id values must match'
     });
   }
 
   const updated = {};
-  const updateableFields = ['label', 'category', 'creationDate', 'projectNotes'];
+  const updateableFields = ['name', 'photoUrl', 'creationDate', 'role', 'goals', 'experience', 'skills', 'organization', 'contact', 'portfolioUrl', 'lookingFor', 'background', 'availability'];
   updateableFields.forEach(field => {
     if (field in req.body) {
       updated[field] = req.body[field];
     }
   });
 
-  Timer
-    .findByIdAndUpdate(req.params.id, {$set: updated}, {new: true})
-    .then(updatedTimer => res.json(updatedTimer))
+  User
+    .findByIdAndUpdate(req.params.userId, {$set: updated}, {new: true})
+    .then(updatedUser => res.json(updatedUser))
     .catch(err => res.status(500).json({message: 'Something went wrong'}));
 });
 
-router.put('/:timerId/log',
-passport.authenticate('jwt', {session: false}), (req, res) => {
+router.put('/:userId/:matchId', (req, res) => {
+  //if body and param ids all match,
+  //and body contains matchId,
+  //add new mentee match id to own match list,
+  //then add own id to your mentee's match list
 
-  if (!(req.params.timerId && req.body.timerId && req.params.timerId === req.body.timerId)) {
+  if (!(req.params.userId && req.body.userId && req.params.matchId === req.body.matchId)) {
     return res.status(400).json({
       error: 'Request path id and request body id values must match'
     });
   }
 
-
-  const requiredFields = ['seconds', 'endDate'];
+  const requiredFields = ['matchId'];
 
   for (let i=0; i<requiredFields.length; i++) {
     const field = requiredFields[i];
     if (!(field in req.body)) {
-      const message = `Missing \`${field}\` in request body`
+      const message = `Missing 'matchId' in request body`
       console.error(message);
       return res.status(400).send(message);
     }
   }
 
-   let newLogEntry = {
-     seconds: req.body.seconds,
-     endDate: req.body.endDate
+   let newmatchId = {
+     matchId: req.params.matchId
    };
-
-  Timer
-    .findById(req.params.timerId)
-    .then(timer => {
-      timer.logs.push(newLogEntry);
-      return timer.save()
+   let userId = {
+     matchId: req.params.userId
+   };
+  User
+    .findById(req.params.userId)
+    .then(user => {
+      user.matchId.push(newmatchId);
+      return user.save()
     })
-    .then(updatedTimer => res.status(204).end())
-    .catch(err => res.status(500).json({message: 'Something went wrong'}));
+    .findById(req.params.matchId)
+    .then(user => {
+      user.matchId.push(userId);
+      return user.save()
+    })
+    .then(updatedUser => res.status(204).end())
+    .catch(err => res.status(500).json({message: 'Something went wrong'})
+    );
 });
 
 module.exports = {router};

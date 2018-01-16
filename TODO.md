@@ -8,7 +8,6 @@
 - dashboard hidden overflow issue
 
 - change inputs to text area
-- change first & last name inputs/labels
 - credit photos in popup button on footer
 
 ###API:
@@ -42,6 +41,7 @@
 - create an empty dashboard message
 - differentiate pick a mentee from my info page: darker bkgrnd?
 - move profile modal buttons to forms
+- change first & last name inputs/labels
 
 ###API:
 - remove passport code from user router
