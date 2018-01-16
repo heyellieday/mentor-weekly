@@ -51,70 +51,87 @@ export default class MentorForm extends React.Component {
             className={this.props.coloredInputBorder? "colored-input-border  narrow-input":"narrow-input"}>
         </input>
         <label htmlFor="goals" className="block">please describe your goals and what you&#39;d like to gain from a mentorship:</label>
-        <input
+        <textarea
             placeholder={this.props.user?"":"ex: meet aspiring front-end engineers"}
             value={this.state.goals}
             onChange={() => this.setState({goals: event.target.value})}
             type="text"
             name="goals"
             className={this.props.coloredInputBorder? "colored-input-border block block-input":"block block-input"}>
-        </input>
+        </textarea>
         <label htmlFor="org" className="block">which organization do you currently work for? What is the main mission/product?</label>
-        <input
+        <textarea
             placeholder={this.props.user?"":"ex: freelance, yelp"}
             value={this.state.org}
             onChange={() => this.setState({org: event.target.value})}
             type="text"
             name="org"
             className={this.props.coloredInputBorder? "colored-input-border block block-input":"block block-input"}>
-        </input>
+        </textarea>
         <label htmlFor="experience" className="block">how many years of experience do you have?</label>
-        <input
+        <textarea
             placeholder={this.props.user?"":"ex: 8 years as a QA engineer"}
             value={this.state.experience}
             onChange={() => this.setState({experience: event.target.value})}
             type="text"
             name="experience"
             className={this.props.coloredInputBorder? "colored-input-border block block-input":"block block-input"}>
-        </input>
+        </textarea>
         <label htmlFor="expertise" className="block">what areas of expertise could you share with a mentee?</label>
-        <input
+        <textarea
             placeholder={this.props.user?"":"ex: career advice, JavaScript, NodeJS, GIT, SQL, NoSQL, React"}
             value={this.state.skills}
             onChange={() => this.setState({skills: event.target.value})}
             type="text"
             name="expertise"
             className={this.props.coloredInputBorder? "colored-input-border block block-input":"block block-input"}>
-        </input>
+        </textarea>
         <label htmlFor="looking-for" className="block">what are you looking for in a mentee?</label>
-        <input
+        <textarea
             placeholder={this.props.user?"":"ex: interest in QA testing"}
             value={this.state.lookingFor}
             onChange={() => this.setState({lookingFor: event.target.value})}
             type="text"
             name="looking-for"
-            className={this.props.coloredInputBorder? "colored-input-border block block-input":"block block-input"}></input>
+            className={this.props.coloredInputBorder? "colored-input-border block block-input":"block block-input"}>
+        </textarea>
             <label htmlFor="photoUrl" className="block">paste the url of the photo you want as your profile picture here (you can add this later):</label>
-            <input
+        <textarea
                 placeholder={this.props.user?"":"ex: https://instagram.fsnc1-1.fna.fbcdn.net/n680_n.jpg"}
                 value={this.state.photoUrl}
                 onChange={() => this.setState({photoUrl: event.target.value})}
                 type="text"
                 name="photoUrl"
-                className={this.props.coloredInputBorder? "colored-input-border block block-input":"block block-input"}></input>
+                className={this.props.coloredInputBorder? "colored-input-border block block-input":"block block-input"}>
+        </textarea>
         {this.props.user ? <Button color="turquoise" text="save changes" /> : <Button block="true" color="white" backgroundColor="turquoise" text="join mentor weekly" onClick={(e) => e.preventDefault()}/>}
         {this.props.user ? <Button color="#1e1e1e" text="cancel" onClick={this.props.closeModal} block="true"/> : ""}
         <style jsx>{`
+          label{
+              display: block;
+              clear: both;
+          }
           input{
-            margin: 5px 10px 20px 10px;
+              margin: 5px auto 20px auto;
+              border: 1px solid white;
+              border-radius: 3px;
+              text-align: center;
+              font-weight: 200;
+              font-size: 16px;
+              color: coral;
+          }
+          textarea{
+            margin: 5px auto 20px auto;
             border: 1px solid white;
             border-radius: 3px;
             text-align: center;
             font-weight: 200;
             font-size: 16px;
             color: coral;
+            padding: 1px;
+            height: 16px;
           }
-          input::placeholder{
+          input::placeholder, textarea::placeholder{
             font-style: italic;
             color: gray;
           }
@@ -124,17 +141,8 @@ export default class MentorForm extends React.Component {
             width: 300px;
           }
           .block-input{
-            margin: 5px auto 20px auto;
             height: 50px;
-          }
-          .block{
-            display: block;
-            margin: 5px auto;
-            width: 300px;
-          }
-          .block-input{
             margin: 5px auto 20px auto;
-            height: 50px;
           }
           .narrow-input{
             width: 300px;
@@ -156,20 +164,11 @@ export default class MentorForm extends React.Component {
           }
 
           @media only screen and (min-width: 661px) {
-            .block{
+            .block, .narrow-input{
               width: 550px;
             }
             .block-input{
-              height: 20px;
-            }
-            .name-label{
-              margin: 0 110px;
-            }
-            .narrow-input{
-              width: 550px;
-            }
-            .first-name:after{
-              content: " name";
+              height: 18px;
             }
           }
           `}</style>

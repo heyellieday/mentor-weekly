@@ -61,71 +61,77 @@ export default class MenteeForm extends React.Component {
                 className={this.props.coloredInputBorder? "colored-input-border narrow-input":"narrow-input"}>
             </input>
             <label htmlFor="goals" className="block">please describe your goals and what you&#39;d like to gain from a mentorship:</label>
-            <input
+            <textarea
                 placeholder={this.props.user?"":"ex: I'd like career advice about a career in data-science"}
                 value={this.state.goals}
                 onChange={() => this.setState({goals: event.target.value})}
                 type="text"
                 name="goals"
                 className={this.props.coloredInputBorder? "colored-input-border block block-input":"block block-input"}>
-            </input>
+            </textarea>
             <label htmlFor="background" className="block">please briefly describe your background/training:</label>
-            <input
+            <textarea
                 placeholder={this.props.user?"":"ex: I have a Bachelors in Business, and I've taken 1 web design course"}
                 value={this.state.background}
                 onChange={() => this.setState({background: event.target.value})}
                 type="text"
                 name="background"
                 className={this.props.coloredInputBorder? "colored-input-border block block-input":"block block-input"}>
-            </input>
+            </textarea>
             <label htmlFor="experience" className="block">what is your focus and experience level?</label>
-            <input
+            <textarea
                 placeholder={this.props.user?"":"ex: front-end design, 2 months of html & css"}
                 value={this.state.experience}
                 onChange={() => this.setState({experience: event.target.value})}
                 type="text"
                 name="experience"
                 className={this.props.coloredInputBorder? "colored-input-border block block-input":"block block-input"}>
-            </input>
+            </textarea>
             <label htmlFor="skills" className="block">which coding languages and tools are you familiar with?</label>
-            <input
+            <textarea
                 placeholder={this.props.user?"":"ex: PHP and GitHub"}
                 value={this.state.skills}
                 onChange={() => this.setState({skills: event.target.value})}
                 type="text"
                 name="skills"
                 className={this.props.coloredInputBorder? "colored-input-border block block-input":"block block-input"}>
-            </input>
+            </textarea>
             <label htmlFor="org" className="block">what sort of organizations and positions would you like to learn more about?</label>
-            <input
+            <textarea
                 placeholder={this.props.user?"":"ex: freelancing, small companies"}
                 value={this.state.org}
                 onChange={() => this.setState({org: event.target.value})}
                 type="text"
                 name="org"
                 className={this.props.coloredInputBorder? "colored-input-border block block-input":"block block-input"}>
-            </input>
+            </textarea>
             <label htmlFor="availability" className="block">what times are you available to meet with a mentor for 30 minutes?</label>
-            <input
+            <textarea
                 placeholder={this.props.user?"":"ex: Mon and Wed 5-6pm PST"}
                 value={this.state.availability}
                 onChange={() => this.setState({availability: event.target.value})}
                 type="text"
                 name="availability"
-                className={this.props.coloredInputBorder? "colored-input-border block block-input":"block block-input"}></input>
+                className={this.props.coloredInputBorder? "colored-input-border block block-input":"block block-input"}>
+            </textarea>
                 <label htmlFor="photoUrl" className="block">paste the url of the photo you want as your profile picture (you can add this later):</label>
-            <input
+            <textarea
                 placeholder={this.props.user?"":"ex: https://instagram.fsnc1-1.fna.fbcdn.net/n680_n.jpg"}
                 value={this.state.availability}
                 onChange={() => this.setState({photoUrl: event.target.value})}
                 type="text"
                 name="photoUrl"
-                className={this.props.coloredInputBorder? "colored-input-border block block-input":"block block-input"}></input>
+                className={this.props.coloredInputBorder? "colored-input-border block block-input":"block block-input"}>
+            </textarea>
                 {this.props.user ? <Button color="turquoise" text="save changes" /> : <Button block="true" color="white" backgroundColor="turquoise" text="join mentor weekly" onClick={(e) => e.preventDefault()}/>}
                 {this.props.user ? <Button color="#1e1e1e" text="cancel" onClick={this.props.closeModal} block="true"/> : ""}
               <style jsx>{`
+              label{
+                  display: block;
+                  clear: both;
+                }
               input{
-                margin: 5px 10px 20px 10px;
+                margin: 5px auto 20px auto;
                 border: 1px solid white;
                 border-radius: 3px;
                 text-align: center;
@@ -133,7 +139,18 @@ export default class MenteeForm extends React.Component {
                 color: coral;
                 font-size: 16px;
               }
-              input::placeholder{
+              textarea{
+                margin: 5px auto 20px auto;
+                border: 1px solid white;
+                border-radius: 3px;
+                text-align: center;
+                font-weight: 200;
+                font-size: 16px;
+                color: coral;
+                padding: 1px;
+                height: 16px;
+              }
+              input::placeholder, textarea::placeholder{
                 font-style: italic;
                 color: gray;
               }
@@ -143,23 +160,14 @@ export default class MenteeForm extends React.Component {
                 width: 300px;
               }
               .block-input{
-                margin: 5px auto 20px auto;
                 height: 50px;
-              }
-              .block{
-                display: block;
-                margin: 5px auto;
-                width: 300px;
-              }
-              .block-input{
                 margin: 5px auto 20px auto;
-                height: 50px;
-              }
-              .narrow-input{
-                width: 300px;
               }
               .colored-input-border{
                 border: 1px solid turquoise;
+              }
+              .narrow-input{
+                width: 300px;
               }
 
               @media only screen and (min-width: 440px) {
@@ -168,24 +176,12 @@ export default class MenteeForm extends React.Component {
                 }
               }
 
-              @media only screen and (min-width: 500px) {
-                .block, .narrow-input{
-                  width: 400px;
-                }
-              }
-
               @media only screen and (min-width: 661px) {
                 .block, .narrow-input{
                   width: 550px;
                 }
                 .block-input{
-                  height: 20px;
-                }
-                .name-label{
-                  margin: 0 110px;
-                }
-                .first-name:after{
-                  content: " name";
+                  height: 18px;
                 }
               }
             `}</style>

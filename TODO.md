@@ -7,7 +7,7 @@
 - responsive nav bar (search: component)
 - dashboard hidden overflow issue
 
-- change inputs to text area
+- change wide inputs to text area
 - credit photos in popup button on footer
 
 ###API:
