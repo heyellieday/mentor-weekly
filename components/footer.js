@@ -8,9 +8,19 @@ export default function Footer(props) {
           <img className="mw-logo" src='../static/mw-logo.svg' width="100%" alt="wocintech stock photo" />
         </div>
         <div className="buttons">
-          <Button backgroundColor="#1e1e1e" size="small" color="Turquoise" text="	&#169;2018 Mentor Weekly" border="none" />
+          <Button
+              backgroundColor="#1e1e1e"
+              size="small"
+              color="Turquoise" text="	&#169;2018 Mentor Weekly"
+              border="none" />
           <p className="bullet">·</p>
-          <Button backgroundColor="#1e1e1e" size="small" color="Turquoise" text="Photo Credits" border="none" />
+          <Button
+              onClick={props.photoCredit}
+              backgroundColor="#1e1e1e"
+              size="small"
+              color="Turquoise"
+              text="Photo Credits"
+              border="none" />
         </div>
       </div>
       <style jsx>{`

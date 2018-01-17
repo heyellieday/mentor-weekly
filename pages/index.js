@@ -7,6 +7,7 @@ import Largequote from '../components/largequote';
 import Bubblequote from '../components/bubblequote';
 import Signup from '../components/signup';
 import Login from '../components/login';
+import PhotoCredit from '../components/photo-credit';
 import Footer from '../components/footer';
 
 //import landingImage from '../images/landing-image.jpg';
@@ -14,7 +15,8 @@ export default class extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      popUpIsOpen: false
+      popUpIsOpen: false,
+      photoCreditIsOpen: false
     };
   }
   // getInitialState: function() {
@@ -23,6 +25,10 @@ export default class extends React.Component {
   //
     togglePopUp() {
         this.setState({ popUpIsOpen: !this.state.popUpIsOpen });
+    }
+
+    togglePhotoCredit() {
+        this.setState({ photoCreditIsOpen: !this.state.photoCreditIsOpen });
     }
   // static getInitialProps ({ query }) {
   //   return {
@@ -66,9 +72,10 @@ export default class extends React.Component {
                         textOrange=" 30 minutes a week "
                         textB="advising a professional just starting in tech, employers, mentors, and mentees win." />
             <Signup />
+            {this.state.photoCreditIsOpen ? <PhotoCredit close={() => this.togglePhotoCredit()}/> : "" }
           </div>
         </div>
-        <Footer />
+        <Footer photoCredit={() => this.togglePhotoCredit()}/>
         <style jsx>{`
             .landing-page{
               font-family: "Helvetica Neue", "Segoe UI", Helvetica, sans-serif;

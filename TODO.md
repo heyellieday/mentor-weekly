@@ -7,9 +7,6 @@
 - responsive nav bar (search: component)
 - dashboard hidden overflow issue
 
-- change wide inputs to text area
-- credit photos in popup button on footer
-
 ###API:
 - commit and make API branch before moving on!
 - code ajax calls
@@ -43,6 +40,8 @@
 - differentiate pick a mentee from my info page: darker bkgrnd?
 - move profile modal buttons to forms
 - change first & last name inputs/labels
+- change wide inputs to textareas
+- credit photos in popup button on footer
 
 ###API:
 - remove passport code from user router
