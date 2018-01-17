@@ -43,7 +43,10 @@ export default function Button(props) {
   return (
     <span className='button-span'>
       <div className='button-div'>
-            <button className="button" onClick={props.onClick ? props.onClick : null}>{props.text}</button>
+            <button
+                className="button"
+                type={props.type?props.type:"button"}
+                onClick={props.onClick ? props.onClick : null}>{props.text}</button>
       </div>
       <style jsx>{`
         .button{

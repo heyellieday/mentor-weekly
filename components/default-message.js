@@ -27,5 +27,3 @@ export default function DefaultMessage(props) {
       </div>
     )
   }
-  
-  //  <Header text={name} />

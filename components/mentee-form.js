@@ -27,12 +27,13 @@ export default class MenteeForm extends React.Component {
   render () {
       return (
         <div className="mentee-div">
-              <label htmlFor="firstName" className="name-label first-name">first name</label>
+          <form>
+            <label htmlFor="firstName" className="name-label first-name">first name</label>
             <input
                 placeholder={this.props.user?"":"first name"}
                 value={this.state.firstName}
                 onChange={() => this.setState({firstName: event.target.value})}
-                type="text" name="firstName"
+                type="text" id="firstName"
                 className={this.props.coloredInputBorder? "colored-input-border narrow-input":"narrow-input"}>
             </input>
             <label htmlFor="lastName" className="name-label">last name</label>
@@ -40,7 +41,7 @@ export default class MenteeForm extends React.Component {
                 placeholder={this.props.user?"":"last name"}
                 value={this.state.lastName}
                 onChange={() => this.setState({lastName: event.target.value})}
-                type="text" name="lastName" className={this.props.coloredInputBorder? "colored-input-border narrow-input":"narrow-input"}>
+                type="text" id="lastName" className={this.props.coloredInputBorder? "colored-input-border narrow-input":"narrow-input"}>
             </input>
             <label htmlFor="email" className="block">which email address can we use to contact you about a mentorship?</label>
             <input
@@ -48,7 +49,7 @@ export default class MenteeForm extends React.Component {
                 value={this.state.email}
                 onChange={() => this.setState({email: event.target.value})}
                 type="email"
-                name="email"
+                id="email"
                 className={this.props.coloredInputBorder? "colored-input-border narrow-input":"narrow-input"}>
             </input>
             <label htmlFor="portfolio" className="block">please enter the url for your portfolio or website:</label>
@@ -57,7 +58,7 @@ export default class MenteeForm extends React.Component {
                 value={this.state.portfolio}
                 onChange={() => this.setState({portfolio: event.target.value})}
                 type="text"
-                name="portfolio"
+                id="portfolio"
                 className={this.props.coloredInputBorder? "colored-input-border narrow-input":"narrow-input"}>
             </input>
             <label htmlFor="goals" className="block">please describe your goals and what you&#39;d like to gain from a mentorship:</label>
@@ -66,7 +67,7 @@ export default class MenteeForm extends React.Component {
                 value={this.state.goals}
                 onChange={() => this.setState({goals: event.target.value})}
                 type="text"
-                name="goals"
+                id="goals"
                 className={this.props.coloredInputBorder? "colored-input-border block block-input":"block block-input"}>
             </textarea>
             <label htmlFor="background" className="block">please briefly describe your background/training:</label>
@@ -75,7 +76,7 @@ export default class MenteeForm extends React.Component {
                 value={this.state.background}
                 onChange={() => this.setState({background: event.target.value})}
                 type="text"
-                name="background"
+                id="background"
                 className={this.props.coloredInputBorder? "colored-input-border block block-input":"block block-input"}>
             </textarea>
             <label htmlFor="experience" className="block">what is your focus and experience level?</label>
@@ -84,7 +85,7 @@ export default class MenteeForm extends React.Component {
                 value={this.state.experience}
                 onChange={() => this.setState({experience: event.target.value})}
                 type="text"
-                name="experience"
+                id="experience"
                 className={this.props.coloredInputBorder? "colored-input-border block block-input":"block block-input"}>
             </textarea>
             <label htmlFor="skills" className="block">which coding languages and tools are you familiar with?</label>
@@ -93,7 +94,7 @@ export default class MenteeForm extends React.Component {
                 value={this.state.skills}
                 onChange={() => this.setState({skills: event.target.value})}
                 type="text"
-                name="skills"
+                id="skills"
                 className={this.props.coloredInputBorder? "colored-input-border block block-input":"block block-input"}>
             </textarea>
             <label htmlFor="org" className="block">what sort of organizations and positions would you like to learn more about?</label>
@@ -102,7 +103,7 @@ export default class MenteeForm extends React.Component {
                 value={this.state.org}
                 onChange={() => this.setState({org: event.target.value})}
                 type="text"
-                name="org"
+                id="org"
                 className={this.props.coloredInputBorder? "colored-input-border block block-input":"block block-input"}>
             </textarea>
             <label htmlFor="availability" className="block">what times are you available to meet with a mentor for 30 minutes?</label>
@@ -111,7 +112,7 @@ export default class MenteeForm extends React.Component {
                 value={this.state.availability}
                 onChange={() => this.setState({availability: event.target.value})}
                 type="text"
-                name="availability"
+                id="availability"
                 className={this.props.coloredInputBorder? "colored-input-border block block-input":"block block-input"}>
             </textarea>
                 <label htmlFor="photoUrl" className="block">paste the url of the photo you want as your profile picture (you can add this later):</label>
@@ -120,12 +121,13 @@ export default class MenteeForm extends React.Component {
                 value={this.state.availability}
                 onChange={() => this.setState({photoUrl: event.target.value})}
                 type="text"
-                name="photoUrl"
+                id="photoUrl"
                 className={this.props.coloredInputBorder? "colored-input-border block block-input":"block block-input"}>
             </textarea>
-                {this.props.user ? <Button color="turquoise" text="save changes" /> : <Button block="true" color="white" backgroundColor="turquoise" text="join mentor weekly" onClick={(e) => e.preventDefault()}/>}
+                {this.props.user ? <Button color="turquoise" text="save changes" /> : <Button type="submit" block="true" color="white" backgroundColor="turquoise" text="join mentor weekly" onClick={(e) => e.preventDefault()}/>}
                 {this.props.user ? <Button color="#1e1e1e" text="cancel" onClick={this.props.closeModal} block="true"/> : ""}
-              <style jsx>{`
+          </form>
+          <style jsx>{`
               label{
                   display: block;
                   clear: both;

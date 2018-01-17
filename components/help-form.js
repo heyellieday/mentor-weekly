@@ -3,20 +3,22 @@ import Button from '../components/button';
 export default function Helpform(props) {
   return (
     <div className="helpform">
-      <p className="message">Use this form to get in contact with someone at Mentor Weekly.  We are happy to help!</p>
+      <form>
+        <p className="message">Use this form to get in contact with someone at Mentor Weekly.  We are happy to help!</p>
         <label htmlFor="firstName" className="name-label first-name">first name</label>
-        <input type="text" name="firstName" className="block block-input"></input>
+        <input type="text" id="firstName" className="block block-input"></input>
         <label htmlFor="lastName" className="name-label">last name</label>
-        <input type="text" name="lastName" className="block block-input"></input>
+        <input type="text" id="lastName" className="block block-input"></input>
         <label htmlFor="email" className="block">email address</label>
-        <input type="text" name="email" className="block block-input"></input>
+        <input type="text" id="email" className="block block-input"></input>
         <label htmlFor="subject" className="block">message subject</label>
-        <input type="text" name="subject" className="block block-input"></input>
+        <input type="text" id="subject" className="block block-input"></input>
         <label htmlFor="issue" className="block">please describe your issue here:</label>
-        <textarea type="text" name="issue" className="block block-input issue"></textarea>
+        <textarea type="text" id="issue" className="block block-input issue"></textarea>
         <div className="extra"></div>
         <Button text="send message" color="turquoise" backgroundColor="#F4F4F4" />
-  <style jsx>{`
+      </form>
+      <style jsx>{`
           .helpform{
             display: inline-block;
             position: relative;
