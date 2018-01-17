@@ -4,7 +4,6 @@
 ## Incomplete Tasks:
 
 ###Front-end:
-- responsive nav bar (search: component)
 - dashboard hidden overflow issue
 
 ###API:
@@ -42,6 +41,7 @@
 - change first & last name inputs/labels
 - change wide inputs to textareas
 - credit photos in popup button on footer
+- responsive nav bar
 
 ###API:
 - remove passport code from user router

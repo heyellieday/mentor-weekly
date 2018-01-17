@@ -65,7 +65,7 @@ export default class extends React.Component {
             user={this.state.users[0]}
             title="my mentor info"
             dashboard={true}
-            loggedin="true"
+            loggedin={true}
             openUpdateModal={(e) => this.openModal(e)}
             >
         {this.state.users?<MatchInfo user={this.state.users[1]} />:<DefaultMessage />}

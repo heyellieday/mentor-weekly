@@ -3,11 +3,11 @@ import ButtonLink from '../components/button-link';
 
 export default function Navbar(props) {
   return (
-    <div className='nav'>
+    <div className={props.loggedin?"nav":"nav landing-nav"}>
         <div className="logo">
-          <img className="mw-logo" src='../static/mentor-weekly-logo.svg' width="100%" alt="wocintech stock photo" />
+          <img className="mw-logo" src="../static/mentor-weekly-logo.svg" width="100%" alt="wocintech stock photo" />
         </div>
-        <div className="right">
+        <div className={props.loggedin?"right":"right landing-right"}>
           { props.loggedin ? <ButtonLink linkTo={(props.user.role === "mentor") ? "/mentor-dashboard" : "/mentee-dashboard"} size="small" color="#303030" backgroundColor="white" text="dashboard" border="none" role={props.user.role} /> : null}
           {(props.loggedin && props.user.role === "mentor") ? <ButtonLink linkTo="/pick-a-mentee" size="small" color="#303030" backgroundColor="white" text="pick a mentee" border="none" /> : null}
           { props.loggedin ? null : <Button size="small" color="#303030" backgroundColor="white" text="log in" onClick={props.onClick} border="none"/>}
@@ -32,6 +32,25 @@ export default function Navbar(props) {
           margin: 0 auto;
           width: 150px;
           background: white;
+        }
+        .landing-nav {
+          background-color: white;
+          border-bottom: 1px solid lightgray;
+          height: 65px;
+          font: "Helvetica Neue", "Segoe UI", Helvetica, sans-serif;
+          position: relative;
+          top: 0px;
+          right: 0px;
+          left: 0px;
+          padding: 0;
+        }
+        .landing-right{
+          position: absolute;
+          right:0;
+          padding: 13px;
+          width: 210px;
+          height: 39px;
+          text-align: right;
         }
         .logo{
           position: absolute;
@@ -60,6 +79,10 @@ export default function Navbar(props) {
             padding: 13px;
             width: 500px;
             height: 39px;
+            text-align: right;
+          }
+          .landing-right{
+            width: 500px;
           }
           .logo{
             position: absolute;
