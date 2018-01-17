@@ -19,17 +19,19 @@ export default function Navbar(props) {
         .nav {
           background-color: white;
           border-bottom: 1px solid lightgray;
-          height: 65px;
+          height: 160px;
           font: "Helvetica Neue", "Segoe UI", Helvetica, sans-serif;
           position: relative;
           top: 0px;
           right: 0px;
           left: 0px;
+          padding: 15px;
         }
         .right{
-          position: absolute;
-          right:0;
-          padding: 13px;
+          position: relative;
+          margin: 0 auto;
+          width: 150px;
+          background: white;
         }
         .logo{
           position: absolute;
@@ -38,6 +40,32 @@ export default function Navbar(props) {
         }
         .mw-logo{
           height: 40px;
+        }
+
+        @media only screen and (min-width: 600px) {
+          .nav {
+            background-color: white;
+            border-bottom: 1px solid lightgray;
+            height: 65px;
+            font: "Helvetica Neue", "Segoe UI", Helvetica, sans-serif;
+            position: relative;
+            top: 0px;
+            right: 0px;
+            left: 0px;
+            padding: 0;
+          }
+          .right{
+            position: absolute;
+            right:0;
+            padding: 13px;
+            width: 500px;
+            height: 39px;
+          }
+          .logo{
+            position: absolute;
+            left: 30px;
+            top: 15px;
+          }
         }
       `}</style>
     </div>
