@@ -10,8 +10,8 @@ const jsonParser = bodyParser.json();
 router.get('/',(req, res) => {
   User
     .find()
-    //.populate("mentees")
-    //.populate("mentors")
+    .populate("mentees")
+    .populate("mentors")
     .then(users => res.json(users.map(user => user.apiRepr())))
     .catch(err => {
       console.error(err);
@@ -22,6 +22,8 @@ router.get('/',(req, res) => {
 router.get('/:userId', (req, res) => {
   User
     .findById(req.params.userId)
+    .populate("mentees")
+    .populate("mentors")
     .then(user => {
       res.json(user.apiRepr());
     })

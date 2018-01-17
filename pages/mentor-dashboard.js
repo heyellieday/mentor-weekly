@@ -10,44 +10,77 @@ export default class extends React.Component {
     this.state = {
         currentPage: "dashboard",
         updateModalIsOpen: false,
-        users: [{
-          "userId": "alinal",
-          "name": {
-            "firstName": "Alina",
-            "lastName": "Lodahl"},
-          "photoUrl": "https://scontent.fsnc1-1.fna.fbcdn.net/v/t1.0-9/253094_10101142302648164_1065808377_n.jpg?oh=a3499a650864ce68161cd02ff675761b&oe=5AB28440",
-          "role": "mentee",
-          "mentorId": "ellied",
-          "goals": "Get an internship or entry-level front-end or full-stack engineering position",
-          "experience": "7 months of JS, HTML, CSS.  Almost done with the Thinkful Full-stack Bootcamp",
-          "skills": "JavaScript, NodeJS, React, CSS, HTML, JSX, GIT",
-          "portfolioUrl": "https://github.com/alodahl",
-          "background": "BA in Visual Art, Teacher for Art and Preschool",
-          "organization": "any size, ideally with an emphasis visual arts or positive impact",
-          "availability": "M-F 3-5pm",
-          "contact": "alina@email.com"
-        },{
-          "userId": "ellied",
-          "name": {
-            "firstName": "Ellie",
-            "lastName": "Day"},
-          "photoUrl": "https://media.licdn.com/media/AAEAAQAAAAAAAApxAAAAJGVhMDUwOTk1LTliMzUtNDZlZS05YzFmLWFlNDkzYzY3OWFiMQ.jpg",
-          "role": "mentor",
-          "mentorId": "ellied",
-          "goals": "invest in future engineers",
-          "organization": "Mavenlink",
-          "experience": "6 years",
-          "skills": "career advice, JavaScript, NodeJS, GIT, SQL, NoSQL, React",
-          "lookingFor": "mentees interested in coding with JS",
-          "contact": "ellie@email.com"
-        }]
-    }
+        mentor:{
+          name: {
+            firstName: "",
+            lastName: ""
+          },
+          photoUrl: "",
+          creationDate: "",
+          role: "",
+          goals: "",
+          experience: "",
+          skills: "",
+          organization: "",
+          contact: "",
+          portfolioUrl: "",
+          potentialMentees: "",
+          mentees: [],
+          mentors: [],
+          lookingFor: "",
+          //mentee fields only
+          background: "",
+          availability: ""
+        },
+        error: ""
+      }
   }
-  // static getInitialProps ({ query }) {
-  //   return {
-  //     name: query.name,
-  //   }
-  // }
+
+  componentDidMount() {
+        this.getUserFromApi();
+    }
+
+  getUserFromApi() {
+     fetch(`api/users/5a5ce9cf734d1d3471841675`)
+      .then(res => {
+                if (!res.ok) {
+                    return Promise.reject(res.statusText);
+                }
+                return res.json();
+            })
+      .then(user =>
+                this.setState({
+                    mentor:{
+                      name: {
+                        firstName: user.name.firstName,
+                        lastName: user.name.lastName
+                      },
+                      photoUrl: user.photoUrl,
+                      creationDate: user.creationDate,
+                      role: user.role,
+                      goals: user.goals,
+                      experience: user.experience,
+                      skills: user.skills,
+                      organization: user.organization,
+                      contact: user.contact,
+                      portfolioUrl: user.portfolioUrl,
+                      potentialMentees: user.potentialMentees,
+                      mentees: user.mentees,
+                      mentors: user.mentors,
+                      lookingFor: user.lookingFor,
+                      //mentee fields only
+                      background: user.background,
+                      availability: user.availability
+                    }
+                })
+            )
+      .catch(err =>
+            this.setState({
+                error: 'Could not load user',
+            })
+        );
+    }
+
   openModal(event) {
     event.preventDefault();
     this.setState({updateModalIsOpen: true});
@@ -59,18 +92,21 @@ export default class extends React.Component {
   }
 
   render () {
-    // const { url, name } = this.props
+    const matchInfoCards = this.state.mentor.mentees.map((mentee, index) => (
+            <MatchInfo user={mentee}  pickMentee={true} key={index} />
+        ));
+
     return (
       <div className="mentor-dashboard-div">
         <Dashboard
-            user={this.state.users[1]}
+            user={this.state.mentor}
             title="my mentee info"
             dashboard={true}
             loggedin="true"
             openUpdateModal={(e) => this.openModal(e)}>
-        {this.state.users?<MatchInfo user={this.state.users[0]} />:<DefaultMessage />}
+        {this.state.mentor.mentees ? matchInfoCards :<DefaultMessage />}
         </Dashboard>
-        {this.state.updateModalIsOpen ? <UpdateProfileModal role="mentor" user={this.state.users[1]} closeModal={(e) => this.closeModal(e)} /> : null}
+        {this.state.updateModalIsOpen ? <UpdateProfileModal role="mentor" user={this.state.mentor} closeModal={(e) => this.closeModal(e)} /> : null}
         <style jsx>{`
           .mentor-dashboard-div{
             height: 100vh;
