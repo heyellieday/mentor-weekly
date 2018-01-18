@@ -124,7 +124,7 @@ export default class MenteeForm extends React.Component {
                 id="photoUrl"
                 className={this.props.coloredInputBorder? "colored-input-border block block-input":"block block-input"}>
             </textarea>
-                {this.props.user ? <Button color="turquoise" text="save changes" /> : <Button type="submit" block="true" color="white" backgroundColor="turquoise" text="join mentor weekly" onClick={(e) => e.preventDefault()}/>}
+                {this.props.user ? <Button color="turquoise" text="save changes" onClick={this.props.saveChanges}/> : <Button type="submit" block="true" color="white" backgroundColor="turquoise" text="join mentor weekly" onClick={(e) => e.preventDefault()}/>}
                 {this.props.user ? <Button color="#1e1e1e" text="cancel" onClick={this.props.closeModal} block="true"/> : ""}
           </form>
           <style jsx>{`

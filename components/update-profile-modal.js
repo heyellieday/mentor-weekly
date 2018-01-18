@@ -12,16 +12,18 @@ export default function UpdateProfileModal(props) {
           <img src="static/close-button.svg" />
         </button>
         <h1 className="title">my profile</h1>
-        <form className="">
+        <form className="" onSubmit={props.saveChanges}>
         {(props.role === "mentor") ?
             <MentorForm
                 closeModal={props.closeModal}
                 user={props.user}
-                coloredInputBorder="true" />
+                coloredInputBorder="true"
+                saveChanges={props.saveChanges}/>
             :<MenteeForm
                 user={props.user}
                 closeModal={props.closeModal}
-                coloredInputBorder="true" />}
+                coloredInputBorder="true"
+                saveChanges={props.saveChanges}/>}
         </form>
         <style jsx>{`
           .modal {

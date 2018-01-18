@@ -50,6 +50,7 @@ export default class extends React.Component {
       .then(user =>
                 this.setState({
                     user:{
+                      id: user.id,
                       name: {
                         firstName: user.name.firstName,
                         lastName: user.name.lastName
@@ -67,6 +68,7 @@ export default class extends React.Component {
                       mentees: user.mentees,
                       mentors: user.mentors,
                       lookingFor: user.lookingFor,
+                      error: "",
                       //mentee fields only
                       background: user.background,
                       availability: user.availability
