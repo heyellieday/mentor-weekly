@@ -8,9 +8,8 @@ export default class extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        currentPage: "dashboard",
         updateModalIsOpen: false,
-        mentor:{
+        user:{
           name: {
             firstName: "",
             lastName: ""
@@ -50,7 +49,7 @@ export default class extends React.Component {
             })
       .then(user =>
                 this.setState({
-                    mentor:{
+                    user:{
                       name: {
                         firstName: user.name.firstName,
                         lastName: user.name.lastName
@@ -92,21 +91,21 @@ export default class extends React.Component {
   }
 
   render () {
-    const matchInfoCards = this.state.mentor.mentees.map((mentee, index) => (
-            <MatchInfo user={mentee}  pickMentee={true} key={index} />
+    const menteeInfoCards = this.state.user.mentees.map((mentee, index) => (
+            <MatchInfo user={mentee} key={index} />
         ));
 
     return (
       <div className="mentor-dashboard-div">
         <Dashboard
-            user={this.state.mentor}
+            user={this.state.user}
             title="my mentee info"
             dashboard={true}
-            loggedin="true"
+            loggedin={true}
             openUpdateModal={(e) => this.openModal(e)}>
-        {this.state.mentor.mentees ? matchInfoCards :<DefaultMessage />}
+        {this.state.user.mentees ? menteeInfoCards :<DefaultMessage />}
         </Dashboard>
-        {this.state.updateModalIsOpen ? <UpdateProfileModal role="mentor" user={this.state.mentor} closeModal={(e) => this.closeModal(e)} /> : null}
+        {this.state.updateModalIsOpen ? <UpdateProfileModal role="mentor" user={this.state.user} closeModal={(e) => this.closeModal(e)} /> : null}
         <style jsx>{`
           .mentor-dashboard-div{
             height: 100vh;

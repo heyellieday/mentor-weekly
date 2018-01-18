@@ -17,7 +17,6 @@ export default function DefaultMessage(props) {
             .default-header{
               font-weight: 100px;
               color: #00C1B8;
-              color: red;
             }
             @media only screen and (min-width: 600px) {
               .default-message{
@@ -28,5 +27,3 @@ export default function DefaultMessage(props) {
       </div>
     )
   }
-
-  //  <Header text={name} />
