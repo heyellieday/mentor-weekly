@@ -84,8 +84,9 @@ export default class extends React.Component {
 
   updateUserData(newData) {
      fetch(`api/users/5a5ce9cf734d1d3471841675`,
-            method: 'PUT',
-            body: newData)
+            { method: 'PUT',
+              body: newData
+      })
       .then(res => {
                 if (!res.ok) {
                     return Promise.reject(res.statusText);
@@ -95,9 +96,9 @@ export default class extends React.Component {
       .catch(err =>
             this.setState({
                 error: 'Could not load user',
-            })
-        );
-    }
+        })
+      )
+  }
 
   openModal(event) {
     event.preventDefault();
@@ -111,9 +112,8 @@ export default class extends React.Component {
 
   saveChanges(event) {
     event.preventDefault();
-    console.log(event.target.value);
-
-    //this.updateUserData(this.state.user)
+    console.log(this.state.user);
+    this.updateUserData(this.state.user);
   }
 
   render () {
@@ -131,7 +131,15 @@ export default class extends React.Component {
             openUpdateModal={(e) => this.openModal(e)}>
         {this.state.user.mentees ? menteeInfoCards :<DefaultMessage />}
         </Dashboard>
-        {this.state.updateModalIsOpen ? <UpdateProfileModal role="mentor" user={this.state.user} closeModal={(e) => this.closeModal(e)} saveChanges={(e) => this.saveChanges(e)}/> : null}
+        {
+          this.state.updateModalIsOpen ?
+          <UpdateProfileModal
+          role="mentor"
+          user={this.state.user}
+          closeModal={(e) => this.closeModal(e)}
+          saveChanges={(e) => this.saveChanges(e)}
+          /> : null
+        }
         <style jsx>{`
           .mentor-dashboard-div{
             height: 100vh;
