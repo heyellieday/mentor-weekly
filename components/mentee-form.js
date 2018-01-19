@@ -66,10 +66,10 @@ export default class MenteeForm extends React.Component {
   }
 
   handleNameChange(e, key) {
-    let changes = {};
-    changes[key] = e.target.value;
+    let changes = { name: this.state.user.name };
+    changes.name[key] = e.target.value;
     this.setState({
-      user: Object.assign({}, this.state.user, this.state.user.name, changes)
+      user: Object.assign({}, this.state.user, changes)
     });
   }
 
