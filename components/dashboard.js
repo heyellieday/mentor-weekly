@@ -1,29 +1,30 @@
-import Navbar from '../components/navbar';
-import Sidebar from '../components/sidebar';
+import Navbar from "../components/navbar";
+import Sidebar from "../components/sidebar";
 
 export default function Dashboard(props) {
-
   return (
-    <div className={props.pickMentee?"dashboard pick-mentee":"dashboard"}>
+    <div className={props.pickMentee ? "dashboard pick-mentee" : "dashboard"}>
       <Navbar
-          user={props.user}
-          dashboard={props.dashboard}
-          loggedin={props.loggedin}
-          />
-      <Sidebar user={props.user} openUpdateModal={props.openUpdateModal}/>
-      <h1 className={props.pickMentee?"title title-teal":"title"}>{props.title}</h1>
+        user={props.user}
+        dashboard={props.dashboard}
+        loggedin={props.loggedin}
+      />
+      <Sidebar user={props.user} openUpdateModal={props.openUpdateModal} />
+      <h1 className={props.pickMentee ? "title title-teal" : "title"}>
+        {props.title}
+      </h1>
       <div className="children">{props.children}</div>
       <style jsx>{`
-        .dashboard{
+        .dashboard {
           font-family: "Helvetica Neue", "Segoe UI", Helvetica, sans-serif;
           font-weight: 100;
-          background-color: #F4F4F4;
+          background-color: #f4f4f4;
           text-align: center;
         }
-        .pick-mentee{
-          background-color: #7C7C7C;
+        .pick-mentee {
+          background-color: #7c7c7c;
         }
-        .title{
+        .title {
           display: inline-block;
           margin: 60px auto;
           font-weight: 100;
@@ -31,11 +32,11 @@ export default function Dashboard(props) {
           clear: right;
           width: 300px;
         }
-        .title-teal{
+        .title-teal {
           color: white;
           font-width: normal;
         }
-        .children{
+        .children {
           height: 100%;
           right: 0;
           position: relative;
@@ -43,27 +44,26 @@ export default function Dashboard(props) {
         }
 
         @media only screen and (min-width: 600px) {
-          .dashboard{
+          .dashboard {
             left: 0;
             bottom: 0;
             top: 0;
             right: 0;
             position: fixed;
           }
-          .title{
+          .title {
             display: inline-block;
             margin: 60px auto;
             padding-left: 300px;
           }
-          .children{
+          .children {
             left: 300px;
             position: fixed;
             overflow: auto;
             margin-bottom: 30px;
           }
         }
-
       `}</style>
     </div>
-);
+  );
 }
