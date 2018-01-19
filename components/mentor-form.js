@@ -5,7 +5,6 @@ export default class MentorForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
-    console.log(this.props.user.name);
     if (this.props.user) {
       this.state = {
         user: {
@@ -26,6 +25,26 @@ export default class MentorForm extends React.Component {
           background: this.props.user.background
         }
       };
+    } else {
+      this.state = {
+        user: {
+          name: {
+            firstName: "",
+            lastName: ""
+          },
+          role: "mentor",
+          contact: "",
+          goals: "",
+          organization: "",
+          experience: "",
+          skills: "",
+          portfolioUrl: "",
+          photoUrl: "",
+          lookingFor: "",
+          availability: "",
+          background: ""
+        }
+      };
     }
   }
 
@@ -41,7 +60,6 @@ export default class MentorForm extends React.Component {
         if (!res.ok) {
           return Promise.reject(res.statusText);
         }
-        console.log(this.props.user);
         return res.json();
       })
       .then(() => (this.props.loggedin ? this.props.updateDashboard() : ""))
@@ -55,7 +73,7 @@ export default class MentorForm extends React.Component {
   saveChanges(event) {
     event.preventDefault();
     this.updateUserData(this.state.user);
-    this.props.closeModal(event);
+    this.props.loggedin ? this.props.closeModal(event) : null;
   }
 
   handleChange(e, key) {
@@ -73,22 +91,6 @@ export default class MentorForm extends React.Component {
       user: Object.assign({}, this.state.user, changes)
     });
   }
-
-  // handleNameChange(e, key) {
-  //   console.log(e.target.value);
-  //   let changes = { name: { key: e.target.value } };
-  //     this.setState({
-  //     user: Object.assign({}, this.state.user, this.state.user.name, changes)
-  //    });
-  // }
-
-  // handleNameChange(e, key) {
-  //   console.log(key);
-  //   let changes = { ...this.state.user.name, key: e.target.value };
-  //   this.setState({
-  //     user: Object.assign({}, this.state.user, this.state.user.name, changes)
-  //   });
-  // }
 
   render() {
     return (
