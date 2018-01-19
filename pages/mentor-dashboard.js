@@ -73,7 +73,12 @@ export default class extends React.Component {
 
   render() {
     const menteeInfoCards = this.state.user.mentees.map((mentee, index) => (
-      <MatchInfo user={mentee} key={index} />
+      <MatchInfo
+        mentorId={this.state.user.id}
+        user={mentee}
+        key={index}
+        updateDashboard={() => this.getUserFromApi()}
+      />
     ));
 
     return (

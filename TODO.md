@@ -12,8 +12,12 @@
 
 ###API:
 
-* commit and make API branch before moving on!
-* code ajax calls
+* code fetch calls:
+  * Mentor-form put req
+  * Mentee-form put req
+  * Signup-form post req
+  * Mentor add-mentee put req
+  * Mentor remove-mentee delete req
 
 ###Auth:
 
@@ -55,6 +59,10 @@
 * remove passport code from user router
 * code Router
 * test in postman
+* switch to API branch
+* code fetch calls:
+  * Mentor-dashboard get user
+  * Mentee-dashboard get user
 
 ###Auth:
 

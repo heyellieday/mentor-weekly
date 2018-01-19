@@ -1,5 +1,6 @@
 import Button from "../components/button";
 import ButtonLink from "../components/button-link";
+import DefaultMessage from "../components/default-message";
 
 export default function MatchInfo(props) {
   function profilePhoto() {
@@ -10,17 +11,30 @@ export default function MatchInfo(props) {
     }
   }
 
+  function removeMentee() {
+    fetch(`api/users/${props.mentorId}/${props.user.id}`, {
+      method: "DELETE",
+      headers: new Headers({
+        "Content-Type": "application/json"
+      })
+    })
+      .then(res => {
+        if (!res.ok) {
+          return Promise.reject(res.statusText);
+        }
+        console.log(this.props.user);
+        return res.json({ Message: "Mentee successfully removed" });
+      })
+      .then(() => (this.props.loggedin ? this.props.updateDashboard() : ""))
+      .catch(err =>
+        this.setState({
+          error: "Could not delete user"
+        })
+      );
+  }
+
   if (!props.user) {
-    return (
-      <div className="match-info-div">
-        <h2>Welcome to Mentor Weekly!</h2>
-        <p>You will find your mentee info here.</p>
-        <p>
-          Mentor Weekly will send you an email when we have found you the right
-          match.
-        </p>
-      </div>
-    );
+    return <DefaultMessage />;
   } else {
     return (
       <div
