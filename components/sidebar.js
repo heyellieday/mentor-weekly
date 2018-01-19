@@ -5,7 +5,7 @@ export default function Sidebar(props) {
     if (props.user.photoUrl) {
       return props.user.photoUrl;
     } else {
-      return "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png";
+      return "/static/default-";
     }
   }
 
@@ -35,6 +35,14 @@ export default function Sidebar(props) {
             <b>Goals: </b>
             {props.user.goals}
           </p>
+          {props.user.role === "mentor" ? (
+            ""
+          ) : (
+            <p>
+              <b>Background: </b>
+              {props.user.background}
+            </p>
+          )}
           <p>
             <b>Experience: </b>
             {props.user.experience}

@@ -29,8 +29,8 @@ export default class MenteeForm extends React.Component {
   }
 
   updateUserData(newData) {
-    fetch(`api/users/${newData.id}`, {
-      method: "PUT",
+    fetch(`api/users/${newData.id ? newData.id : ""}`, {
+      method: `${newData.id ? "PUT" : "POST"}`,
       body: JSON.stringify(newData),
       headers: new Headers({
         "Content-Type": "application/json"
@@ -43,7 +43,7 @@ export default class MenteeForm extends React.Component {
         console.log(this.props.user);
         return res.json();
       })
-      .then(() => this.props.updateDashboard())
+      .then(() => (this.props.loggedin ? this.props.updateDashboard() : ""))
       .catch(err =>
         this.setState({
           error: "Could not load user"
@@ -81,7 +81,7 @@ export default class MenteeForm extends React.Component {
         </label>
         <input
           placeholder={this.props.user ? "" : "first name"}
-          value={this.state.firstName}
+          value={this.state.user.name.firstName}
           onChange={e => this.handleNameChange(e, "firstName")}
           type="text"
           id="firstName"
@@ -96,7 +96,7 @@ export default class MenteeForm extends React.Component {
         </label>
         <input
           placeholder={this.props.user ? "" : "last name"}
-          value={this.state.lastName}
+          value={this.state.user.name.lastName}
           onChange={e => this.handleNameChange(e, "lastName")}
           type="text"
           id="lastName"
@@ -146,7 +146,7 @@ export default class MenteeForm extends React.Component {
               ? ""
               : "ex: I'd like career advice about a career in data-science"
           }
-          value={this.state.goals}
+          value={this.state.user.goals}
           onChange={e => this.handleChange(e, "goals")}
           type="text"
           id="goals"
@@ -165,8 +165,8 @@ export default class MenteeForm extends React.Component {
               ? ""
               : "ex: I have a Bachelors in Business, and I've taken 1 web design course"
           }
-          value={this.state.background}
-          onChange={() => this.setState({ background: event.target.value })}
+          value={this.state.user.background}
+          onChange={e => this.handleChange(e, "background")}
           type="text"
           id="background"
           className={
@@ -184,8 +184,8 @@ export default class MenteeForm extends React.Component {
               ? ""
               : "ex: front-end design, 2 months of html & css"
           }
-          value={this.state.experience}
-          onChange={() => this.setState({ experience: event.target.value })}
+          value={this.state.user.experience}
+          onChange={e => this.handleChange(e, "experience")}
           type="text"
           id="experience"
           className={
@@ -199,7 +199,7 @@ export default class MenteeForm extends React.Component {
         </label>
         <textarea
           placeholder={this.props.user ? "" : "ex: PHP and GitHub"}
-          value={this.state.skills}
+          value={this.state.user.skills}
           onChange={e => this.handleChange(e, "skills")}
           type="text"
           id="skills"
@@ -217,7 +217,7 @@ export default class MenteeForm extends React.Component {
           placeholder={
             this.props.user ? "" : "ex: freelancing, small companies"
           }
-          value={this.state.organization}
+          value={this.state.user.organization}
           onChange={e => this.handleChange(e, "organization")}
           type="text"
           id="organization"
@@ -232,7 +232,7 @@ export default class MenteeForm extends React.Component {
         </label>
         <textarea
           placeholder={this.props.user ? "" : "ex: Mon and Wed 5-6pm PST"}
-          value={this.state.availability}
+          value={this.state.user.availability}
           onChange={e => this.handleChange(e, "availability")}
           type="text"
           id="availability"
@@ -266,16 +266,17 @@ export default class MenteeForm extends React.Component {
           <Button
             color="turquoise"
             text="save changes"
-            onClick={this.props.saveChanges}
+            type="submit"
+            onClick={e => this.saveChanges(e)}
           />
         ) : (
           <Button
-            type="submit"
             block="true"
             color="white"
+            type="submit"
             backgroundColor="turquoise"
             text="join mentor weekly"
-            onClick={e => e.preventDefault()}
+            onClick={e => this.saveChanges(e)}
           />
         )}
         {this.props.user ? (

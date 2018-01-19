@@ -28,9 +28,10 @@ export default class MentorForm extends React.Component {
       };
     }
   }
+
   updateUserData(newData) {
-    fetch(`api/users/${newData.id}`, {
-      method: "PUT",
+    fetch(`api/users/${newData.id ? newData.id : ""}`, {
+      method: `${newData.id ? "PUT" : "POST"}`,
       body: JSON.stringify(newData),
       headers: new Headers({
         "Content-Type": "application/json"
@@ -43,7 +44,7 @@ export default class MentorForm extends React.Component {
         console.log(this.props.user);
         return res.json();
       })
-      .then(() => this.props.updateDashboard())
+      .then(() => (this.props.loggedin ? this.props.updateDashboard() : ""))
       .catch(err =>
         this.setState({
           error: "Could not load user"
@@ -250,6 +251,7 @@ export default class MentorForm extends React.Component {
           <Button
             block="true"
             color="white"
+            type="submit"
             backgroundColor="turquoise"
             text="join mentor weekly"
             onClick={e => this.saveChanges(e)}

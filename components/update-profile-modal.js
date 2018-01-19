@@ -14,11 +14,12 @@ export default function UpdateProfileModal(props) {
         <form className="" onSubmit={props.saveChanges}>
           {props.role === "mentor" ? (
             <MentorForm
-              closeModal={props.closeModal}
               user={props.user}
+              closeModal={props.closeModal}
               coloredInputBorder="true"
               saveChanges={props.saveChanges}
               updateDashboard={props.updateDashboard}
+              loggedin={props.loggedin}
             />
           ) : (
             <MenteeForm
@@ -26,6 +27,8 @@ export default function UpdateProfileModal(props) {
               closeModal={props.closeModal}
               coloredInputBorder="true"
               saveChanges={props.saveChanges}
+              updateDashboard={props.updateDashboard}
+              loggedin={props.loggedin}
             />
           )}
         </form>
