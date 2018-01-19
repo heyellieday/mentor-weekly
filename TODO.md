@@ -7,14 +7,10 @@
 ###Front-end:
 
 * dashboard hidden overflow issue
-* create different props for default message for mentor or mentee
-  -add portfolio question to mentor form
 
 ###API:
 
 * code fetch calls:
-  * Mentor-form put req
-  * Mentee-form put req
   * Signup-form post req
   * Mentor add-mentee put req
   * Mentor remove-mentee delete req
@@ -53,6 +49,9 @@
 * change wide inputs to textareas
 * credit photos in popup button on footer
 * responsive nav bar
+* add portfolio question to mentor form, add all fields to dashboards, except mentor lookingFor in match-info
+* add portfolio question to mentor form
+* create different props for default message for mentor or mentee
 
 ###API:
 
@@ -63,6 +62,8 @@
 * code fetch calls:
   * Mentor-dashboard get user
   * Mentee-dashboard get user
+  * Mentor-form put req
+  * Mentee-form put req
 
 ###Auth:
 

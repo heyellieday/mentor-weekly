@@ -34,7 +34,7 @@ export default function MatchInfo(props) {
   }
 
   if (!props.user) {
-    return <DefaultMessage />;
+    return <DefaultMessage role={props.user.role} />;
   } else {
     return (
       <div
@@ -122,14 +122,6 @@ export default function MatchInfo(props) {
               </p>
             ) : (
               ""
-            )}
-            {props.user.role === "mentor" ? (
-              ""
-            ) : (
-              <p>
-                <b>Interested in: </b>
-                {props.user.organization}
-              </p>
             )}
             {props.user.role === "mentor" ? (
               ""
