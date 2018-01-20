@@ -11,6 +11,29 @@ export default function MatchInfo(props) {
     }
   }
 
+ function  pickMentee(newData) {
+    fetch(`api/users/${props.mentorId}/${props.user._id}`, {
+      method: "PUT",
+      body: JSON.stringify(newData),
+      headers: new Headers({
+        "Content-Type": "application/json"
+      })
+    })
+      .then(res => {
+        if (!res.ok) {
+          return Promise.reject(res.statusText);
+        }
+        console.log(this.props.user);
+        return res.json();
+      })
+      .then(() => this.props.updateDashboard()
+      .catch(err =>
+        this.setState({
+          error: "Could not load user"
+        })
+      )
+  }
+
   function removeMentee() {
     console.log("mentor id: ", props.mentorId, "mentee id: ", props.user._id);
     fetch(`api/users/${props.mentorId}/${props.user._id}`, {
