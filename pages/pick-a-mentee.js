@@ -7,7 +7,30 @@ export default class extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: {},
+      user: {
+        id: "",
+        name: {
+          firstName: "",
+          lastName: ""
+        },
+        photoUrl: "",
+        creationDate: "",
+        role: "",
+        goals: "",
+        experience: "",
+        skills: "",
+        organization: "",
+        contact: "",
+        portfolioUrl: "",
+        potentialMentees: [],
+        mentees: [],
+        mentors: [],
+        lookingFor: "",
+        //mentee fields only
+        background: "",
+        availability: ""
+      },
+      error: "",
       updateModalIsOpen: false,
       menteeList: [],
       users: [
@@ -112,7 +135,7 @@ export default class extends React.Component {
   }
 
   render() {
-    console.log(this.state.user.potentialMentees);
+    //console.log(this.state.user.potentialMentees);
     const mentees = this.state.user.potentialMentees.map((mentee, index) => (
       <MatchInfo user={mentee} pickMentee={true} key={index} />
     ));

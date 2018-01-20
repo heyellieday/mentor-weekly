@@ -25,6 +25,7 @@ export default class Signup extends React.Component {
             <input
               type="radio"
               id="signup"
+              name="signup"
               className="radio-button"
               onClick={() => this.form(true)}
               value="mentor"
@@ -33,6 +34,7 @@ export default class Signup extends React.Component {
             <input
               type="radio"
               id="signup"
+              name="signup"
               className="radio-button"
               onClick={() => this.form(false)}
               value="mentee"

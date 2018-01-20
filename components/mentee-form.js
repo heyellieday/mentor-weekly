@@ -25,6 +25,26 @@ export default class MenteeForm extends React.Component {
           background: this.props.user.background
         }
       };
+    } else {
+      this.state = {
+        user: {
+          name: {
+            firstName: "",
+            lastName: ""
+          },
+          role: "mentee",
+          contact: "",
+          goals: "",
+          organization: "",
+          experience: "",
+          skills: "",
+          portfolioUrl: "",
+          photoUrl: "",
+          lookingFor: "",
+          availability: "",
+          background: ""
+        }
+      };
     }
   }
 
