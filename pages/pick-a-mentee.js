@@ -7,6 +7,7 @@ export default class extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      user: {},
       updateModalIsOpen: false,
       menteeList: [],
       users: [
@@ -74,11 +75,32 @@ export default class extends React.Component {
       ]
     };
   }
-  // static getInitialProps ({ query }) {
-  //   return {
-  //     name: query.name,
-  //   }
-  // }
+
+  componentDidMount() {
+    this.getUserFromApi();
+  }
+
+  getUserFromApi() {
+    fetch(`api/users/5a5ce9cf734d1d3471841675`)
+      .then(res => {
+        if (!res.ok) {
+          return Promise.reject(res.statusText);
+        }
+        return res.json();
+      })
+      .then(user =>
+        this.setState({
+          user: user,
+          error: ""
+        })
+      )
+      .catch(err =>
+        this.setState({
+          error: "Could not load user"
+        })
+      );
+  }
+
   openModal(event) {
     event.preventDefault();
     this.setState({ updateModalIsOpen: true });
@@ -90,14 +112,15 @@ export default class extends React.Component {
   }
 
   render() {
-    const mentees = this.state.users.map((mentee, index) => (
+    console.log(this.state.user.potentialMentees);
+    const mentees = this.state.user.potentialMentees.map((mentee, index) => (
       <MatchInfo user={mentee} pickMentee={true} key={index} />
     ));
 
     return (
       <div className="mentor-dashboard-div">
         <Dashboard
-          user={this.state.users[1]}
+          user={this.state.user}
           title="pick a mentee"
           pickMentee={true}
           dashboard={true}
@@ -109,7 +132,7 @@ export default class extends React.Component {
         {this.state.updateModalIsOpen ? (
           <UpdateProfileModal
             role="mentor"
-            user={this.state.users[1]}
+            user={this.state.user}
             closeModal={e => this.closeModal(e)}
           />
         ) : null}

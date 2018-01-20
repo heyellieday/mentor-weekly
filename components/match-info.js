@@ -12,7 +12,8 @@ export default function MatchInfo(props) {
   }
 
   function removeMentee() {
-    fetch(`api/users/${props.mentorId}/${props.user.id}`, {
+    console.log("mentor id: ", props.mentorId, "mentee id: ", props.user._id);
+    fetch(`api/users/${props.mentorId}/${props.user._id}`, {
       method: "DELETE",
       headers: new Headers({
         "Content-Type": "application/json"
@@ -27,7 +28,7 @@ export default function MatchInfo(props) {
       })
       .then(() => (this.props.loggedin ? this.props.updateDashboard() : ""))
       .catch(err =>
-        this.setState({
+        console.log({
           error: "Could not delete user"
         })
       );
@@ -78,7 +79,7 @@ export default function MatchInfo(props) {
               <Button
                 size="small"
                 text="remove mentee"
-                onClick={e => e.preventDefault()}
+                onClick={() => removeMentee()}
                 color="coral"
                 backgroundColor="white"
                 border="none"
@@ -90,15 +91,15 @@ export default function MatchInfo(props) {
               <b>Goals: </b>
               {props.user.goals}
             </p>
+            {props.user.role === "mentor" ? (
+              ""
+            ) : (
+              <p>
+                <b>Background: </b>
+                {props.user.background}
+              </p>
+            )}
             <p>
-              {props.user.role === "mentor" ? (
-                ""
-              ) : (
-                <p>
-                  <b>Background: </b>
-                  {props.user.background}
-                </p>
-              )}
               <b>Experience: </b>
               {props.user.experience}
             </p>

@@ -11,7 +11,6 @@
 ###API:
 
 * code fetch calls:
-  * Signup-form post req
   * Mentor add-mentee put req
   * Mentor remove-mentee delete req
 
@@ -50,7 +49,6 @@
 * credit photos in popup button on footer
 * responsive nav bar
 * add portfolio question to mentor form, add all fields to dashboards, except mentor lookingFor in match-info
-* add portfolio question to mentor form
 * create different props for default message for mentor or mentee
 
 ###API:
@@ -64,6 +62,7 @@
   * Mentee-dashboard get user
   * Mentor-form put req
   * Mentee-form put req
+  * Signup-form post req
 
 ###Auth:
 

@@ -5,7 +5,7 @@ export default function Sidebar(props) {
     if (props.user.photoUrl) {
       return props.user.photoUrl;
     } else {
-      return "/static/default-";
+      return "/static/default-profile.png";
     }
   }
 
