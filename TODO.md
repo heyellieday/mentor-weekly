@@ -7,12 +7,12 @@
 ###Front-end:
 
 * dashboard hidden overflow issue
+* make "are you sure?" alert for remove mentee button
 
 ###API:
 
 * code fetch calls:
   * Mentor add-mentee put req
-  * Mentor remove-mentee delete req
 
 ###Auth:
 
@@ -63,6 +63,7 @@
   * Mentor-form put req
   * Mentee-form put req
   * Signup-form post req
+  * Mentor remove-mentee delete req
 
 ###Auth:
 

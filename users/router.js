@@ -105,26 +105,12 @@ router.delete("/:mentorId/:menteeId", (req, res) => {
   //then remove mentee from mentors "mentees" list,
   //then respond with a success message
   User.findById(req.params.mentorId).then(mentor => {
-    console.log("1 begin delete mentee from mentor profile" + mentor);
-    for (let i = 0; i < mentor.mentees.length; i++) {
-      if (mentor.mentees[i].id === req.params.menteeId) {
-        mentor.mentees.splice(i, 1);
-      }
-    }
-    console.log("2 end delete mentee from mentor profile");
+    mentor.mentees.pull(req.params.menteeId);
     return mentor.save();
   });
   User.findById(req.params.menteeId)
     .then(mentee => {
-      console.log(
-        "3 end delete mentor from mentee profile" + req.params.menteeId
-      );
-      for (let i = 0; i < mentee.mentors.length; i++) {
-        if (mentee.mentors[i].id === req.params.mentorId) {
-          mentee.mentors.splice(i, 1);
-        }
-      }
-      console.log("4 end delete mentor from mentee profile");
+      mentee.mentors.pull(req.params.mentorId);
       return mentee.save();
     })
     .then(() => {
@@ -175,52 +161,55 @@ router.put("/:userId", (req, res) => {
     .catch(err => res.status(500).json({ message: "Something went wrong" }));
 });
 
-router.put("/:userId/:matchId", (req, res) => {
+router.put("/:mentorId/:menteeId", (req, res) => {
   //if body and param ids all match,
-  //and body contains matchId,
-  //add new mentee match id to own match list,
-  //then add own id to your mentee's match list
+  //and body contains "mentees" property,
+  //add new mentee id to mentor "mentees" list,
+  //then add mentor id to mentee's "mentors" list
 
   if (
-    !(
-      req.params.userId &&
-      req.body.userId &&
-      req.params.matchId === req.body.matchId
-    )
+    !(req.params.mentorId && req.body.id && req.params.mentorId === req.body.id)
   ) {
     return res.status(400).json({
       error: "Request path id and request body id values must match"
     });
   }
 
-  const requiredFields = ["matchId"];
+  const requiredFields = ["mentees"];
 
   for (let i = 0; i < requiredFields.length; i++) {
     const field = requiredFields[i];
     if (!(field in req.body)) {
-      const message = `Missing 'matchId' in request body`;
+      const message = `Missing 'mentees' in request body`;
       console.error(message);
       return res.status(400).send(message);
     }
   }
 
-  let newmatchId = {
-    matchId: req.params.matchId
-  };
-  let userId = {
-    matchId: req.params.userId
-  };
-  User.findById(req.params.userId)
+  let newMenteeId = req.params.menteeId;
+  let mentorId = req.params.mentorId;
+  let updatedMentor;
+  User.findById(req.params.mentorId)
     .then(user => {
-      user.matchId.push(newmatchId);
+      user.mentees.push(newMenteeId);
+      for (let i = 0; i < user.potentialMentees.length; i++) {
+        if (user.potentialMentees[i] === "" + req.params.menteeId) {
+          user.potentialMentees.splice(i, 1);
+        }
+      }
       return user.save();
     })
-    .findById(req.params.matchId)
+    .then(mentor => (updatedMentor = mentor.apiRepr()))
+    .catch(err => res.status(500).json({ message: "Something went wrong" }));
+
+  User.findById(req.params.menteeId)
     .then(user => {
-      user.matchId.push(userId);
+      user.mentors.push(mentorId);
       return user.save();
     })
-    .then(updatedUser => res.status(204).end())
+    .then(updatedMentee =>
+      res.status(201).json([updatedMentor, updatedMentee.apiRepr()])
+    )
     .catch(err => res.status(500).json({ message: "Something went wrong" }));
 });
 
