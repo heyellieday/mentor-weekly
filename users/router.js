@@ -162,8 +162,8 @@ router.put("/:userId", (req, res) => {
 });
 
 router.put("/:mentorId/:menteeId", (req, res) => {
+  let mentorProfile;
   //if body and param ids all match,
-  //and body contains "mentees" property,
   //add new mentee id to mentor "mentees" list,
   //then add mentor id to mentee's "mentors" list
 
@@ -175,16 +175,19 @@ router.put("/:mentorId/:menteeId", (req, res) => {
     });
   }
 
-  const requiredFields = ["mentees"];
-
-  for (let i = 0; i < requiredFields.length; i++) {
-    const field = requiredFields[i];
-    if (!(field in req.body)) {
-      const message = `Missing 'mentees' in request body`;
-      console.error(message);
-      return res.status(400).send(message);
-    }
-  }
+  // User.findById(req.params.mentorId)
+  //   .then(user => {
+  //     mentorProfile = user;
+  //   })
+  //   .catch(err => res.status(500).json({ message: "Something went wrong" }));
+  //
+  // // if (
+  //   req.params.menteeId === mentorProfile.mentees.findOne(req.params.menteeId)
+  // ) {
+  //   return res.status(400).json({
+  //     error: "You have already chosen this mentee"
+  //   });
+  // }
 
   let newMenteeId = req.params.menteeId;
   let mentorId = req.params.mentorId;
@@ -192,11 +195,7 @@ router.put("/:mentorId/:menteeId", (req, res) => {
   User.findById(req.params.mentorId)
     .then(user => {
       user.mentees.push(newMenteeId);
-      for (let i = 0; i < user.potentialMentees.length; i++) {
-        if (user.potentialMentees[i] === "" + req.params.menteeId) {
-          user.potentialMentees.splice(i, 1);
-        }
-      }
+      user.potentialMentees.pull(req.params.menteeId);
       return user.save();
     })
     .then(mentor => (updatedMentor = mentor.apiRepr()))
