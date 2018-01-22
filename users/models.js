@@ -14,7 +14,6 @@ const userSchema = mongoose.Schema({
   organization: { type: String, required: true },
   contact: { type: String, required: true },
   portfolioUrl: { type: String },
-  potentialMentees: [{ type: mongoose.Schema.Types.ObjectId, ref: "users" }],
   mentees: [{ type: mongoose.Schema.Types.ObjectId, ref: "users" }],
   mentors: [{ type: mongoose.Schema.Types.ObjectId, ref: "users" }],
   //mentor fields only
@@ -37,7 +36,6 @@ userSchema.methods.apiRepr = function() {
     organization: this.organization,
     contact: this.contact,
     portfolioUrl: this.portfolioUrl,
-    potentialMentees: this.potentialMentees,
     mentees: this.mentees,
     mentors: this.mentors
   };

@@ -11,6 +11,8 @@
 
 ###API:
 
+* sendgrid
+
 ###Auth:
 
 * start coding from example

@@ -23,7 +23,6 @@ export default class extends React.Component {
         organization: "",
         contact: "",
         portfolioUrl: "",
-        potentialMentees: [],
         mentees: [],
         mentors: [],
         lookingFor: "",
@@ -32,12 +31,14 @@ export default class extends React.Component {
         availability: ""
       },
       error: "",
-      updateModalIsOpen: false
+      updateModalIsOpen: false,
+      potentialMentees: []
     };
   }
 
   componentDidMount() {
     this.getUserFromApi();
+    this.getMentees();
   }
 
   getUserFromApi() {
@@ -61,6 +62,28 @@ export default class extends React.Component {
       );
   }
 
+  getMentees() {
+    console.log("getting mentees");
+    fetch(`api/users/pick-a-mentee`)
+      .then(res => {
+        if (!res.ok) {
+          return Promise.reject(res.statusText);
+        }
+        return res.json();
+      })
+      .then(mentees =>
+        this.setState({
+          potentialMentees: mentees,
+          error: ""
+        })
+      )
+      .catch(err =>
+        this.setState({
+          error: "Could not load user"
+        })
+      );
+  }
+
   openModal(event) {
     event.preventDefault();
     this.setState({ updateModalIsOpen: true });
@@ -72,17 +95,15 @@ export default class extends React.Component {
   }
 
   render() {
-    const menteeInfoCards = this.state.user.potentialMentees.map(
-      (mentee, index) => (
-        <MatchInfo
-          user={mentee}
-          mentorId={this.state.user.id}
-          pickMentee={true}
-          key={index}
-          updateDashboard={() => this.getUserFromApi()}
-        />
-      )
-    );
+    const menteeInfoCards = this.state.potentialMentees.map((mentee, index) => (
+      <MatchInfo
+        user={mentee}
+        mentorId={this.state.user.id}
+        pickMentee={true}
+        key={index}
+        updateDashboard={() => this.getMentees()}
+      />
+    ));
 
     return (
       <div className="mentor-dashboard-div">
@@ -94,7 +115,7 @@ export default class extends React.Component {
           loggedin={true}
           openUpdateModal={e => this.openModal(e)}
         >
-          {this.state.user.potentialMentees[0] ? (
+          {this.state.potentialMentees.length ? (
             menteeInfoCards
           ) : (
             <DefaultMessage role="mentor" />

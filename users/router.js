@@ -10,7 +10,15 @@ router.get("/", (req, res) => {
   User.find()
     .populate("mentees")
     .populate("mentors")
-    .populate("potentialMentees")
+    .then(users => res.json(users.map(user => user.apiRepr())))
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({ error: "something went horribly awry" });
+    });
+});
+
+router.get("/pick-a-mentee", (req, res) => {
+  User.find({ "mentors.0": { $exists: false }, role: "mentee" })
     .then(users => res.json(users.map(user => user.apiRepr())))
     .catch(err => {
       console.error(err);
@@ -22,7 +30,6 @@ router.get("/:userId", (req, res) => {
   User.findById(req.params.userId)
     .populate("mentees")
     .populate("mentors")
-    .populate("potentialMentees")
     .then(user => {
       res.json(user.apiRepr());
     })
@@ -175,27 +182,12 @@ router.put("/:mentorId/:menteeId", (req, res) => {
     });
   }
 
-  // User.findById(req.params.mentorId)
-  //   .then(user => {
-  //     mentorProfile = user;
-  //   })
-  //   .catch(err => res.status(500).json({ message: "Something went wrong" }));
-  //
-  // // if (
-  //   req.params.menteeId === mentorProfile.mentees.findOne(req.params.menteeId)
-  // ) {
-  //   return res.status(400).json({
-  //     error: "You have already chosen this mentee"
-  //   });
-  // }
-
   let newMenteeId = req.params.menteeId;
   let mentorId = req.params.mentorId;
   let updatedMentor;
   User.findById(req.params.mentorId)
     .then(user => {
       user.mentees.push(newMenteeId);
-      user.potentialMentees.pull(req.params.menteeId);
       return user.save();
     })
     .then(mentor => (updatedMentor = mentor.apiRepr()))
@@ -206,8 +198,9 @@ router.put("/:mentorId/:menteeId", (req, res) => {
       user.mentors.push(mentorId);
       return user.save();
     })
-    .then(updatedMentee =>
-      res.status(201).json([updatedMentor, updatedMentee.apiRepr()])
+    .then(
+      updatedMentee => res.sendStatus(201)
+      //.json([updatedMentor, updatedMentee.apiRepr()])
     )
     .catch(err => res.status(500).json({ message: "Something went wrong" }));
 });

@@ -14,7 +14,7 @@ export default function MatchInfo(props) {
   }
 
   function pickMentee() {
-    fetch(`api/users/${props.mentorId}/${props.user._id}`, {
+    fetch(`api/users/${props.mentorId}/${props.user.id}`, {
       method: "PUT",
       body: JSON.stringify({ id: props.mentorId }),
       headers: new Headers({
@@ -25,11 +25,11 @@ export default function MatchInfo(props) {
         if (!res.ok) {
           return Promise.reject(res.statusText);
         }
-        console.log(this.props.user);
+        // console.log(this.props.user);
         props.updateDashboard();
-        return res.json();
+        //  return res.json();
       })
-      .catch(err => console.log({ error: err }));
+      .catch(err => console.log(err));
   }
 
   function removeMentee() {
@@ -44,15 +44,9 @@ export default function MatchInfo(props) {
         if (!res.ok) {
           return Promise.reject(res.statusText);
         }
-        console.log(props.user);
         props.updateDashboard();
-        return res.json({ Message: "Mentee successfully removed" });
       })
-      .catch(err =>
-        console.log({
-          error: err
-        })
-      );
+      .catch(err => console.log(err));
   }
 
   if (!props.user) {
