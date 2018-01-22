@@ -1,8 +1,10 @@
 import Button from "../components/button";
 import ButtonLink from "../components/button-link";
 import DefaultMessage from "../components/default-message";
+import DeletePrompt from "../components/delete-prompt";
 
 export default function MatchInfo(props) {
+  let removeMenteeOpen = false;
   function profilePhoto() {
     if (props.user.photoUrl) {
       return props.user.photoUrl;
@@ -12,7 +14,7 @@ export default function MatchInfo(props) {
   }
 
   function pickMentee() {
-    fetch(`api/users/${props.mentorId}/${props.user.id}`, {
+    fetch(`api/users/${props.mentorId}/${props.user._id}`, {
       method: "PUT",
       body: JSON.stringify({ id: props.mentorId }),
       headers: new Headers({
@@ -24,9 +26,9 @@ export default function MatchInfo(props) {
           return Promise.reject(res.statusText);
         }
         console.log(this.props.user);
+        props.updateDashboard();
         return res.json();
       })
-      .then(() => this.props.updateDashboard())
       .catch(err => console.log({ error: err }));
   }
 

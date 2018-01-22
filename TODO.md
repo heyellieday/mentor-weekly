@@ -8,7 +8,6 @@
 
 * dashboard hidden overflow issue
 * make "are you sure?" alert for remove mentee button
-* add mentor PUT req to "add mentee" button
 
 ###API:
 
@@ -63,6 +62,7 @@
   * Signup-form post req
   * Mentor remove-mentee delete req
   * Mentor add-mentee put req
+  * add mentor PUT req to "add mentee" button
 
 ###Auth:
 
