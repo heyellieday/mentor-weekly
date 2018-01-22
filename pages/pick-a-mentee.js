@@ -1,5 +1,6 @@
 import React from "react";
 import Dashboard from "../components/dashboard";
+import DefaultMessage from "../components/default-message";
 import MatchInfo from "../components/match-info";
 import UpdateProfileModal from "../components/update-profile-modal";
 
@@ -136,9 +137,16 @@ export default class extends React.Component {
 
   render() {
     //console.log(this.state.user.potentialMentees);
-    const mentees = this.state.user.potentialMentees.map((mentee, index) => (
-      <MatchInfo user={mentee} pickMentee={true} key={index} />
-    ));
+    const menteeInfoCards = this.state.user.potentialMentees.map(
+      (mentee, index) => (
+        <MatchInfo
+          user={mentee}
+          mentorId={this.state.user.id}
+          pickMentee={true}
+          key={index}
+        />
+      )
+    );
 
     return (
       <div className="mentor-dashboard-div">
@@ -150,7 +158,11 @@ export default class extends React.Component {
           loggedin={true}
           openUpdateModal={e => this.openModal(e)}
         >
-          {mentees}
+          {this.state.user.potentialMentees[0] ? (
+            menteeInfoCards
+          ) : (
+            <DefaultMessage role="mentor" />
+          )}
         </Dashboard>
         {this.state.updateModalIsOpen ? (
           <UpdateProfileModal

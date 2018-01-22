@@ -2,7 +2,7 @@ export default function DefaultMessage(props) {
   return (
     <div className="default-message">
       <h2 className="default-header">Welcome to Mentor Weekly</h2>
-      {props.role === "mentee" ? (
+      {props.role === "mentor" ? (
         <p className="default-p">
           Keep an eye out for an email at the address you provided. Mentor
           Weekly will alert you when custom candidates are ready in your{" "}
@@ -10,8 +10,8 @@ export default function DefaultMessage(props) {
         </p>
       ) : (
         <p className="default-p">
-          You will receive an email at the address you provided with once we
-          find you the perfect mentor.
+          You will receive an email at the address you provided once we find you
+          the perfect mentor.
         </p>
       )}
       <style jsx>{`

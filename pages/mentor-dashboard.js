@@ -90,7 +90,11 @@ export default class extends React.Component {
           loggedin={true}
           openUpdateModal={e => this.openModal(e)}
         >
-          {this.state.user.mentees ? menteeInfoCards : <DefaultMessage />}
+          {this.state.user.mentees[0] ? (
+            menteeInfoCards
+          ) : (
+            <DefaultMessage role="mentor" />
+          )}
         </Dashboard>
         {this.state.updateModalIsOpen ? (
           <UpdateProfileModal

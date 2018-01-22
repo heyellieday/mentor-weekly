@@ -11,10 +11,10 @@ export default function MatchInfo(props) {
     }
   }
 
- function  pickMentee(newData) {
-    fetch(`api/users/${props.mentorId}/${props.user._id}`, {
+  function pickMentee() {
+    fetch(`api/users/${props.mentorId}/${props.user.id}`, {
       method: "PUT",
-      body: JSON.stringify(newData),
+      body: JSON.stringify({ id: props.mentorId }),
       headers: new Headers({
         "Content-Type": "application/json"
       })
@@ -26,12 +26,8 @@ export default function MatchInfo(props) {
         console.log(this.props.user);
         return res.json();
       })
-      .then(() => this.props.updateDashboard()
-      .catch(err =>
-        this.setState({
-          error: "Could not load user"
-        })
-      )
+      .then(() => this.props.updateDashboard())
+      .catch(err => console.log({ error: err }));
   }
 
   function removeMentee() {
@@ -46,13 +42,13 @@ export default function MatchInfo(props) {
         if (!res.ok) {
           return Promise.reject(res.statusText);
         }
-        console.log(this.props.user);
+        console.log(props.user);
+        props.updateDashboard();
         return res.json({ Message: "Mentee successfully removed" });
       })
-      .then(() => (this.props.loggedin ? this.props.updateDashboard() : ""))
       .catch(err =>
         console.log({
-          error: "Could not delete user"
+          error: err
         })
       );
   }
@@ -93,7 +89,7 @@ export default function MatchInfo(props) {
               <Button
                 size="small"
                 text="add mentee"
-                onClick={e => e.preventDefault()}
+                onClick={() => pickMentee()}
                 color="white"
                 backgroundColor="turquoise"
               />
