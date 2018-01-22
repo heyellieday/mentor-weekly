@@ -11,7 +11,7 @@
 
 ###API:
 
-* sendgrid
+* configure sendgrid
 
 ###Auth:
 
@@ -49,6 +49,7 @@
 * responsive nav bar
 * add portfolio question to mentor form, add all fields to dashboards, except mentor lookingFor in match-info
 * create different props for default message for mentor or mentee
+* add get req for help page
 
 ###API:
 
@@ -65,6 +66,7 @@
   * Mentor remove-mentee delete req
   * Mentor add-mentee put req
   * add mentor PUT req to "add mentee" button
+* install sendgrid
 
 ###Auth:
 
