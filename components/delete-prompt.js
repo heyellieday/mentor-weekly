@@ -4,11 +4,11 @@ export default function DeletePrompt(props) {
   return (
     <div className="delete-prompt ${props.addClass?props.addClass}">
       <p>
-        Are you sure you want to delete all of this mentees info from your
-        account and your info from theirs?
+        Are you sure you want to delete this mentee? You will also be removed
+        from their dashboard.
       </p>
       <Button
-        onClick={props.removeMentee}
+        onClick={props.onClick}
         size="small"
         text="yes, delete mentee"
         color="black"
@@ -23,8 +23,8 @@ export default function DeletePrompt(props) {
           font-weight: 200;
           text-align: center;
         }
-        .hidden {
-          display: none;
+        p {
+          font-size: 14px;
         }
       `}</style>
     </div>
