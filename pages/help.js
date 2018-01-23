@@ -80,11 +80,11 @@ export default class Help extends React.Component {
           loggedin="true"
           openUpdateModal={e => this.openModal(e)}
         >
-          <Helpform />
+          <Helpform role={this.state.user.role} />
         </Dashboard>
         {this.state.updateModalIsOpen ? (
           <UpdateProfileModal
-            role="mentee"
+            role={this.state.user.role}
             closeModal={e => this.closeModal(e)}
           />
         ) : null}

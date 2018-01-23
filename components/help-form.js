@@ -3,7 +3,9 @@ import Button from "../components/button";
 export default class Helpform extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      allFieldsFilled: false
+    };
   }
   sendHelpMessage(event) {
     event.preventDefault();
@@ -14,8 +16,19 @@ export default class Helpform extends React.Component {
       subject: this.subjectInput.value,
       issue: this.issueInput.value
     };
-    console.log(data);
-    this.sendEmailRequest(data);
+    let validated =
+      this.firstNameInput.value &&
+      this.lastNameInput.value &&
+      this.emailInput.value &&
+      this.subjectInput.value &&
+      this.issueInput.value;
+    console.log(validated);
+    if (validated) {
+      console.log(data);
+      this.sendEmailRequest(data);
+    } else {
+      alert("Be sure to fill out every field so we can send your message.");
+    }
   }
 
   sendEmailRequest(data) {
@@ -33,6 +46,7 @@ export default class Helpform extends React.Component {
         return res.json();
       })
       .then(() => alert("email sent"))
+      .then(() => (window.location = `/${this.props.role}-dashboard`))
       .catch(err => console.log(err));
   }
   render() {
@@ -66,7 +80,7 @@ export default class Helpform extends React.Component {
           </label>
           <input
             ref={input => (this.emailInput = input)}
-            type="text"
+            type="email"
             id="email"
             className="block block-input"
           />
@@ -90,6 +104,7 @@ export default class Helpform extends React.Component {
           />
           <div className="extra" />
           <Button
+            type="submit"
             text="send message"
             color="turquoise"
             backgroundColor="#F4F4F4"
