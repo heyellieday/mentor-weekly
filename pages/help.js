@@ -3,16 +3,6 @@ import Dashboard from "../components/dashboard";
 import Helpform from "../components/help-form";
 import UpdateProfileModal from "../components/update-profile-modal";
 
-//const sgMail = require("@sendgrid/mail");
-//sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-const msg = {
-  to: "animblestudio@gmail.com",
-  from: "help@mentorweekly.com",
-  subject: "Sending with SendGrid is Fun",
-  text: "and easy to do anywhere, even with Node.js",
-  html: "<strong>and easy to do anywhere, even with Node.js</strong>"
-};
-
 export default class Help extends React.Component {
   constructor(props) {
     super(props);
@@ -68,11 +58,6 @@ export default class Help extends React.Component {
           error: "Could not load user"
         })
       );
-  }
-
-  sendHelpMessage() {
-    //  event.preventDefault();
-    sgMail.send(msg);
   }
 
   openModal(event) {

@@ -7,11 +7,10 @@
 ###Front-end:
 
 * dashboard hidden overflow issue
-* make "are you sure?" alert for remove mentee button
 
 ###API:
 
-* configure sendgrid
+* deploy on "now" (next)
 
 ###Auth:
 
@@ -50,6 +49,9 @@
 * add portfolio question to mentor form, add all fields to dashboards, except mentor lookingFor in match-info
 * create different props for default message for mentor or mentee
 * add get req for help page
+* make "are you sure?" alert for remove mentee button
+* convert button conditionals into styles
+* group matchinfo fields into "mentor" or "mentee"
 
 ###API:
 
@@ -67,6 +69,7 @@
   * Mentor add-mentee put req
   * add mentor PUT req to "add mentee" button
 * install sendgrid
+* configure sendgrid
 
 ###Auth:
 

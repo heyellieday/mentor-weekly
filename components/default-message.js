@@ -4,9 +4,8 @@ export default function DefaultMessage(props) {
       <h2 className="default-header">Welcome to Mentor Weekly</h2>
       {props.role === "mentor" ? (
         <p className="default-p">
-          Keep an eye out for an email at the address you provided. Mentor
-          Weekly will alert you when custom candidates are ready in your{" "}
-          <em>"pick a mentee"</em> page.
+          Go to your <em>"pick a mentee"</em> page to check out available
+          candidates.
         </p>
       ) : (
         <p className="default-p">
