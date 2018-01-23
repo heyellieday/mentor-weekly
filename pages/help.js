@@ -84,8 +84,11 @@ export default class Help extends React.Component {
         </Dashboard>
         {this.state.updateModalIsOpen ? (
           <UpdateProfileModal
+            user={this.state.user}
             role={this.state.user.role}
+            loggedin={true}
             closeModal={e => this.closeModal(e)}
+            updateDashboard={() => this.getUserFromApi()}
           />
         ) : null}
         <style jsx>{``}</style>

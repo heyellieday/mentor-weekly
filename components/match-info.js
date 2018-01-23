@@ -186,6 +186,9 @@ export default class MatchInfo extends React.Component {
                   backgroundColor="turquoise"
                 />
               ) : (
+                ""
+              )}
+              {this.props.user.role === "mentee" && !this.props.pickMentee ? (
                 <Button
                   size="small"
                   text="remove mentee"
@@ -194,6 +197,8 @@ export default class MatchInfo extends React.Component {
                   backgroundColor="white"
                   border="none"
                 />
+              ) : (
+                ""
               )}
               {this.state.removeMenteeOpen ? (
                 <DeletePrompt onClick={() => this.removeMentee()} />
@@ -226,6 +231,7 @@ export default class MatchInfo extends React.Component {
           border-radius: 50%;
           overflow: hidden;
           margin: 0 auto;
+          background-color: #84D6D2;
         }
         .profile-photo{
           height: 150px;
@@ -265,6 +271,7 @@ export default class MatchInfo extends React.Component {
             .profile-photo-name-div{
               float: left;
               padding: 0 20px 20px 0;
+              max-width: 200px;
             }
           }
           `}</style>

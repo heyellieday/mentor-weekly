@@ -125,7 +125,9 @@ export default class extends React.Component {
           <UpdateProfileModal
             role="mentor"
             user={this.state.user}
+            loggedin={true}
             closeModal={e => this.closeModal(e)}
+            updateDashboard={() => this.getUserFromApi()}
           />
         ) : null}
         <style jsx>{`
