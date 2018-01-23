@@ -302,6 +302,7 @@ export default class MenteeForm extends React.Component {
         {this.props.user ? (
           <Button
             color="#1e1e1e"
+            size="cancel"
             text="cancel"
             onClick={this.props.closeModal}
             block="true"
