@@ -91,7 +91,6 @@ export default class Help extends React.Component {
             updateDashboard={() => this.getUserFromApi()}
           />
         ) : null}
-        <style jsx>{``}</style>
       </div>
     );
   }

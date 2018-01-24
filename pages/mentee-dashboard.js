@@ -99,7 +99,6 @@ export default class extends React.Component {
             updateDashboard={() => this.getUserFromApi()}
           />
         ) : null}
-        <style jsx>{``}</style>
       </div>
     );
   }
