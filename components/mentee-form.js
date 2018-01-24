@@ -285,6 +285,7 @@ export default class MenteeForm extends React.Component {
         {this.props.user ? (
           <Button
             color="turquoise"
+            backgroundColor="white"
             text="save changes"
             type="submit"
             onClick={e => this.saveChanges(e)}
@@ -302,6 +303,7 @@ export default class MenteeForm extends React.Component {
         {this.props.user ? (
           <Button
             color="#1e1e1e"
+            backgroundColor="white"
             size="cancel"
             text="cancel"
             onClick={this.props.closeModal}

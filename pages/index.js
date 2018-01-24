@@ -26,11 +26,7 @@ export default class extends React.Component {
   togglePhotoCredit() {
     this.setState({ photoCreditIsOpen: !this.state.photoCreditIsOpen });
   }
-  // static getInitialProps ({ query }) {
-  //   return {
-  //     name: query.name,
-  //   }
-  // }
+
   render() {
     // const { url, name } = this.props
     return (
@@ -53,12 +49,14 @@ export default class extends React.Component {
                 size="large"
                 color="Turquoise"
                 text="get involved"
+                backgroundColor="white"
               />
               <ButtonLink
                 linkTo="#infographic"
                 size="large"
                 color="Coral"
                 text="learn more"
+                backgroundColor="white"
               />
             </div>
             <div>

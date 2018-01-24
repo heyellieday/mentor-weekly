@@ -10,7 +10,7 @@ export default function Dashboard(props) {
         loggedin={props.loggedin}
       />
       <Sidebar user={props.user} openUpdateModal={props.openUpdateModal} />
-      <h1 className={props.pickMentee ? "title title-teal" : "title"}>
+      <h1 className={props.pickMentee ? "title title-white" : "title"}>
         {props.title}
       </h1>
       <div className="children">{props.children}</div>
@@ -32,9 +32,9 @@ export default function Dashboard(props) {
           clear: right;
           width: 300px;
         }
-        .title-teal {
+        .title-white {
           color: white;
-          font-width: normal;
+          font-weight: normal;
         }
         .children {
           height: 100%;

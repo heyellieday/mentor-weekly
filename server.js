@@ -34,11 +34,15 @@ nextApp.prepare().then(() => {
   app.use(bodyParser.json());
   app.use("/api/users", usersRouter);
   app.use("/api/help", helpRouter);
-  app.use(jwtCheck);
+  //app.use(jwtCheck);
 
-  app.get("/api/users", "/api/help", function(req, res) {
-    res.send("Secured Resource");
-  });
+  // app.get("/api/users", function(req, res) {
+  //   res.send("Secured Resource");
+  // });
+  //
+  // app.get("/api/users", function(req, res) {
+  //   res.send("Secured Resource");
+  // });
 
   app.get("*", (req, res) => {
     handle(req, res);

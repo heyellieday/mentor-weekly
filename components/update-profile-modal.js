@@ -62,6 +62,7 @@ export default function UpdateProfileModal(props) {
             position: absolute;
             top: 12px;
             right: 10px;
+            background-color: white;
           }
 
           @media only screen and (min-width: 700px) {
