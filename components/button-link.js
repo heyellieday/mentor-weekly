@@ -23,41 +23,43 @@ export default function ButtonLink(props) {
 
   function borderwidth() {
     if (props.size) {
-      return ("1px");
+      return "1px";
     } else {
-      return ("2px");
+      return "2px";
     }
   }
 
   return (
-    <span className='button-span'>
-      <div className='button-div'>
-      <Link href={props.linkTo}>
-        <a>
-          <button className="button" >{props.text}</button>
-        </a>
-      </Link>
+    <span className="button-span">
+      <div className="button-div">
+        <Link href={props.linkTo}>
+          <a>
+            <button className="button">{props.text}</button>
+          </a>
+        </Link>
       </div>
       <style jsx>{`
-        .button{
+        .button {
           box-sizing: border-box;
           background-color: ${props.backgroundColor};
           color: ${props.color};
-          border: ${props.border ? props.border : borderwidth() + " solid "+ props.color};
+          border: ${props.border
+            ? props.border
+            : borderwidth() + " solid " + props.color};
           font: ${buttonSize()} "Helvetica Neue", Helvetica, sans-serif;
           font-weight: 200;
           padding: ${buttonPadding()};
-          margin: ${(props.size === "small") ? "8px 15px" : "27px" };
+          margin: ${props.size === "small" ? "8px 15px" : "27px"};
           text-align: center;
         }
-        .button-div{
+        .button-div {
           display: inline;
           text-align: center;
         }
-        .button-span{
+        .button-span {
           display: ${props.block ? "block" : "inline"};
         }
       `}</style>
     </span>
-);
+  );
 }

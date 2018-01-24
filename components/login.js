@@ -1,16 +1,20 @@
-import Button from '../components/button';
+import Button from "../components/button";
 
 export default function Login(props) {
   return (
     <div>
       <img className="login-point" src="/static/login-point.svg" />
-      <div className='login-div'>
-          <label htmlFor="email"></label>
-          <input name="email" placeholder="email"></input>
-          <label htmlFor="password"></label>
-          <input name="password" placeholder="password"></input>
-          <Button backgroundColor="#1e1e1e" size="small" color="white" text="log in to mentor weekly"/>
-
+      <div className="login-div">
+        <label htmlFor="email" />
+        <input name="email" placeholder="email" />
+        <label htmlFor="password" />
+        <input name="password" placeholder="password" />
+        <Button
+          backgroundColor="#1e1e1e"
+          size="small"
+          color="white"
+          text="log in to mentor weekly"
+        />
       </div>
       <style jsx>{`
         .login-div {
@@ -25,15 +29,14 @@ export default function Login(props) {
           z-index: 1;
           filter: drop-shadow(0 0 5px #000000);
         }
-        .login-point{
+        .login-point {
           position: absolute;
           top: 0px;
           right: 157px;
           z-index: 1;
           filter: drop-shadow(0 0 5px #000000);
-
         }
-        input{
+        input {
           display: block;
           margin: 16px auto 8px auto;
           border: 1px solid white;
@@ -41,7 +44,7 @@ export default function Login(props) {
           width: 160px;
           padding: 1px 5px;
         }
-        input::placeholder{
+        input::placeholder {
           font-weight: 100;
           font-size: 14px;
         }

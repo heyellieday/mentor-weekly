@@ -1,12 +1,12 @@
-import Document, { Head, Main, NextScript } from 'next/document'
-import flush from 'styled-jsx/server'
-import stylesheet from '../styles/application.scss'
+import Document, { Head, Main, NextScript } from "next/document";
+import flush from "styled-jsx/server";
+import stylesheet from "../styles/application.scss";
 
 export default class MyDocument extends Document {
   static getInitialProps({ renderPage }) {
-    const { html, head, errorHtml, chunks } = renderPage()
-    const styles = flush()
-    return { html, head, errorHtml, chunks, styles }
+    const { html, head, errorHtml, chunks } = renderPage();
+    const styles = flush();
+    return { html, head, errorHtml, chunks, styles };
   }
 
   render() {
@@ -21,6 +21,6 @@ export default class MyDocument extends Document {
           <NextScript />
         </body>
       </html>
-    )
+    );
   }
 }

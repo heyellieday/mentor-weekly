@@ -1,17 +1,17 @@
 export default function Bubblequote(props) {
   return (
     <div className="bubblequote-div">
-        <div className="bubblequote">
-         <div className="text">{props.text}</div>
+      <div className="bubblequote">
+        <div className="text">{props.text}</div>
+      </div>
+      <div className="cite-div">
+        <div className="speech-bubble">
+          <img src="/static/speech-bubble.svg" />
         </div>
-        <div className="cite-div">
-          <div className="speech-bubble">
-            <img src="/static/speech-bubble.svg" />
-          </div>
-          <div className="author-div" >{props.author}</div>
-          {props.role}
-          <em>{props.org}</em>
-        </div>
+        <div className="author-div">{props.author}</div>
+        {props.role}
+        <em>{props.org}</em>
+      </div>
       <style jsx>{`
         .bubblequote-div {
           position: relative;
@@ -27,22 +27,22 @@ export default function Bubblequote(props) {
           text-align: center;
           float: left;
         }
-        .bubblequote{
+        .bubblequote {
           position: relative;
           box-sizing: border-box;
-          background-color: #00C1B8;
+          background-color: #00c1b8;
           font-size: 0.8em;
           border-radius: 15px;
           height: 260px;
           width: 100%;
           padding: 25px;
         }
-        .text{
+        .text {
           position: relative;
           top: 50%;
           transform: translateY(-50%);
         }
-        .author-div{
+        .author-div {
           font-weight: normal;
         }
 
@@ -55,19 +55,17 @@ export default function Bubblequote(props) {
           .bubblequote-div {
             width: 100%;
             padding: 45px;
-
           }
-          .bubblequote{
+          .bubblequote {
             height: 200px;
           }
         }
         @media only screen and (max-width: 975px) {
-          .bubblequote{
+          .bubblequote {
             height: 300px;
           }
-
         }
       `}</style>
     </div>
-);
+  );
 }

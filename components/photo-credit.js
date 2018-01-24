@@ -1,21 +1,52 @@
-
 export default function PhotoCredit(props) {
   return (
     <div>
-      <div className='credit-div'>
-          <div className="x-div"><button onClick={props.close}>x</button></div>
-          <p>
-            <a href="https://pixabay.com/en/smile-profile-face-male-portrait-1726471/" alt="Portrait Source">Male Portrait </a>
-            by
-            <a href="https://pixabay.com/en/users/Raduzak-669296/" alt="Raduzak on Pixabay"> Raduzak </a>
-            licensed under
-          <a href="https://creativecommons.org/licenses/by/2.0/" alt="Creative Commons license"> CC BY 2.0</a>
-          </p>
-          <p>All other photographs are by
-            <a href="https://www.flickr.com/photos/wocintechchat/" alt="WOC in Tech on Flickr"> WOCinTech </a>
-            licensed under
-            <a href="https://creativecommons.org/licenses/by/2.0/" alt="Creative Commons license"> CC BY 2.0</a>
-          </p>
+      <div className="credit-div">
+        <div className="x-div">
+          <button onClick={props.close}>x</button>
+        </div>
+        <p>
+          <a
+            href="https://pixabay.com/en/smile-profile-face-male-portrait-1726471/"
+            alt="Portrait Source"
+          >
+            Male Portrait{" "}
+          </a>
+          by
+          <a
+            href="https://pixabay.com/en/users/Raduzak-669296/"
+            alt="Raduzak on Pixabay"
+          >
+            {" "}
+            Raduzak{" "}
+          </a>
+          licensed under
+          <a
+            href="https://creativecommons.org/licenses/by/2.0/"
+            alt="Creative Commons license"
+          >
+            {" "}
+            CC BY 2.0
+          </a>
+        </p>
+        <p>
+          All other photographs are by
+          <a
+            href="https://www.flickr.com/photos/wocintechchat/"
+            alt="WOC in Tech on Flickr"
+          >
+            {" "}
+            WOCinTech{" "}
+          </a>
+          licensed under
+          <a
+            href="https://creativecommons.org/licenses/by/2.0/"
+            alt="Creative Commons license"
+          >
+            {" "}
+            CC BY 2.0
+          </a>
+        </p>
       </div>
       <img className="login-point" src="/static/login-point.svg" />
       <style jsx>{`
