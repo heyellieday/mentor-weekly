@@ -3,6 +3,8 @@ const next = require("next");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const jwt = require("express-jwt");
+const jwks = require("jwks-rsa");
 const { DATABASE_URL, PORT } = require("./config");
 
 const { router: usersRouter } = require("./users");
@@ -12,6 +14,18 @@ const dev = process.env.NODE_ENV !== "production";
 const nextApp = next({ dev });
 const handle = nextApp.getRequestHandler();
 
+const jwtCheck = jwt({
+  secret: jwks.expressJwtSecret({
+    cache: true,
+    rateLimit: true,
+    jwksRequestsPerMinute: 5,
+    jwksUri: "https://mentorweekly.auth0.com/.well-known/jwks.json"
+  }),
+  audience: "https://mentor-weekly.now.sh/",
+  issuer: "https://mentorweekly.auth0.com/",
+  algorithms: ["RS256"]
+});
+
 nextApp.prepare().then(() => {
   const app = express();
 
@@ -20,6 +34,11 @@ nextApp.prepare().then(() => {
   app.use(bodyParser.json());
   app.use("/api/users", usersRouter);
   app.use("/api/help", helpRouter);
+  app.use(jwtCheck);
+
+  app.get("/api/users", "/api/help", function(req, res) {
+    res.send("Secured Resource");
+  });
 
   app.get("*", (req, res) => {
     handle(req, res);
