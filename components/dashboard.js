@@ -34,7 +34,6 @@ export default function Dashboard(props) {
         }
         .title-white {
           color: white;
-          font-weight: normal;
         }
         .children {
           height: 100%;

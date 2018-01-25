@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import SignIn from "../pages/auth/sign-in";
 
 export default () => (
   <div>

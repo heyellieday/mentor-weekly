@@ -60,7 +60,7 @@ export default function Navbar(props) {
         ) : null}
         {props.loggedin ? (
           <ButtonLink
-            linkTo="/"
+            linkTo="/auth/sign-off?returnTo=/"
             size="small"
             color="Turquoise"
             backgroundColor="white"

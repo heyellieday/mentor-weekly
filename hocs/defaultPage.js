@@ -37,7 +37,6 @@ export default Page =>
     }
 
     render() {
-      const cssFiles = ["https://unpkg.com/normalize.css@5.0.0/normalize.css"];
       return (
         <div>
           <Page {...this.props} />

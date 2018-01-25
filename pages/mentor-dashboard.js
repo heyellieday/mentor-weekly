@@ -5,7 +5,7 @@ import MatchInfo from "../components/match-info";
 import UpdateProfileModal from "../components/update-profile-modal";
 import securePage from "../hocs/securePage";
 
-export default class extends React.Component {
+class MentorDashboard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -110,4 +110,5 @@ export default class extends React.Component {
     );
   }
 }
-//  <Header text={name} />
+
+export default securePage(MentorDashboard);

@@ -37,8 +37,8 @@ class LandingPage extends React.Component {
         <div className="wrap">
           <Navbar loggedin={false} onClick={() => this.togglePopUp()} />
           <div className="landing-page">
+            {this.state.popUpIsOpen ? <SignIn /> : ""}
             <div className="landing-image-div">
-              {this.state.popUpIsOpen ? <SignIn /> : ""}
               <div className="title-div">
                 <h1 className="title">mentor weekly</h1>
                 <h2 className="tagline">
