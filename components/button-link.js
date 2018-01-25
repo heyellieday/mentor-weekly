@@ -1,14 +1,6 @@
 import Link from "next/link";
 
 export default function ButtonLink(props) {
-  function borderwidth() {
-    if (props.size) {
-      return "1px";
-    } else {
-      return "2px";
-    }
-  }
-
   return (
     <span className="button-span">
       <div className="button-div">
@@ -27,9 +19,7 @@ export default function ButtonLink(props) {
           box-sizing: border-box;
           background-color: ${props.backgroundColor};
           color: ${props.color};
-          border: ${props.border
-            ? props.border
-            : borderwidth() + " solid " + props.color};
+          border: ${props.border ? props.border : "1px solid " + props.color};
           font-family: "Helvetica Neue", Helvetica, sans-serif;
           font-weight: 200;
           margin: ${props.size === "small" ? "8px 15px" : "27px"};
