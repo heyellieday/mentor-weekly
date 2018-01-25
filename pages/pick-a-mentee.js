@@ -3,6 +3,7 @@ import Dashboard from "../components/dashboard";
 import DefaultMessage from "../components/default-message";
 import MatchInfo from "../components/match-info";
 import UpdateProfileModal from "../components/update-profile-modal";
+import securePage from "../hocs/securePage";
 
 export default class extends React.Component {
   constructor(props) {

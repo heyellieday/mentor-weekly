@@ -9,8 +9,11 @@ import Signup from "../components/signup";
 import Login from "../components/login";
 import PhotoCredit from "../components/photo-credit";
 import Footer from "../components/footer";
+import defaultPage from "../hocs/defaultPage";
+import securePage from "../hocs/securePage";
+import SignIn from "../pages/auth/sign-in";
 
-export default class extends React.Component {
+class LandingPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -35,7 +38,7 @@ export default class extends React.Component {
           <Navbar loggedin={false} onClick={() => this.togglePopUp()} />
           <div className="landing-page">
             <div className="landing-image-div">
-              {this.state.popUpIsOpen ? <Login /> : ""}
+              {this.state.popUpIsOpen ? <SignIn /> : ""}
               <div className="title-div">
                 <h1 className="title">mentor weekly</h1>
                 <h2 className="tagline">
@@ -202,4 +205,5 @@ export default class extends React.Component {
     );
   }
 }
-//  <Header text={name} />
+
+export default defaultPage(LandingPage);

@@ -2,6 +2,7 @@ import React from "react";
 import Dashboard from "../components/dashboard";
 import Helpform from "../components/help-form";
 import UpdateProfileModal from "../components/update-profile-modal";
+import securePage from "../hocs/securePage";
 
 export default class Help extends React.Component {
   constructor(props) {
