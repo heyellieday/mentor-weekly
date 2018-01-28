@@ -49,6 +49,7 @@ export default class MentorForm extends React.Component {
   }
 
   updateUserData(newData) {
+    //localStorage.setItem('new_user_form', JSON.stringify(newData))
     fetch(`api/users/${newData.id ? newData.id : ""}`, {
       method: `${newData.id ? "PUT" : "POST"}`,
       body: JSON.stringify(newData),

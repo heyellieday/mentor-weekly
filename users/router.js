@@ -26,8 +26,13 @@ router.get("/pick-a-mentee", (req, res) => {
     });
 });
 
-router.get("/:userId", (req, res) => {
-  User.findById(req.params.userId)
+router.get("/:authId", (req, res) => {
+  console.log(req.params.authId);
+  if (req.user.sub != req.params.authId) {
+    console.error("intruder!");
+  };
+
+  User.findOne({ authId: req.params.authId })
     .populate("mentees")
     .populate("mentors")
     .then(user => {

@@ -1,5 +1,8 @@
 import Button from "../components/button";
 import ButtonLink from "../components/button-link";
+import Auth from '../services/auth.js';
+
+const auth = new Auth();
 
 export default function Navbar(props) {
   return (
@@ -44,7 +47,7 @@ export default function Navbar(props) {
             color="#303030"
             backgroundColor="white"
             text="log in"
-            onClick={props.onClick}
+            onClick={auth.login}
             border="none"
           />
         )}

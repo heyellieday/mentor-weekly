@@ -12,7 +12,6 @@ export default class Signup extends React.Component {
 
   form(value) {
     this.setState({ isMentorForm: value });
-    console.log(isMentorForm);
   }
 
   render() {
