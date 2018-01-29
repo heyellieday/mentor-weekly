@@ -6,7 +6,7 @@ export default class Auth {
       domain: "DOMAIN.auth0.com",
       clientID: "CLIENT_ID",
       redirectUri: "http://localhost:8080/auth",
-      audience: "AUDIENCE",
+      audience: "API_AUDIENCE",
       responseType: "token id_token",
       scope: "openid profile"
     });
@@ -17,11 +17,12 @@ export default class Auth {
   };
 
   updateUserData(newData) {
+    console.log("updateUserData is running");
     fetch(`api/users/`, {
       method: "POST",
       body: JSON.stringify(newData),
       headers: new Headers({
-        Authorization: `Bearer ${auth.getAccessToken()}`,
+        Authorization: `Bearer ${this.getAccessToken()}`,
         "Content-Type": "application/json"
       })
     })
@@ -29,15 +30,15 @@ export default class Auth {
         if (!res.ok) {
           return Promise.reject(res.statusText);
         }
-        console.log(this.props.user);
+        //console.log(this.props.user);
         return res.json();
       })
-      .then(() => (this.props.loggedin ? this.props.updateDashboard() : ""))
-      .catch(err =>
-        this.setState({
-          error: "Could not load user"
-        })
-      );
+      //.then(() => (this.props.loggedin ? this.props.updateDashboard() : ""))
+      .catch(err => console.log(err));
+    // this.setState({
+    //   error: "Could not load user"
+    // })
+    // );
   }
 
   handleAuthentication = () => {
@@ -47,8 +48,9 @@ export default class Auth {
         console.log(authResult);
         // grab auth0 id and make new user with saved form data
         const formData = JSON.parse(localStorage.getItem("new_user_form"));
+        formData.authId = authResult.idTokenPayload.sub;
         console.log(formData);
-        //  this.updateUserData(formData);
+        this.updateUserData(formData);
       } else if (err) {
         // navigate to the home route
         console.log(err);

@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 
 const userSchema = mongoose.Schema({
-  authId: { type: String },
   name: {
     firstName: { type: String, required: true },
     lastName: { type: String, required: true }
   },
+  authId: { type: String },
   photoUrl: { type: String, default: "/static/default-profile.png" },
   creationDate: { type: String, default: new Date() },
   role: { type: String, enum: ["mentor", "mentee"] },
@@ -27,6 +27,7 @@ const userSchema = mongoose.Schema({
 userSchema.methods.apiRepr = function() {
   let userdata = {
     id: this._id,
+    authId: this.authId,
     name: this.name,
     photoUrl: this.photoUrl,
     creationDate: this.creationDate,

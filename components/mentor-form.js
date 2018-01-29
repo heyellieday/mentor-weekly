@@ -81,8 +81,8 @@ export default class MentorForm extends React.Component {
     if (this.props.user) {
       this.updateUserData(this.state.user);
     } else {
-      localStorage.setItem("new_user_form", this.state.user);
-      auth.login;
+      localStorage.setItem("new_user_form", JSON.stringify(this.state.user));
+      auth.login();
       //Router.replace("http://localhost:8080/auth");
     }
     this.props.loggedin ? this.props.closeModal(event) : null;

@@ -30,7 +30,7 @@ router.get("/:authId", (req, res) => {
   console.log(req.params.authId);
   if (req.user.sub != req.params.authId) {
     console.error("intruder!");
-  };
+  }
 
   User.findOne({ authId: req.params.authId })
     .populate("mentees")
@@ -59,6 +59,7 @@ router.get("/:authId", (req, res) => {
 router.post("/", (req, res) => {
   const requiredFields = [
     "name",
+    "authId",
     "role",
     "goals",
     "experience",
@@ -80,6 +81,7 @@ router.post("/", (req, res) => {
       firstName: req.body.name.firstName,
       lastName: req.body.name.lastName
     },
+    authId: req.body.authId,
     photoUrl: req.body.photoUrl,
     role: req.body.role,
     goals: req.body.goals,

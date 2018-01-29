@@ -18,8 +18,7 @@
 
 ###Auth:
 
-* save form to localStorage on button click, make post request in uth page instead (started on mentor-dash)
-* redirect to sign-in on "join mentor weekly" click, not POST req
+* have mentee form save form to localStorage on button click
 * have auth page auto redirect to dashboard
 
 ## Complete Tasks:
@@ -84,3 +83,5 @@
 * Read Auth0 tutorial
 * configure logout
 * add user authentication token to all fetch calls
+* redirect to sign-in on "join mentor weekly" click, not POST req
+* have mentor form save form to localStorage on button click, make post request in auth service file instead
