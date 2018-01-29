@@ -1,8 +1,12 @@
 import React from "react";
+import Router from "next/router";
 import Dashboard from "../components/dashboard";
 import DefaultMessage from "../components/default-message";
 import MatchInfo from "../components/match-info";
 import UpdateProfileModal from "../components/update-profile-modal";
+import Auth from "../services/auth";
+
+const auth = new Auth();
 
 export default class extends React.Component {
   constructor(props) {
@@ -41,24 +45,38 @@ export default class extends React.Component {
   }
 
   getUserFromApi() {
-    fetch(`api/users/5a5e49754405f765b9ed27c9`)
-      .then(res => {
-        if (!res.ok) {
-          return Promise.reject(res.statusText);
+    auth.getProfile((_, profile) => {
+      console.log(profile.sub);
+      fetch("/api/users/" + profile.sub, {
+        method: "get",
+        headers: {
+          Authorization: `Bearer ${auth.getAccessToken()}`
         }
-        return res.json();
       })
-      .then(user =>
-        this.setState({
-          user: user,
-          error: ""
+        .then(res => {
+          if (!res.ok) {
+            return Promise.reject(res.statusText);
+          }
+          return res.json();
         })
-      )
-      .catch(err =>
-        this.setState({
-          error: "Could not load user"
-        })
-      );
+        .then(user =>
+          this.setState({
+            user: user,
+            error: ""
+          })
+        )
+        .then(
+          () =>
+            this.state.user.role === "mentor"
+              ? Router.replace("http://localhost:8080/mentor-dashboard")
+              : null
+        )
+        .catch(err =>
+          this.setState({
+            error: "Could not load user"
+          })
+        );
+    });
   }
 
   openModal(event) {

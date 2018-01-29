@@ -1,6 +1,6 @@
 import Button from "../components/button";
 import ButtonLink from "../components/button-link";
-import Auth from '../services/auth.js';
+import Auth from "../services/auth.js";
 
 const auth = new Auth();
 
@@ -68,6 +68,7 @@ export default function Navbar(props) {
             color="Turquoise"
             backgroundColor="white"
             text="log out"
+            onClick={auth.logout}
           />
         ) : (
           <ButtonLink

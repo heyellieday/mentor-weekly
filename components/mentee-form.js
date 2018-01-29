@@ -1,5 +1,8 @@
 import React from "react";
 import Button from "../components/button";
+import Auth from "../services/auth";
+
+const auth = new Auth();
 
 export default class MenteeForm extends React.Component {
   constructor(props) {
@@ -53,6 +56,7 @@ export default class MenteeForm extends React.Component {
       method: `${newData.id ? "PUT" : "POST"}`,
       body: JSON.stringify(newData),
       headers: new Headers({
+        Authorization: `Bearer ${auth.getAccessToken()}`,
         "Content-Type": "application/json"
       })
     })
@@ -73,6 +77,7 @@ export default class MenteeForm extends React.Component {
 
   saveChanges(event) {
     event.preventDefault();
+    console.log(this.state.user.id);
     this.updateUserData(this.state.user);
     this.props.closeModal(event);
   }

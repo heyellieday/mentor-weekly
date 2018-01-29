@@ -1,5 +1,9 @@
 import React from "react";
+import Router from "next/router";
 import Button from "../components/button";
+import Auth from "../services/auth";
+
+const auth = new Auth();
 
 export default class MentorForm extends React.Component {
   constructor(props) {
@@ -50,10 +54,11 @@ export default class MentorForm extends React.Component {
 
   updateUserData(newData) {
     //localStorage.setItem('new_user_form', JSON.stringify(newData))
-    fetch(`api/users/${newData.id ? newData.id : ""}`, {
-      method: `${newData.id ? "PUT" : "POST"}`,
+    fetch(`api/users/${newData.id}`, {
+      method: "PUT",
       body: JSON.stringify(newData),
       headers: new Headers({
+        Authorization: `Bearer ${auth.getAccessToken()}`,
         "Content-Type": "application/json"
       })
     })
@@ -63,7 +68,7 @@ export default class MentorForm extends React.Component {
         }
         return res.json();
       })
-      .then(() => (this.props.loggedin ? this.props.updateDashboard() : ""))
+      .then(() => this.props.updateDashboard())
       .catch(err =>
         this.setState({
           error: "Could not load user"
@@ -73,7 +78,13 @@ export default class MentorForm extends React.Component {
 
   saveChanges(event) {
     event.preventDefault();
-    this.updateUserData(this.state.user);
+    if (this.props.user) {
+      this.updateUserData(this.state.user);
+    } else {
+      localStorage.setItem("new_user_form", this.state.user);
+      auth.login;
+      //Router.replace("http://localhost:8080/auth");
+    }
     this.props.loggedin ? this.props.closeModal(event) : null;
   }
 

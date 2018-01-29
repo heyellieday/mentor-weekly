@@ -1,4 +1,7 @@
 import Button from "../components/button";
+import Auth from "../services/auth";
+
+const auth = new Auth();
 
 export default class Helpform extends React.Component {
   constructor(props) {
@@ -36,6 +39,7 @@ export default class Helpform extends React.Component {
       method: "POST",
       body: JSON.stringify(data),
       headers: new Headers({
+        Authorization: `Bearer ${auth.getAccessToken()}`,
         "Content-Type": "application/json"
       })
     })

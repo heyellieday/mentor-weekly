@@ -6,15 +6,21 @@
 
 ###Front-end:
 
-* dashboard hidden overflow issue
+* dashboard hidden overflow issue: add space to bottom of children
+* add on hover: curser to buttons
+* bug: all delete mentee buttons open at once
+* change email question to reflect login environments
+* add link to sign-in if no userInfo
+* condense button styles
+* render pages without user if no auth token
 
 ###API:
 
-* deploy on "now" (next)
-
 ###Auth:
 
-* start coding from example
+* save form to localStorage on button click, make post request in uth page instead (started on mentor-dash)
+* redirect to sign-in on "join mentor weekly" click, not POST req
+* have auth page auto redirect to dashboard
 
 ## Complete Tasks:
 
@@ -70,7 +76,11 @@
   * add mentor PUT req to "add mentee" button
 * install sendgrid
 * configure sendgrid
+* deploy on "now" (next)
+* Get user req: once user is identified, redirect mentors from mentee dashboard and mentees from mentor dashboard to correct dash
 
 ###Auth:
 
 * Read Auth0 tutorial
+* configure logout
+* add user authentication token to all fetch calls

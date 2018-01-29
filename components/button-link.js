@@ -34,7 +34,12 @@ export default function ButtonLink(props) {
       <div className="button-div">
         <Link href={props.linkTo}>
           <a>
-            <button className="button">{props.text}</button>
+            <button
+              className="button"
+              onClick={props.onClick ? props.onClick : null}
+            >
+              {props.text}
+            </button>
           </a>
         </Link>
       </div>

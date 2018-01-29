@@ -3,6 +3,9 @@ import Button from "../components/button";
 import ButtonLink from "../components/button-link";
 import DefaultMessage from "../components/default-message";
 import DeletePrompt from "../components/delete-prompt";
+import Auth from "../services/auth";
+
+const auth = new Auth();
 
 export default class MatchInfo extends React.Component {
   constructor(props) {
@@ -25,6 +28,7 @@ export default class MatchInfo extends React.Component {
       method: "PUT",
       body: JSON.stringify({ id: this.props.mentorId }),
       headers: new Headers({
+        Authorization: `Bearer ${auth.getAccessToken()}`,
         "Content-Type": "application/json"
       })
     })
@@ -49,6 +53,7 @@ export default class MatchInfo extends React.Component {
     fetch(`api/users/${this.props.mentorId}/${this.props.user._id}`, {
       method: "DELETE",
       headers: new Headers({
+        Authorization: `Bearer ${auth.getAccessToken()}`,
         "Content-Type": "application/json"
       })
     })

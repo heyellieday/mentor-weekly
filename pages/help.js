@@ -2,6 +2,9 @@ import React from "react";
 import Dashboard from "../components/dashboard";
 import Helpform from "../components/help-form";
 import UpdateProfileModal from "../components/update-profile-modal";
+import Auth from "../services/auth";
+
+const auth = new Auth();
 
 export default class Help extends React.Component {
   constructor(props) {
@@ -40,24 +43,32 @@ export default class Help extends React.Component {
   }
 
   getUserFromApi() {
-    fetch(`api/users/5a5ce9cf734d1d3471841675`)
-      .then(res => {
-        if (!res.ok) {
-          return Promise.reject(res.statusText);
+    auth.getProfile((_, profile) => {
+      console.log(profile.sub);
+      fetch("/api/users/" + profile.sub, {
+        method: "get",
+        headers: {
+          Authorization: `Bearer ${auth.getAccessToken()}`
         }
-        return res.json();
       })
-      .then(user =>
-        this.setState({
-          user: user,
-          error: ""
+        .then(res => {
+          if (!res.ok) {
+            return Promise.reject(res.statusText);
+          }
+          return res.json();
         })
-      )
-      .catch(err =>
-        this.setState({
-          error: "Could not load user"
-        })
-      );
+        .then(user =>
+          this.setState({
+            user: user,
+            error: ""
+          })
+        )
+        .catch(err =>
+          this.setState({
+            error: "Could not load user"
+          })
+        );
+    });
   }
 
   openModal(event) {

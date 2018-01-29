@@ -3,6 +3,9 @@ import Dashboard from "../components/dashboard";
 import DefaultMessage from "../components/default-message";
 import MatchInfo from "../components/match-info";
 import UpdateProfileModal from "../components/update-profile-modal";
+import Auth from "../services/auth";
+
+const auth = new Auth();
 
 export default class extends React.Component {
   constructor(props) {
@@ -42,7 +45,16 @@ export default class extends React.Component {
   }
 
   getUserFromApi() {
-    fetch(`api/users/5a5ce9cf734d1d3471841675`)
+    auth
+      .getProfile((_, profile) => {
+        console.log(profile.sub);
+        fetch("/api/users/" + profile.sub, {
+          method: "get",
+          headers: {
+            Authorization: `Bearer ${auth.getAccessToken()}`
+          }
+        });
+      })
       .then(res => {
         if (!res.ok) {
           return Promise.reject(res.statusText);

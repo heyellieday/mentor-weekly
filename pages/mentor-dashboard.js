@@ -1,4 +1,5 @@
 import React from "react";
+import Router from "next/router";
 import Dashboard from "../components/dashboard";
 import DefaultMessage from "../components/default-message";
 import MatchInfo from "../components/match-info";
@@ -45,14 +46,14 @@ export default class extends React.Component {
 
   getUserFromApi() {
     auth.getProfile((_, profile) => {
-      console.log(profile.sub)
-      fetch('/api/users/'+ profile.sub, {
-        method: 'get',
+      console.log(profile.sub);
+      fetch("/api/users/" + profile.sub, {
+        method: "get",
         headers: {
-         'Authorization': `Bearer ${auth.getAccessToken()}`,
+          Authorization: `Bearer ${auth.getAccessToken()}`
         }
       })
-      .then(res => {
+        .then(res => {
           if (!res.ok) {
             return Promise.reject(res.statusText);
           }
@@ -63,6 +64,12 @@ export default class extends React.Component {
             user: user,
             error: ""
           })
+        )
+        .then(
+          () =>
+            this.state.user.role === "mentee"
+              ? Router.replace("http://localhost:8080/mentee-dashboard")
+              : null
         )
         .catch(err =>
           this.setState({
@@ -120,4 +127,3 @@ export default class extends React.Component {
     );
   }
 }
-//  <Header text={name} />
