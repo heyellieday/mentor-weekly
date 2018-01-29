@@ -52,8 +52,8 @@ export default class MenteeForm extends React.Component {
   }
 
   updateUserData(newData) {
-    fetch(`api/users/${newData.id ? newData.id : ""}`, {
-      method: `${newData.id ? "PUT" : "POST"}`,
+    fetch(`api/users/${newData.id}`, {
+      method: "PUT",
       body: JSON.stringify(newData),
       headers: new Headers({
         Authorization: `Bearer ${auth.getAccessToken()}`,
@@ -64,10 +64,9 @@ export default class MenteeForm extends React.Component {
         if (!res.ok) {
           return Promise.reject(res.statusText);
         }
-        console.log(this.props.user);
         return res.json();
       })
-      .then(() => (this.props.loggedin ? this.props.updateDashboard() : ""))
+      .then(() => this.props.updateDashboard())
       .catch(err =>
         this.setState({
           error: "Could not load user"
@@ -77,9 +76,13 @@ export default class MenteeForm extends React.Component {
 
   saveChanges(event) {
     event.preventDefault();
-    console.log(this.state.user.id);
-    this.updateUserData(this.state.user);
-    this.props.closeModal(event);
+    if (this.props.user) {
+      this.updateUserData(this.state.user);
+    } else {
+      localStorage.setItem("new_user_form", JSON.stringify(this.state.user));
+      auth.login();
+    }
+    this.props.loggedin ? this.props.closeModal(event) : null;
   }
 
   handleChange(e, key) {
@@ -132,7 +135,10 @@ export default class MenteeForm extends React.Component {
           }
         />
         <label htmlFor="contact" className="block">
-          which email address can we use to contact you about a mentorship?
+          what email address can we use to contact you about a mentorship?
+          {this.props.user
+            ? ""
+            : "(when you create a password, we will send a verification code to this address)"}
         </label>
         <input
           placeholder={this.props.user ? "" : "ex: someone@yahoo.com"}

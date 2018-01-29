@@ -53,7 +53,6 @@ export default class MentorForm extends React.Component {
   }
 
   updateUserData(newData) {
-    //localStorage.setItem('new_user_form', JSON.stringify(newData))
     fetch(`api/users/${newData.id}`, {
       method: "PUT",
       body: JSON.stringify(newData),
@@ -83,7 +82,6 @@ export default class MentorForm extends React.Component {
     } else {
       localStorage.setItem("new_user_form", JSON.stringify(this.state.user));
       auth.login();
-      //Router.replace("http://localhost:8080/auth");
     }
     this.props.loggedin ? this.props.closeModal(event) : null;
   }
@@ -138,7 +136,10 @@ export default class MentorForm extends React.Component {
           }
         />
         <label htmlFor="contact" className="block">
-          which email address can we use to contact you about a mentorship?
+          what email address can we use to contact you about a mentorship?
+          {this.props.user
+            ? ""
+            : "(when you create a password, we will send a verification code to this address)"}
         </label>
         <input
           placeholder={this.props.user ? "" : "ex: someone@yahoo.com"}

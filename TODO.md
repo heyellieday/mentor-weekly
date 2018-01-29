@@ -18,8 +18,7 @@
 
 ###Auth:
 
-* have mentee form save form to localStorage on button click
-* have auth page auto redirect to dashboard
+* pick-a-mentee GET req should return apiReprs w/o email property
 
 ## Complete Tasks:
 
@@ -85,3 +84,5 @@
 * add user authentication token to all fetch calls
 * redirect to sign-in on "join mentor weekly" click, not POST req
 * have mentor form save form to localStorage on button click, make post request in auth service file instead
+* have mentee form save form to localStorage on button click
+* have auth page auto redirect to dashboard

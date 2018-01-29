@@ -1,12 +1,13 @@
 import auth0 from "auth0-js";
+import Router from "next/router";
 
 export default class Auth {
   constructor() {
     this.auth0 = new auth0.WebAuth({
       domain: "DOMAIN.auth0.com",
-      clientID: "CLIENT_ID",
+      clientID: "ID",
       redirectUri: "http://localhost:8080/auth",
-      audience: "API_AUDIENCE",
+      audience: "AUDIENCE",
       responseType: "token id_token",
       scope: "openid profile"
     });
@@ -33,7 +34,7 @@ export default class Auth {
         //console.log(this.props.user);
         return res.json();
       })
-      //.then(() => (this.props.loggedin ? this.props.updateDashboard() : ""))
+      .then(Router.replace("http://localhost:8080/mentee-dashboard"))
       .catch(err => console.log(err));
     // this.setState({
     //   error: "Could not load user"
@@ -52,7 +53,7 @@ export default class Auth {
         console.log(formData);
         this.updateUserData(formData);
       } else if (err) {
-        // navigate to the home route
+        Router.replace("http://localhost:8080/");
         console.log(err);
       }
     });
