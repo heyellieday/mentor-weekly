@@ -53,12 +53,14 @@ export default class extends React.Component {
                 size="large"
                 color="Turquoise"
                 text="get involved"
+                backgroundColor="white"
               />
               <ButtonLink
                 linkTo="#infographic"
                 size="large"
                 color="Coral"
                 text="learn more"
+                backgroundColor="white"
               />
             </div>
             <div>
