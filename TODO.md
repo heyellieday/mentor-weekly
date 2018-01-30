@@ -16,6 +16,8 @@
 
 ###API:
 
+* send email to mentees when chosen? & add note about this action on pick-a-mentee
+
 ###Auth:
 
 * pick-a-mentee GET req should return apiReprs w/o email property
@@ -85,4 +87,4 @@
 * redirect to sign-in on "join mentor weekly" click, not POST req
 * have mentor form save form to localStorage on button click, make post request in auth service file instead
 * have mentee form save form to localStorage on button click
-* have auth page auto redirect to dashboard
+* have login and verification email auto redirect to dashboard

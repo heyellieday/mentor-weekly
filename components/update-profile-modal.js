@@ -63,6 +63,9 @@ export default function UpdateProfileModal(props) {
             top: 12px;
             right: 10px;
           }
+          .close-button:hover {
+            cursor: pointer;
+          }
 
           @media only screen and (min-width: 700px) {
             .modal {
