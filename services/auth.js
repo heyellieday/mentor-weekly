@@ -1,13 +1,14 @@
 import auth0 from "auth0-js";
 import Router from "next/router";
-
+const { API_URL, AUTH0_CLIENT_ID } = require("../config");
+console.log(AUTH0_CLIENT_ID);
 export default class Auth {
   constructor() {
     this.auth0 = new auth0.WebAuth({
-      domain: "DOMAIN.auth0.com",
-      clientID: "ID",
+      domain: "mentorweekly.auth0.com",
+      clientID: AUTH0_CLIENT_ID,
       redirectUri: "http://localhost:8080/auth",
-      audience: "AUDIENCE",
+      audience: "https://mentorweekly.auth0.com/userinfo",
       responseType: "token id_token",
       scope: "openid profile"
     });
@@ -17,8 +18,7 @@ export default class Auth {
     this.auth0.authorize();
   };
 
-  updateUserData(newData) {
-    console.log("updateUserData is running");
+  createUserProfile(newData) {
     fetch(`api/users/`, {
       method: "POST",
       body: JSON.stringify(newData),
@@ -34,7 +34,7 @@ export default class Auth {
         //console.log(this.props.user);
         return res.json();
       })
-      .then(Router.replace("http://localhost:8080/mentee-dashboard"))
+      .then(Router.replace(`${API_URL}/mentee-dashboard`))
       .catch(err => console.log(err));
     // this.setState({
     //   error: "Could not load user"
@@ -48,10 +48,14 @@ export default class Auth {
         this.setSession(authResult);
         console.log(authResult);
         // grab auth0 id and make new user with saved form data
-        const formData = JSON.parse(localStorage.getItem("new_user_form"));
-        formData.authId = authResult.idTokenPayload.sub;
-        console.log(formData);
-        this.updateUserData(formData);
+        if (localStorage.getItem("new_user_form")) {
+          const formData = JSON.parse(localStorage.getItem("new_user_form"));
+          formData.authId = authResult.idTokenPayload.sub;
+          this.createUserProfile(formData);
+          localStorage.removeItem("new_user_form");
+        } else {
+          Router.replace(`${API_URL}/mentee-dashboard`);
+        }
       } else if (err) {
         Router.replace("http://localhost:8080/");
         console.log(err);

@@ -19,10 +19,10 @@ const jwtCheck = jwt({
     cache: true,
     rateLimit: true,
     jwksRequestsPerMinute: 5,
-    jwksUri: "https://DOMAIN.auth0.com/.well-known/jwks.json"
+    jwksUri: "https://mentorweekly.auth0.com/.well-known/jwks.json"
   }),
-  audience: "AUDIENCE",
-  issuer: "https://DOMAIN.auth0.com/",
+  audience: "https://mentorweekly.auth0.com/userinfo",
+  issuer: "https://mentorweekly.auth0.com/",
   algorithms: ["RS256"]
 });
 
