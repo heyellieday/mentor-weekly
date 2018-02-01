@@ -46,11 +46,10 @@ export default class extends React.Component {
 
   getUserFromApi() {
     auth.getProfile((_, profile) => {
-      console.log(profile.sub);
       fetch("/api/users/" + profile.sub, {
         method: "get",
         headers: {
-          Authorization: `Bearer ${auth.getAccessToken()}`
+          authorization: `Bearer ${auth.getAccessToken()}`
         }
       })
         .then(res => {
@@ -121,4 +120,3 @@ export default class extends React.Component {
     );
   }
 }
-//  <Header text={name} />

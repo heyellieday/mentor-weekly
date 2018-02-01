@@ -5,7 +5,7 @@ const jwks = require("jwks-rsa");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-const { DATABASE_URL, PORT } = require("./config");
+const { API_AUDIENCE, API_URL, DATABASE_URL, PORT } = require("./config");
 
 const { router: usersRouter } = require("./users");
 const { router: helpRouter } = require("./help");
@@ -21,7 +21,7 @@ const jwtCheck = jwt({
     jwksRequestsPerMinute: 5,
     jwksUri: "https://mentorweekly.auth0.com/.well-known/jwks.json"
   }),
-  audience: "https://mentorweekly.auth0.com/userinfo",
+  audience: API_AUDIENCE,
   issuer: "https://mentorweekly.auth0.com/",
   algorithms: ["RS256"]
 });

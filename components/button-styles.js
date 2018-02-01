@@ -1,5 +1,6 @@
 export default function ButtonStyles(props) {
-  return `
+  return (
+    <style jsx>{`
       .button {
         box-sizing: border-box;
         background-color: ${props.backgroundColor};
@@ -39,5 +40,6 @@ export default function ButtonStyles(props) {
         padding: 6px 110px;
         margin: 0 27px 27px 27px;
       }
-    `;
+    `}</style>
+  );
 }
