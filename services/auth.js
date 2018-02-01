@@ -7,7 +7,7 @@ export default class Auth {
     this.auth0 = new auth0.WebAuth({
       domain: "mentorweekly.auth0.com",
       clientID: AUTH0_CLIENT_ID,
-      redirectUri: "http://localhost:8080/auth",
+      redirectUri: `${API_URL}/auth`,
       audience: API_AUDIENCE,
       responseType: "token id_token",
       scope: "openid profile"
@@ -57,7 +57,7 @@ export default class Auth {
           Router.replace(`${API_URL}/mentee-dashboard`);
         }
       } else if (err) {
-        Router.replace("http://localhost:8080/");
+        Router.replace(API_URL);
         console.log(err);
       }
     });
@@ -80,6 +80,7 @@ export default class Auth {
     localStorage.removeItem("access_token");
     localStorage.removeItem("id_token");
     localStorage.removeItem("expires_at");
+    Router.replace(API_URL);
     // navigate to the home route
   };
 

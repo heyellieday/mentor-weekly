@@ -7,6 +7,7 @@ import UpdateProfileModal from "../components/update-profile-modal";
 import Auth from "../services/auth";
 
 const auth = new Auth();
+const { API_URL } = require("../config");
 
 export default class extends React.Component {
   constructor(props) {
@@ -41,6 +42,9 @@ export default class extends React.Component {
   }
 
   componentDidMount() {
+    if (!auth.isAuthenticated()) {
+      Router.replace(API_URL);
+    }
     this.getUserFromApi();
   }
 
@@ -67,7 +71,7 @@ export default class extends React.Component {
         )
         .then(
           this.state.user.role === "mentee"
-            ? Router.replace("http://localhost:8080/mentee-dashboard")
+            ? Router.replace(`${API_URL}/mentee-dashboard`)
             : this.getMentees()
         )
         .catch(err =>

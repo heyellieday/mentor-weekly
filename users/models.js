@@ -5,7 +5,7 @@ const userSchema = mongoose.Schema({
     firstName: { type: String, required: true },
     lastName: { type: String, required: true }
   },
-  authId: { type: String },
+  authId: { type: String, unique: true },
   photoUrl: { type: String, default: "/static/default-profile.png" },
   creationDate: { type: String, default: new Date() },
   role: { type: String, enum: ["mentor", "mentee"] },
@@ -48,6 +48,27 @@ userSchema.methods.apiRepr = function() {
     userdata.background = this.background;
     userdata.availability = this.availability;
   }
+  return userdata;
+};
+
+userSchema.methods.menteeApiRepr = function() {
+  let userdata = {
+    id: this._id,
+    authId: this.authId,
+    name: this.name,
+    photoUrl: this.photoUrl,
+    creationDate: this.creationDate,
+    role: this.role,
+    goals: this.goals,
+    experience: this.experience,
+    skills: this.skills,
+    organization: this.organization,
+    portfolioUrl: this.portfolioUrl,
+    mentees: this.mentees,
+    mentors: this.mentors,
+    background: this.background,
+    availability: this.availability
+  };
   return userdata;
 };
 

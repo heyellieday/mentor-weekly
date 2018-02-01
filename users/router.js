@@ -19,7 +19,7 @@ router.get("/", (req, res) => {
 
 router.get("/pick-a-mentee", (req, res) => {
   User.find({ "mentors.0": { $exists: false }, role: "mentee" })
-    .then(users => res.json(users.map(user => user.apiRepr())))
+    .then(users => res.json(users.map(user => user.menteeApiRepr())))
     .catch(err => {
       console.error(err);
       res.status(500).json({ error: "something went horribly awry" });
@@ -75,32 +75,37 @@ router.post("/", (req, res) => {
       return res.status(400).send(message);
     }
   }
-
-  User.create({
-    name: {
-      firstName: req.body.name.firstName,
-      lastName: req.body.name.lastName
-    },
-    authId: req.body.authId,
-    photoUrl: req.body.photoUrl,
-    role: req.body.role,
-    goals: req.body.goals,
-    experience: req.body.experience,
-    skills: req.body.skills,
-    organization: req.body.organization,
-    contact: req.body.contact,
-    portfolioUrl: req.body.portfolioUrl,
-    //mentor fields only
-    lookingFor: req.body.lookingFor,
-    //mentee fields only
-    background: req.body.background,
-    availability: req.body.availability
-  })
-    .then(user => res.status(201).json(user.apiRepr()))
-    .catch(err => {
-      console.error(err);
-      res.status(500).json({ error: "Something went wrong" });
-    });
+  User.findOne({ authId: req.body.authId }).then(user => {
+    if (user) {
+      return res.json({ message: "user already exists" });
+    } else {
+      User.create({
+        name: {
+          firstName: req.body.name.firstName,
+          lastName: req.body.name.lastName
+        },
+        authId: req.body.authId,
+        photoUrl: req.body.photoUrl,
+        role: req.body.role,
+        goals: req.body.goals,
+        experience: req.body.experience,
+        skills: req.body.skills,
+        organization: req.body.organization,
+        contact: req.body.contact,
+        portfolioUrl: req.body.portfolioUrl,
+        //mentor fields only
+        lookingFor: req.body.lookingFor,
+        //mentee fields only
+        background: req.body.background,
+        availability: req.body.availability
+      })
+        .then(user => res.status(201).json(user.apiRepr()))
+        .catch(err => {
+          console.error(err);
+          res.status(500).json({ error: "Something went wrong" });
+        });
+    }
+  });
 });
 
 router.delete("/:userId", (req, res) => {

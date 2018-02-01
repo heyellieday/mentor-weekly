@@ -6,21 +6,15 @@
 
 ###Front-end:
 
-* dashboard hidden overflow issue: add space to bottom of children
-* add on hover: curser to buttons
-* bug: all delete mentee buttons open at once
-* change email question to reflect login environments
-* add link to sign-in if no userInfo
-* condense button styles
-* render pages without user if no auth token
-
 ###API:
 
-* send email to mentees when chosen? & add note about this action on pick-a-mentee
+* send email to mentees & mentors when chosen? (introduction email, what to expect)
+* have a friend sign up as a mentee, I sign up as a mentor and choose to test emails & system
+* is it safe to have a GET all users req in router?
 
 ###Auth:
 
-* pick-a-mentee GET req should return apiReprs w/o email property
+###Testing:
 
 ## Complete Tasks:
 
@@ -58,6 +52,12 @@
 * make "are you sure?" alert for remove mentee button
 * convert button conditionals into styles
 * group matchinfo fields into "mentor" or "mentee"
+* change email question to reflect login environments
+* condense button styles
+* add on hover: curser to buttons
+* dashboard hidden overflow issue: add space to bottom of children
+* add link to sign-in if no userInfo
+* bug: all delete mentee buttons open at once
 
 ###API:
 
@@ -78,6 +78,8 @@
 * configure sendgrid
 * deploy on "now" (next)
 * Get user req: once user is identified, redirect mentors from mentee dashboard and mentees from mentor dashboard to correct dash
+* pick-a-mentee GET req should return apiReprs w/o email property
+* change matchinfo to not show contact for pick-a-mentee
 
 ###Auth:
 
@@ -88,3 +90,4 @@
 * have mentor form save form to localStorage on button click, make post request in auth service file instead
 * have mentee form save form to localStorage on button click
 * have login and verification email auto redirect to dashboard
+* make sure all urls outside config.js are API_URL, not localhost

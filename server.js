@@ -61,5 +61,4 @@ nextApp.prepare().then(() => {
   if (require.main === module) {
     runServer().catch(err => console.error(err));
   }
-  //  app.listen(3000)
 });

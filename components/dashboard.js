@@ -37,7 +37,7 @@ export default function Dashboard(props) {
           font-width: normal;
         }
         .children {
-          height: 100%;
+          height: 75%;
           right: 0;
           position: relative;
           margin: 0 auto;

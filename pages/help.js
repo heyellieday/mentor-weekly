@@ -3,8 +3,10 @@ import Dashboard from "../components/dashboard";
 import Helpform from "../components/help-form";
 import UpdateProfileModal from "../components/update-profile-modal";
 import Auth from "../services/auth";
+import Router from "next/router";
 
 const auth = new Auth();
+const { API_URL } = require("../config");
 
 export default class Help extends React.Component {
   constructor(props) {
@@ -39,6 +41,9 @@ export default class Help extends React.Component {
   }
 
   componentDidMount() {
+    if (!auth.isAuthenticated()) {
+      Router.replace(API_URL);
+    }
     this.getUserFromApi();
   }
 
