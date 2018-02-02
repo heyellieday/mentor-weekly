@@ -71,11 +71,9 @@ export default class extends React.Component {
         .then(
           () =>
             this.state.user.role === "mentor"
-              ? Router.push(
-                  { page: "mentor dashboard" },
-                  "mentor dashboard page",
-                  "/mentor-dashboard"
-                )
+              ? Router.push("/mentor-dashboard", "/mentor-dashboard", {
+                  shallow: true
+                })
               : null
         )
         .catch(err =>

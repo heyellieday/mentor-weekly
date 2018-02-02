@@ -72,11 +72,9 @@ export default class extends React.Component {
         .then(
           () =>
             this.state.user.role === "mentee"
-              ? Router.push(
-                  { page: "mentee dashboard" },
-                  "mentee dashboard page",
-                  "/mentee-dashboard"
-                )
+              ? Router.push("/mentee-dashboard", "/mentee-dashboard", {
+                  shallow: true
+                })
               : null
         )
         .catch(err =>
