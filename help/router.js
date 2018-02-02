@@ -21,7 +21,9 @@ router.post("/", (req, res) => {
     to: process.env.ADMIN_EMAIL,
     from: "help@mentorweekly.com",
     subject: req.body.subject,
-    //text: "and easy to do anywhere, even with Node.js",
+    text: `You received an email from Mentor Weekly's Help Center: ${
+      req.body.firstName
+    } ${req.body.lastName} at ${req.body.email} asked: '${req.body.issue}'`,
     html: `<div>
             <p><b>You received an email from Mentor Weekly's Help Center:</b></p>
             <hr>

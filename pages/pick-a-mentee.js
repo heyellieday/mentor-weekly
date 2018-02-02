@@ -50,7 +50,6 @@ export default class extends React.Component {
 
   getUserFromApi() {
     auth.getProfile((_, profile) => {
-      console.log(profile.sub);
       fetch("/api/users/" + profile.sub, {
         method: "get",
         headers: {
@@ -109,6 +108,24 @@ export default class extends React.Component {
       );
   }
 
+  sendEmailRequest() {
+    fetch(`api/newMatch`, {
+      method: "POST",
+      body: JSON.stringify({ user: this.state.user }),
+      headers: new Headers({
+        Authorization: `Bearer ${auth.getAccessToken()}`,
+        "Content-Type": "application/json"
+      })
+    })
+      .then(res => {
+        if (!res.ok) {
+          return Promise.reject(res.statusText);
+        }
+        return res.json();
+      })
+      .catch(err => console.log(err));
+  }
+
   openModal(event) {
     event.preventDefault();
     this.setState({ updateModalIsOpen: true });
@@ -127,6 +144,7 @@ export default class extends React.Component {
         pickMentee={true}
         key={index}
         updateDashboard={() => this.getMentees()}
+        emailUsers={() => this.sendEmailRequest()}
       />
     ));
 
@@ -164,4 +182,3 @@ export default class extends React.Component {
     );
   }
 }
-//  <Header text={name} />

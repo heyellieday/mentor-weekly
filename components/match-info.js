@@ -11,7 +11,10 @@ export default class MatchInfo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      removeMenteeOpen: false
+      removeMenteeOpen: false,
+      user: {},
+      menteeId: this.props.user.authId,
+      error: ""
     };
   }
 
@@ -23,7 +26,8 @@ export default class MatchInfo extends React.Component {
     }
   }
 
-  pickMentee() {
+  pickMentee(event) {
+    event.preventDefault();
     fetch(`api/users/${this.props.mentorId}/${this.props.user.id}`, {
       method: "PUT",
       body: JSON.stringify({ id: this.props.mentorId }),
@@ -36,20 +40,13 @@ export default class MatchInfo extends React.Component {
         if (!res.ok) {
           return Promise.reject(res.statusText);
         }
-        // console.log(this.this.props.user);
         this.props.updateDashboard();
-        //  return res.json();
+        this.props.emailUsers();
       })
       .catch(err => console.log(err));
   }
 
   removeMentee() {
-    console.log(
-      "mentor id: ",
-      this.props.mentorId,
-      "mentee id: ",
-      this.props.user._id
-    );
     fetch(`api/users/${this.props.mentorId}/${this.props.user._id}`, {
       method: "DELETE",
       headers: new Headers({
@@ -191,7 +188,7 @@ export default class MatchInfo extends React.Component {
                 <Button
                   size="small"
                   text="add mentee"
-                  onClick={() => this.pickMentee()}
+                  onClick={e => this.pickMentee(e)}
                   color="white"
                   backgroundColor="turquoise"
                 />

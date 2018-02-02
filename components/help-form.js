@@ -34,10 +34,11 @@ export default class Helpform extends React.Component {
     }
   }
 
-  sendEmailRequest(data) {
+  sendEmailRequest(user) {
+    console.log(this.state.user);
     fetch(`api/help`, {
       method: "POST",
-      body: JSON.stringify(data),
+      body: JSON.stringify(user),
       headers: new Headers({
         Authorization: `Bearer ${auth.getAccessToken()}`,
         "Content-Type": "application/json"

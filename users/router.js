@@ -154,7 +154,6 @@ router.put("/:userId", (req, res) => {
   const updateableFields = [
     "name",
     "photoUrl",
-    "creationDate",
     "role",
     "goals",
     "experience",
