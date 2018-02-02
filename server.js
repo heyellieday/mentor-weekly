@@ -9,7 +9,6 @@ const { API_AUDIENCE, API_URL, DATABASE_URL, PORT } = require("./config");
 
 const { router: usersRouter } = require("./users");
 const { router: helpRouter } = require("./help");
-const { router: newMatchRouter } = require("./new-match");
 
 const dev = process.env.NODE_ENV !== "production";
 const nextApp = next({ dev });
@@ -35,7 +34,6 @@ nextApp.prepare().then(() => {
   app.use(bodyParser.json());
   app.use("/api/users", jwtCheck, usersRouter);
   app.use("/api/help", helpRouter);
-  app.use("/api/newMatch", newMatchRouter);
 
   app.get("*", (req, res) => {
     handle(req, res);

@@ -41,7 +41,6 @@ export default class MatchInfo extends React.Component {
           return Promise.reject(res.statusText);
         }
         this.props.updateDashboard();
-        this.props.emailUsers();
       })
       .catch(err => console.log(err));
   }

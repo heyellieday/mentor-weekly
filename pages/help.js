@@ -42,7 +42,7 @@ export default class Help extends React.Component {
 
   componentDidMount() {
     if (!auth.isAuthenticated()) {
-      Router.replace(API_URL);
+      Router.push("/", "/", { shallow: true });
     }
     this.getUserFromApi();
   }

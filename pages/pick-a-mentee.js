@@ -43,7 +43,7 @@ export default class extends React.Component {
 
   componentDidMount() {
     if (!auth.isAuthenticated()) {
-      Router.replace(API_URL);
+      Router.push("/", "/", { shallow: true });
     }
     this.getUserFromApi();
   }
@@ -70,7 +70,9 @@ export default class extends React.Component {
         )
         .then(
           this.state.user.role === "mentee"
-            ? Router.replace(`${API_URL}/mentee-dashboard`)
+            ? Router.push("/mentee-dashboard", "/mentee-dashboard", {
+                shallow: true
+              })
             : this.getMentees()
         )
         .catch(err =>
@@ -108,24 +110,6 @@ export default class extends React.Component {
       );
   }
 
-  sendEmailRequest() {
-    fetch(`api/newMatch`, {
-      method: "POST",
-      body: JSON.stringify({ user: this.state.user }),
-      headers: new Headers({
-        Authorization: `Bearer ${auth.getAccessToken()}`,
-        "Content-Type": "application/json"
-      })
-    })
-      .then(res => {
-        if (!res.ok) {
-          return Promise.reject(res.statusText);
-        }
-        return res.json();
-      })
-      .catch(err => console.log(err));
-  }
-
   openModal(event) {
     event.preventDefault();
     this.setState({ updateModalIsOpen: true });
@@ -144,7 +128,6 @@ export default class extends React.Component {
         pickMentee={true}
         key={index}
         updateDashboard={() => this.getMentees()}
-        emailUsers={() => this.sendEmailRequest()}
       />
     ));
 

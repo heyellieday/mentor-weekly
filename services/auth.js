@@ -1,4 +1,5 @@
-import auth0 from "auth0-js";
+//import auth0 from "auth0-js";
+const auth0 = require("auth0-js");
 import Router from "next/router";
 const { API_AUDIENCE, API_URL, AUTH0_CLIENT_ID } = require("../config");
 
@@ -19,7 +20,7 @@ export default class Auth {
   };
 
   createUserProfile(newData) {
-    fetch(`api/users/`, {
+    fetch("api/users/", {
       method: "POST",
       body: JSON.stringify(newData),
       headers: new Headers({
@@ -31,15 +32,12 @@ export default class Auth {
         if (!res.ok) {
           return Promise.reject(res.statusText);
         }
-        //console.log(this.props.user);
         return res.json();
       })
-      .then(Router.replace(`${API_URL}/mentee-dashboard`))
+      .then(
+        Router.push("/mentee-dashboard", "/mentee-dashboard", { shallow: true })
+      )
       .catch(err => console.log(err));
-    // this.setState({
-    //   error: "Could not load user"
-    // })
-    // );
   }
 
   handleAuthentication = () => {
@@ -53,11 +51,12 @@ export default class Auth {
           formData.authId = authResult.idTokenPayload.sub;
           this.createUserProfile(formData);
           localStorage.removeItem("new_user_form");
-        } else {
-          Router.replace(`${API_URL}/mentee-dashboard`);
         }
+        Router.push("/mentee-dashboard", "/mentee-dashboard", {
+          shallow: true
+        });
       } else if (err) {
-        Router.replace(API_URL);
+        Router.push("/", "/", { shallow: true });
         console.log(err);
       }
     });
@@ -80,7 +79,7 @@ export default class Auth {
     localStorage.removeItem("access_token");
     localStorage.removeItem("id_token");
     localStorage.removeItem("expires_at");
-    Router.replace(API_URL);
+    Router.push("/", "/", { shallow: true });
     // navigate to the home route
   };
 

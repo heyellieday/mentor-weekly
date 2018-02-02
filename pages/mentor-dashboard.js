@@ -43,7 +43,7 @@ export default class extends React.Component {
 
   componentDidMount() {
     if (!auth.isAuthenticated()) {
-      Router.replace(API_URL);
+      Router.push("/", "/", { shallow: true });
     }
     this.getUserFromApi();
   }
@@ -72,7 +72,11 @@ export default class extends React.Component {
         .then(
           () =>
             this.state.user.role === "mentee"
-              ? Router.replace(`${API_URL}/mentee-dashboard`)
+              ? Router.push(
+                  { page: "mentee dashboard" },
+                  "mentee dashboard page",
+                  "/mentee-dashboard"
+                )
               : null
         )
         .catch(err =>

@@ -1,6 +1,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-
+const sgMail = require("@sendgrid/mail");
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+const { API_URL } = require("../config");
 const { User } = require("./models");
 
 const router = express.Router();
@@ -180,7 +182,8 @@ router.put("/:userId", (req, res) => {
 });
 
 router.put("/:mentorId/:menteeId", (req, res) => {
-  let mentorProfile;
+  let mentor;
+  let mentee;
   //if body and param ids all match,
   //add new mentee id to mentor "mentees" list,
   //then add mentor id to mentee's "mentors" list
@@ -198,6 +201,7 @@ router.put("/:mentorId/:menteeId", (req, res) => {
   let updatedMentor;
   User.findById(req.params.mentorId)
     .then(user => {
+      mentor = user;
       user.mentees.push(newMenteeId);
       return user.save();
     })
@@ -206,8 +210,36 @@ router.put("/:mentorId/:menteeId", (req, res) => {
 
   User.findById(req.params.menteeId)
     .then(user => {
+      mentee = user;
       user.mentors.push(mentorId);
       return user.save();
+    })
+    .then(() => {
+      const msg = {
+        to: process.env.ADMIN_EMAIL,
+        from: "admin@mentorweekly.com",
+        subject: "You've been matched!",
+        text: "You've been matched!",
+        html: `<div>
+                <h1>You've been matched!</h1>
+                <hr>
+
+                <p><a>Go to your dashboard</a> to see their full profile.</p>
+                <p>
+                  If you have questions, feel free to
+                  <a href="https://mentorweekly.auth0.com/login">log in</a>
+                  and email us through the
+                  <a href="${API_URL}/help">Help Page<a/>
+                </p>
+                <br/>
+                <p>Happy Learning!</p>
+                <br/>
+                <p>Best Wishes,</p>
+                <p><b>Mentor Weekly</b></p>
+              </div>`
+      };
+
+      sgMail.send(msg);
     })
     .then(
       updatedMentee => res.sendStatus(201)
