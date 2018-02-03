@@ -24,8 +24,8 @@ router.post("/", (req, res) => {
     text: `You received an email from Mentor Weekly's Help Center: ${
       req.body.firstName
     } ${req.body.lastName} at ${req.body.email} asked: '${req.body.issue}'`,
-    html: `<div>
-            <p><b>You received an email from Mentor Weekly's Help Center:</b></p>
+    html: `<div style="font:20px 100 'Helvetica Neue', Helvetica; font-weight:100;">
+            <p><b>You received an email from <a href="https://mentor-weekly.now.sh/">Mentor Weekly</a>'s Help Center:</b></p>
             <hr>
             <p><b>from: </b>${req.body.firstName} ${req.body.lastName} at ${
       req.body.email

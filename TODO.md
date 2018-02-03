@@ -6,9 +6,11 @@
 
 ###Front-end:
 
+* delete any console.logs that arent for (err)
+
 ###API:
 
-* send email to mentees & mentors when chosen? (introduction email, what to expect)
+* send email using sendgrid to mentees & mentors when chosen? (introduction email, what to expect)
 * have a friend sign up as a mentee, I sign up as a mentor and choose to test emails & system
 * is it safe to have a GET all users req in router?
 
@@ -58,6 +60,7 @@
 * dashboard hidden overflow issue: add space to bottom of children
 * add link to sign-in if no userInfo
 * bug: all delete mentee buttons open at once
+* fix NOW redirect for role dashboard redirect
 
 ###API:
 
@@ -78,7 +81,7 @@
 * configure sendgrid
 * deploy on "now" (next)
 * Get user req: once user is identified, redirect mentors from mentee dashboard and mentees from mentor dashboard to correct dash
-* pick-a-mentee GET req should return apiReprs w/o email property
+* pick-a-mentee GET req should return apiReprs w/o contact(email) property
 * change matchinfo to not show contact for pick-a-mentee
 
 ###Auth:

@@ -216,15 +216,21 @@ router.put("/:mentorId/:menteeId", (req, res) => {
     })
     .then(() => {
       const msg = {
-        to: process.env.ADMIN_EMAIL,
+        to: [
+          {
+            email: mentor.contact
+          },
+          {
+            email: mentee.contact
+          }
+        ],
         from: "admin@mentorweekly.com",
         subject: "You've been matched!",
         text: "You've been matched!",
-        html: `<div>
-                <h1>You've been matched!</h1>
+        html: `<div style="font:20px 100 'Helvetica Neue', "Segoe UI", Helvetica, sans-serif; font-weight:100;">
+                <h1 style="color:#00c1b8;">You've been matched!</h1>
                 <hr>
-
-                <p><a>Go to your dashboard</a> to see their full profile.</p>
+                <p><a href="${API_URL}/mentor-dashboard">Go to your dashboard</a> to see their full profile.</p>
                 <p>
                   If you have questions, feel free to
                   <a href="https://mentorweekly.auth0.com/login">log in</a>
