@@ -5,15 +5,19 @@
     "@sendgrid/mail": "^6.2.1",
     "auth0-js": "^9.1.2",
     "autoprefixer": "^7.2.4",
+    "babel-eslint": "^7.2.3",
     "babel-plugin-module-resolver": "^3.0.0",
     "babel-plugin-wrap-in-js": "^1.1.1",
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
+    "eslint": "^4.17.0",
+    "eslint-plugin-react": "^7.6.1",
     "express": "^4.16.2",
     "express-jwt": "^5.3.0",
     "glob": "^7.1.2",
+    "jest": "^22.1.4",
     "jwks-rsa": "^1.2.1",
     "mongoose": "^4.13.9",
     "morgan": "^1.9.0",
@@ -26,10 +30,12 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-router-dom": "^4.2.2",
+    "react-scripts": "^1.1.0",
+    "react-test-renderer": "^16.2.0",
     "sass-loader": "^6.0.6"
   },
   "devDependencies": {
-    "babel-eslint": "7.0.0",
+    "ll": "0.0.1",
     "standard": "8.4.0"
   },
   "standard": {
@@ -39,6 +45,7 @@
     "dev": "node server.js",
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
-    "deploy": "sh deploy.sh"
+    "deploy": "sh deploy.sh",
+    "test": "NODE_ENV=test jest"
   }
 }

@@ -10,7 +10,7 @@ import Login from "../components/login";
 import PhotoCredit from "../components/photo-credit";
 import Footer from "../components/footer";
 
-export default class extends React.Component {
+export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
