@@ -13,6 +13,22 @@ export default class MyDocument extends Document {
     return (
       <html>
         <Head>
+          <meta property="og:title" content="Mentor Weekly" />
+          <meta
+            property="og:description"
+            content="A better mentoring platform for those in tech"
+          />
+          <meta
+            property="og:image"
+            content="https://www.flickr.com/photos/wocintechchat/25171599783/in/album-72157665958495865/"
+          />
+          <meta property="og:url" content="https://mentor-weekly.now.sh" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta property="og:site_name" content="Mentor Weekly" />
+          <meta
+            name="twitter:image:alt"
+            content="A better mentoring platform for those in tech"
+          />
           <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
           <link rel="icon" type="image/x-icon" href="/static/logo.ico?v=2" />
         </Head>
