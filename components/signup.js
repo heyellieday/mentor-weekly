@@ -29,7 +29,7 @@ export default class Signup extends React.Component {
               onClick={() => this.form(true)}
               value="mentor"
             />
-            <label htmlFor="signup">be a mentor</label>
+            <label htmlFor="signup">being a mentor</label>
             <input
               type="radio"
               id="signup"
@@ -38,7 +38,7 @@ export default class Signup extends React.Component {
               onClick={() => this.form(false)}
               value="mentee"
             />
-            <label htmlFor="signup">be a mentee</label>
+            <label htmlFor="signup">being a mentee</label>
           </div>
           {this.state.isMentorForm ? <MentorForm /> : <MenteeForm />}
         </form>
@@ -49,12 +49,12 @@ export default class Signup extends React.Component {
             border-bottom: 1px solid white;
             width: 200px;
             margin: 30px auto;
-            padding: 5px;
+            padding: 0;
           }
           .signup {
             position: relative;
             background-color: Turquoise;
-            padding: 45px;
+            padding: 5px;
             box-sizing: border-box;
             color: white;
             font: 18px "Helvetica Neue", "Segoe UI", Helvetica, sans-serif;
@@ -62,7 +62,7 @@ export default class Signup extends React.Component {
             text-align: center;
           }
           legend {
-            margin-bottom: 5px;
+            margin: 5px auto;
           }
           input {
             margin: 5px 10px 20px 10px;
@@ -75,6 +75,12 @@ export default class Signup extends React.Component {
           }
           .radio-div {
             margin-bottom: 5px;
+          }
+
+          @media only screen and (min-width: 400px) {
+            .signup {
+              padding: 45px;
+            }
           }
         `}</style>
       </div>
