@@ -12,6 +12,6 @@
       }
     ]
   ],
-  "presets": ["next/babel"],
+  "presets": ["env", "react", "next/babel"],
   "ignore": []
 }
