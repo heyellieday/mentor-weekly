@@ -10,10 +10,10 @@ describe("With Enzyme", () => {
   it("Renders without crashing", () => {
     shallow(<App />);
   });
-  it('App shows "Mentor Weekly"', () => {
+  it('App shows "mentor weekly"', () => {
     const app = shallow(<App />);
 
-    expect(app.find("h1")).toEqual("Mentor Weekly");
+    expect(app.find("h1").text()).toEqual("mentor weekly");
   });
 });
 

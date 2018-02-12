@@ -4,6 +4,7 @@ const sgMail = require("@sendgrid/mail");
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 const { API_URL } = require("../config");
 const { User } = require("./models");
+const React = require("react");
 
 const router = express.Router();
 const jsonParser = bodyParser.json();
@@ -182,11 +183,129 @@ router.put("/:userId", (req, res) => {
 });
 
 router.put("/:mentorId/:menteeId", (req, res) => {
-  let mentor;
-  let mentee;
   //if body and param ids all match,
   //add new mentee id to mentor "mentees" list,
   //then add mentor id to mentee's "mentors" list
+  //then send welcome email to both
+  let mentor;
+  let mentee;
+  const loginUrl =
+    "https://mentorweekly.auth0.com/login?client=b0TkP7ovjzFrJGI7l0w1AAjZKsJzVL_H&protocol=oauth2&redirect_uri=https%3A%2F%2Fmentor-weekly.now.sh%2Fauth&response_type=token%20id_token&scope=openid%20profile&audience=http%3A%2F%2Flocalhost%3A8080%2F&nonce=R5.YmjdjP5pqFdIzAKHnsUA62znvZB.7&auth0Client=eyJuYW1lIjoiYXV0aDAuanMiLCJ2ZXJzaW9uIjoiOS4yLjAifQ%3D%3D&state=GmqGoegOMBKsRHt8vw20vc-TXAmgjvAI";
+  function MatchEmailInfo(props) {
+    const user = props;
+
+    function displayMenteeFields() {
+      return `<div style="margin: 10px; text-align: left;">
+            <p>
+              <b>Goals: </b>
+              ${props.goals}
+            </p>
+            <p>
+              <b>Background: </b>
+              ${props.background}
+            </p>
+            <p>
+              <b>Experience: </b>
+              ${props.experience}
+            </p>
+            <p>
+              <b>Preferred Organizations: </b>
+              ${props.organization}
+            </p>
+            <p>
+              <b>Skills: </b>
+              ${props.skills}
+            </p>
+            <p>
+              <b>Portfolio: </b>
+              ${props.portfolioUrl}
+            </p>
+            <p>
+              <b>Availability: </b>
+              ${props.availability}
+            </p>
+              <p>
+                <b>Contact: </b>
+                ${props.contact}
+              </p>
+          </div>`;
+    }
+
+    function displayMentorFields() {
+      return `<div style="margin: 10px; text-align: left;">
+            <p>
+              <b>Goals: </b>
+              ${props.goals}
+            </p>
+            <p>
+              <b>Experience: </b>
+              ${props.experience}
+            </p>
+            <p>
+              <b>Organization: </b>
+              ${props.organization}
+            </p>
+            <p>
+              <b>Expertise: </b>
+              ${props.skills}
+            </p>
+              <p>
+                <b>Portfolio: </b>
+                ${props.portfolioUrl}
+              </p>
+            <p>
+              <b>Contact: </b>
+              ${props.contact}
+            </p>
+          </div>`;
+    }
+
+    return `<div
+          style="box-sizing: border-box;
+          position: relative;
+          background-color: white;
+          padding: 70px 45px;
+          color: #1e1e1e;
+          display: inline-block;
+          font-family: "Helvetica Neue", "Segoe UI", Helvetica, sans-serif;
+          font-weight: 100;
+          width: 300px;
+          text-align: center;
+          margin: 0 auto 60px auto;
+          overflow: scroll;"
+        >
+          <div className="profile">
+            <div className="profile-photo-name-div">
+              <div style="width: 150px;
+              height: 150px;
+              border-radius: 50%;
+              overflow: hidden;
+              margin: 0 auto;
+              background-color: #84D6D2;">
+                <img
+                  src=${"" + props.photoUrl}
+                  className="profile-photo"
+                  style="max-height: 150px;
+                  height: 150px;
+                  text-align: center;"
+                  alt="profile photo"
+                />
+              </div>
+              <h2 className="username" style="font-weight: 200;
+              text-align: center;">
+                ${props.name.firstName + " " + props.name.lastName}
+              </h2>
+              <h3 className="role" style="font-weight: 100; text-align: center;">${
+                props.role
+              }</h3>
+            </div>
+            <div className="profile-info-div" style="text-align: left;">
+              ${props.role === "mentee" ? displayMenteeFields() : ""}
+              ${props.role === "mentor" ? displayMentorFields() : ""}
+            </div>
+          </div>
+        </div>`;
+  }
 
   if (
     !(req.params.mentorId && req.body.id && req.params.mentorId === req.body.id)
@@ -227,18 +346,20 @@ router.put("/:mentorId/:menteeId", (req, res) => {
         from: "admin@mentorweekly.com",
         subject: "You've been matched!",
         text: "You've been matched!",
-        html: `<div style="font:20px 100 'Helvetica Neue', "Segoe UI", Helvetica, sans-serif; font-weight:100;">
-                <h1 style="color:#00c1b8;">You've been matched!</h1>
+        html: `<div style="text-align: center; width: 300px; font:20px 100 'Helvetica Neue', "Segoe UI", Helvetica, sans-serif; font-weight:100;">
+                <h1 style="color:#00c1b8; text-align: center;">You've been matched!</h1>
+                ${MatchEmailInfo(mentor)}
+                ${MatchEmailInfo(mentee)}
                 <hr>
-                <p><a href="${API_URL}/mentor-dashboard">Go to your dashboard</a> to see their full profile.</p>
+                <p><a href="${API_URL}/mentor-dashboard">Your dashboard</a> has been updated with your new mentorship info.</p>
                 <p>
                   If you have questions, feel free to
-                  <a href="https://mentorweekly.auth0.com/login">log in</a>
+                  <a href=${loginUrl}>log in</a>
                   and email us through the
                   <a href="${API_URL}/help">Help Page<a/>
                 </p>
                 <br/>
-                <p>Happy Learning!</p>
+                <p>Happy Coding!</p>
                 <br/>
                 <p>Best Wishes,</p>
                 <p><b>Mentor Weekly</b></p>
