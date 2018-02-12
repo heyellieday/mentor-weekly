@@ -1,35 +1,39 @@
 /* eslint-env jest */
-
-import { shallow } from "enzyme";
+import { shallow, mount } from "enzyme";
 import React from "react";
 import renderer from "react-test-renderer";
 import Help from "../../pages/help.js";
-const authResult = { accessToken: 3, idToken: 4, expiresIn: "" + new Date() };
-let expiresAt = JSON.stringify(
-  authResult.expiresIn * 1000 + new Date().getTime()
-);
+import { user } from "../../dummy-user";
+import Auth from "../../services/auth";
+const auth = new Auth();
 
 beforeEach(() => {
-  // values stored in tests will also be available in other tests unless you run
+  // values stored in tests will also be available in
+  //other tests unless you run localstorage.clear
   localStorage.clear();
-  // or directly reset the storage
-  //localStorage.__STORE__ = {};
-  // you could also reset all mocks, but this could impact your other mocks
-  jest.resetAllMocks();
-  // or individually reset a mock used
-  //localStorage.setItem.mockClear();
-  localStorage.setItem("expires_at", authResult.expiresIn);
-  localStorage.setItem("access_token", authResult.accessToken);
-  localStorage.setItem("id_token", authResult.idToken);
+  auth.login;
+  auth.auth0.authorize({ nonce: "1234", responseType: "token id_token" });
+  auth.handleAuthentication();
 });
 
-describe("With Enzyme", () => {
+describe("<Help />", () => {
   it("Renders without crashing", () => {
     shallow(<Help />);
   });
-  it('App shows "mentor weekly"', () => {
-    const app = shallow(<Help />);
-
-    expect(app.find("h1").text()).toEqual("get some help");
+  it("Help page contains dashboard component", () => {
+    const wrapper = shallow(<Help />);
+    console.log(wrapper);
+    expect(wrapper.text()).toEqual("<Dashboard />");
+  });
+  it('Help page shows title "get some help"', () => {
+    const wrapper = mount(<Help />);
+    console.log(wrapper);
+    expect(wrapper.contains("get some help")).toEqual(true);
+    expect(
+      wrapper.contains(
+        "Use this form to get in contact with someone at Mentor Weekly. We are happy to help!"
+      )
+    ).toEqual(true);
+    expect(wrapper.contains("please describe your issue here:")).toEqual(true);
   });
 });

@@ -41,7 +41,9 @@ export default class Help extends React.Component {
   }
 
   componentDidMount() {
-    if (!auth.isAuthenticated()) {
+    if (!auth.isAuthenticated() && !process.browser) {
+      console.log("test bypassing Next Router");
+    } else if (!auth.isAuthenticated()) {
       Router.push("/", "/", { shallow: true });
     }
     this.getUserFromApi();
