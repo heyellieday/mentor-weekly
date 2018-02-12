@@ -30,7 +30,6 @@ router.get("/pick-a-mentee", (req, res) => {
 });
 
 router.get("/:authId", (req, res) => {
-  console.log(req.params.authId);
   if (req.user.sub != req.params.authId) {
     console.error("intruder!");
   }

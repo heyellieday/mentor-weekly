@@ -6,7 +6,6 @@ const router = express.Router();
 const jsonParser = bodyParser.json();
 
 router.post("/", (req, res) => {
-  console.log(req.body);
   const requiredFields = ["firstName", "lastName", "email", "subject", "issue"];
   for (let i = 0; i < requiredFields.length; i++) {
     const field = requiredFields[i];

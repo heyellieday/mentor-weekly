@@ -50,7 +50,6 @@ export default class extends React.Component {
 
   getUserFromApi() {
     auth.getProfile((_, profile) => {
-      console.log(profile.sub);
       fetch("/api/users/" + profile.sub, {
         method: "get",
         headers: {

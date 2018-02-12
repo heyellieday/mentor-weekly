@@ -44,7 +44,6 @@ export default class Auth {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
-        console.log(authResult);
         // grab auth0 id and make new user with saved form data
         if (localStorage.getItem("new_user_form")) {
           const formData = JSON.parse(localStorage.getItem("new_user_form"));

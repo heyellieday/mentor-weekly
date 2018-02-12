@@ -84,7 +84,6 @@ export default class extends React.Component {
   }
 
   getMentees() {
-    console.log("getting mentees");
     fetch(`api/users/pick-a-mentee`, {
       method: "get",
       headers: {

@@ -44,7 +44,7 @@ export default function Dashboard(props) {
           color: white;
         }
         .children {
-          height: 75%;
+          height: ${props.pickMentee ? "65%" : "75%"};
           right: 0;
           position: relative;
           margin: 0 auto;

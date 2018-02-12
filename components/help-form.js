@@ -25,9 +25,7 @@ export default class Helpform extends React.Component {
       this.emailInput.value &&
       this.subjectInput.value &&
       this.issueInput.value;
-    console.log(validated);
     if (validated) {
-      console.log(data);
       this.sendEmailRequest(data);
     } else {
       alert("Be sure to fill out every field so we can send your message.");
@@ -35,7 +33,6 @@ export default class Helpform extends React.Component {
   }
 
   sendEmailRequest(user) {
-    console.log(this.state.user);
     fetch(`api/help`, {
       method: "POST",
       body: JSON.stringify(user),
