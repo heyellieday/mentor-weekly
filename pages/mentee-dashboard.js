@@ -112,7 +112,7 @@ export default class extends React.Component {
           {this.state.user.mentors[0] ? (
             mentorInfoCards
           ) : (
-            <DefaultMessage role="mentee" />
+            <DefaultMessage role={this.state.user.role} />
           )}
         </Dashboard>
         {this.state.updateModalIsOpen ? (
