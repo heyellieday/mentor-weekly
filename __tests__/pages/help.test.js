@@ -82,13 +82,34 @@ describe("<Help />", () => {
       .simulate("click");
     expect(mockCallBack.calledOnce).toBe.true;
   });
-
-  // it("contains the props of dashboard components", () => {
-  //   const wrapper = mount(
-  //     <Help>
-  //       <Dashboard user={user} />
-  //     </Help>
-  //   );
-  //   expect(wrapper).to.containMatchingElement(<Dashboard user={user} />);
-  // });
+  it("only sends form if all 5 fields have value", () => {
+    const wrapper = mount(<Help />);
+    const mockCallBack = jest.fn();
+    const value = "Foobar";
+    wrapper
+      .find("Helpform")
+      .find('input[type="text"]')
+      .first()
+      .instance().value = value;
+    wrapper.find("Helpform").simulate("submit");
+    expect(mockCallBack).not.toHaveBeenCalled;
+    wrapper
+      .find("Helpform")
+      .find('input[type="text"]')
+      .at(1).value = value;
+    wrapper
+      .find("Helpform")
+      .find('input[type="text"]')
+      .at(2).value = value;
+    wrapper
+      .find("Helpform")
+      .find('input[type="text"]')
+      .at(3).value = value;
+    wrapper
+      .find("Helpform")
+      .find('input[type="text"]')
+      .at(4).value = value;
+    wrapper.find("Helpform").simulate("submit");
+    expect(mockCallBack).toHaveBeenCalled;
+  });
 });
