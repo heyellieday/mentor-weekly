@@ -9,16 +9,16 @@ const React = require("react");
 const router = express.Router();
 const jsonParser = bodyParser.json();
 
-router.get("/", (req, res) => {
-  User.find()
-    .populate("mentees")
-    .populate("mentors")
-    .then(users => res.json(users.map(user => user.apiRepr())))
-    .catch(err => {
-      console.error(err);
-      res.status(500).json({ error: "something went horribly awry" });
-    });
-});
+// router.get("/", (req, res) => {
+//   User.find()
+//     .populate("mentees")
+//     .populate("mentors")
+//     .then(users => res.json(users.map(user => user.apiRepr())))
+//     .catch(err => {
+//       console.error(err);
+//       res.status(500).json({ error: "something went horribly awry" });
+//     });
+// });
 
 router.get("/pick-a-mentee", (req, res) => {
   User.find({ "mentors.0": { $exists: false }, role: "mentee" })

@@ -51,10 +51,14 @@ describe("<Help />", () => {
     expect(wrapper.find("Navbar").length).toEqual(1);
     expect(wrapper.find("Navbar").find("button").length).toEqual(3);
     expect(wrapper.find("Sidebar").length).toEqual(1);
+    expect(wrapper.find("Sidebar").find("button").length).toEqual(1);
+    expect(wrapper.find("Sidebar").find("img").length).toEqual(1);
+    expect(wrapper.find("Sidebar").contains("p"));
     expect(wrapper.find("button").length).toEqual(5);
     expect(wrapper.find("Helpform").find("input").length).toEqual(4);
     expect(wrapper.find("Helpform").find("textarea").length).toEqual(1);
     expect(wrapper.find("Helpform").find("p").length).toEqual(1);
+    expect(wrapper.find("Helpform").find("form").length).toEqual(1);
   });
   it("only opens modal when 'update profile' button is clicked", () => {
     const wrapper = mount(<Help />);
@@ -89,7 +93,7 @@ describe("<Help />", () => {
     wrapper
       .find("Helpform")
       .find('input[type="text"]')
-      .first()
+      .at(0)
       .instance().value = value;
     wrapper.find("Helpform").simulate("submit");
     expect(mockCallBack).not.toHaveBeenCalled;
