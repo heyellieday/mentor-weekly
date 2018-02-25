@@ -113,11 +113,21 @@ export default function Navbar(props) {
         }
         .logo {
           position: absolute;
-          left: 30px;
-          top: 15px;
+          left: 5px;
+          top: 20px;
         }
         .mw-logo {
-          height: 40px;
+          height: 27px;
+        }
+
+        @media only screen and (min-width: 360px) {
+          .mw-logo {
+            height: 40px;
+          }
+          .logo {
+            left: 30px;
+            top: 15px;
+          }
         }
 
         @media only screen and (min-width: 600px) {

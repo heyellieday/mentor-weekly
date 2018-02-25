@@ -34,7 +34,6 @@ export default function Footer(props) {
       <style jsx>{`
         .footer-div {
           background-color: #1e1e1e;
-          height: 65px;
           font: "Helvetica Neue", "Segoe UI", Helvetica, sans-serif;
           position: relative;
           top: 0px;
@@ -63,12 +62,11 @@ export default function Footer(props) {
           margin: 0;
         }
 
-        @media only screen and (min-width: 410px) {
+        @media only screen and (min-width: 440px) {
           .logo {
             display: inline;
             position: absolute;
-            left: 20px;
-            top: 20px;
+            margin: 18px;
           }
         }
       `}</style>

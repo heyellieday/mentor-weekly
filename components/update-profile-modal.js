@@ -37,7 +37,6 @@ export default function UpdateProfileModal(props) {
             box-sizing: border-box;
             display: block;
             background-color: white;
-            opacity: ;
             max-width: 98%;
             max-height: 95%;
             position: fixed;
@@ -51,6 +50,7 @@ export default function UpdateProfileModal(props) {
             filter: drop-shadow(0 0 2000px #000000);
             font-family: "Helvetica Neue", "Segoe UI", Helvetica, sans-serif;
             font-weight: 200;
+            z-index: 1;
           }
           .dark {
           }

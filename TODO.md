@@ -6,17 +6,18 @@
 
 ###Front-end:
 
+* Message about signup process: form, Auth0, email verify, dashboard
+* no modal in internet explorer?
+
 ###API:
 
 * have a friend sign up as a mentee, I sign up as a mentor and choose to test emails & system
-* is it safe to have a GET all users req in router?
 
 ###Auth:
 
 ###Testing:
 
-* smoke test pages
-* deep tests
+* chai test api
 
 ## Complete Tasks:
 
@@ -62,6 +63,7 @@
 * bug: all delete mentee buttons open at once
 * fix NOW redirect for role dashboard redirect
 * delete any console.logs that arent for (err)
+* larger font for screen-width 1080 and under
 
 ###API:
 
@@ -85,6 +87,7 @@
 * pick-a-mentee GET req should return apiReprs w/o contact(email) property
 * change matchinfo to not show contact for pick-a-mentee
 * send email using sendgrid to mentees & mentors when chosen? (introduction email, what to expect)
+* is it safe to have a GET all users req in router? -no
 
 ###Auth:
 
@@ -100,3 +103,5 @@
 ###Testing:
 
 * smoke test components
+* smoke test pages
+* deep tests
