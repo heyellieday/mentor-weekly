@@ -9,10 +9,16 @@ export default function DefaultMessage(props) {
       );
     } else if (props.role === "mentee") {
       return (
-        <p className="default-p">
-          You will receive an email at the address you provided once we find you
-          the perfect mentor.
-        </p>
+        <div>
+          <p className="default-p">
+            You will receive an email at the address you provided once we find
+            you the perfect mentor.
+          </p>
+          <p className="default-p">
+            Feel free to update your profile info anytime by clicking the
+            'update profile' button.
+          </p>
+        </div>
       );
     } else {
       return (

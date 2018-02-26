@@ -1,9 +1,7 @@
 {
   "name": "mentor-weekly",
   "jest": {
-    "setupFiles": [
-      "jest-localstorage-mock"
-    ]
+    "setupFiles": ["jest-localstorage-mock"]
   },
   "private": true,
   "dependencies": {

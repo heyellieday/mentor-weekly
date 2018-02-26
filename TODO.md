@@ -7,7 +7,6 @@
 ###Front-end:
 
 * Message about signup process: form, Auth0, email verify, dashboard
-* no modal in internet explorer?
 
 ###API:
 
@@ -64,6 +63,7 @@
 * fix NOW redirect for role dashboard redirect
 * delete any console.logs that arent for (err)
 * larger font for screen-width 1080 and under
+* no modal in internet explorer?
 
 ###API:
 

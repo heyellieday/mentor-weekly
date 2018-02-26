@@ -2,6 +2,7 @@
 .git
 .env
 deploy.sh
+now.json
 
 # dependencies
 node_modules

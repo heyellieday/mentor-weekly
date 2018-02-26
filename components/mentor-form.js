@@ -252,8 +252,10 @@ export default class MentorForm extends React.Component {
           }
         />
         <label htmlFor="photoUrl" className="block">
-          paste the url of the photo you want as your profile picture here (you
-          can add this later):
+          paste the url of the photo you want as your profile picture here
+          {this.props.user
+            ? "(square or portrait sized photos work best)"
+            : "(you can add this later)"}
         </label>
         <textarea
           placeholder={
