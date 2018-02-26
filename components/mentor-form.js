@@ -139,7 +139,7 @@ export default class MentorForm extends React.Component {
           what email address can we use to contact you about a mentorship?
           {this.props.user
             ? ""
-            : "(when you create a password, we will send a verification code to this address)"}
+            : " (after submitting your form, use the 'sign up' tab in the Auth0 popup to create a password. A verification code will be sent to this address.)"}
         </label>
         <input
           placeholder={this.props.user ? "" : "ex: someone@yahoo.com"}
