@@ -6,8 +6,6 @@
 
 ###Front-end:
 
-* Message about signup process: form, Auth0, email verify, dashboard
-
 ###API:
 
 * have a friend sign up as a mentee, I sign up as a mentor and choose to test emails & system
@@ -64,6 +62,7 @@
 * delete any console.logs that arent for (err)
 * larger font for screen-width 1080 and under
 * no modal in internet explorer?
+* Message about signup process: form, Auth0, email verify, dashboard
 
 ###API:
 
