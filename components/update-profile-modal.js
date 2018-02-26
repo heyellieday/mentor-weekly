@@ -5,7 +5,6 @@ import Button from "../components/button";
 export default function UpdateProfileModal(props) {
   return (
     <div className="update-profile-div">
-      <div className="dark" />
       <div className="modal">
         <button className="close-button" onClick={props.closeModal}>
           <img src="static/close-button.svg" />
@@ -47,12 +46,12 @@ export default function UpdateProfileModal(props) {
             border-radius: 10px;
             padding: 20px;
             text-align: center;
-            filter: drop-shadow(0 0 2000px #000000);
+            -o-filter: drop-shadow(0 0 2000px #000000);
+            -moz-filter: drop-shadow(0 0 2000px #000000);
+            -webkit-box-shadow: rgba(0, 0, 0, 0.4) 5px 10px 500px 50px;
             font-family: "Helvetica Neue", "Segoe UI", Helvetica, sans-serif;
             font-weight: 200;
             z-index: 1;
-          }
-          .dark {
           }
           .title {
             font-weight: 200;
@@ -62,9 +61,11 @@ export default function UpdateProfileModal(props) {
             position: absolute;
             top: 12px;
             right: 10px;
+            background-color: white;
           }
           .close-button:hover {
             cursor: pointer;
+            background-color: #bcfff8;
           }
 
           @media only screen and (min-width: 700px) {
