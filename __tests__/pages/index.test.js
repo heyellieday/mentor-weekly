@@ -12,15 +12,6 @@ describe("With Enzyme", () => {
   });
   it('App shows "mentor weekly"', () => {
     const app = shallow(<App />);
-
     expect(app.find("h1").text()).toEqual("mentor weekly");
   });
 });
-
-// describe("With Snapshot Testing", () => {
-//   it('App shows "Hello world!"', () => {
-//     const component = renderer.create(<App />);
-//     const tree = component.toJSON();
-//     expect(tree).toMatchSnapshot();
-//   });
-// });

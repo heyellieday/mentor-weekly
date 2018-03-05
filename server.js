@@ -10,6 +10,7 @@ const { API_AUDIENCE, API_URL, DATABASE_URL, PORT } = require("./config");
 const { router: usersRouter } = require("./users");
 const { router: helpRouter } = require("./help");
 
+const app = express();
 const dev = process.env.NODE_ENV !== "production";
 const nextApp = next({ dev });
 const handle = nextApp.getRequestHandler();
@@ -27,13 +28,11 @@ const jwtCheck = jwt({
 });
 
 nextApp.prepare().then(() => {
-  const app = express();
-
   app.use(morgan("common"));
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());
   app.use("/api/users", jwtCheck, usersRouter);
-  app.use("/api/help", helpRouter);
+  app.use("/api/help", jwtCheck, helpRouter);
 
   app.get("*", (req, res) => {
     handle(req, res);
@@ -54,6 +53,20 @@ nextApp.prepare().then(() => {
             mongoose.disconnect();
             reject(err);
           });
+      });
+    });
+  }
+
+  function closeServer() {
+    return mongoose.disconnect().then(() => {
+      return new Promise((resolve, reject) => {
+        console.log("Closing server");
+        server.close(err => {
+          if (err) {
+            return reject(err);
+          }
+          resolve();
+        });
       });
     });
   }
