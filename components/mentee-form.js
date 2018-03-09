@@ -74,12 +74,15 @@ export default class MenteeForm extends React.Component {
       );
   }
 
-  saveChanges(event) {
+  async saveChanges(event) {
     event.preventDefault();
     if (this.props.user) {
       this.updateUserData(this.state.user);
     } else {
-      localStorage.setItem("new_user_form", JSON.stringify(this.state.user));
+      await localStorage.setItem(
+        "new_user_form",
+        JSON.stringify(this.state.user)
+      );
       auth.login();
     }
     this.props.loggedin ? this.props.closeModal(event) : null;
