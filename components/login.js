@@ -6,9 +6,9 @@ export default function Login(props) {
       <img className="login-point" src="/static/login-point.svg" />
       <div className='login-div'>
           <label htmlFor="email"></label>
-          <input name="email" placeholder="email"></input>
+          <input name="email" id="email" placeholder="email"></input>
           <label htmlFor="password"></label>
-          <input name="password" placeholder="password"></input>
+          <input name="password" id="password" placeholder="password"></input>
           <Button backgroundColor="#1e1e1e" size="small" color="white" text="log in to mentor weekly"/>
 
       </div>
