@@ -1,5 +1,8 @@
 import Button from "../components/button";
 import ButtonLink from "../components/button-link";
+import Auth from "../services/auth.js";
+
+const auth = new Auth();
 
 export default function Navbar(props) {
   return (
@@ -44,7 +47,7 @@ export default function Navbar(props) {
             color="#303030"
             backgroundColor="white"
             text="log in"
-            onClick={props.onClick}
+            onClick={auth.login}
             border="none"
           />
         )}
@@ -65,6 +68,7 @@ export default function Navbar(props) {
             color="Turquoise"
             backgroundColor="white"
             text="log out"
+            onClick={auth.logout}
           />
         ) : (
           <ButtonLink
@@ -109,11 +113,21 @@ export default function Navbar(props) {
         }
         .logo {
           position: absolute;
-          left: 30px;
-          top: 15px;
+          left: 5px;
+          top: 20px;
         }
         .mw-logo {
-          height: 40px;
+          height: 27px;
+        }
+
+        @media only screen and (min-width: 360px) {
+          .mw-logo {
+            height: 40px;
+          }
+          .logo {
+            left: 30px;
+            top: 15px;
+          }
         }
 
         @media only screen and (min-width: 600px) {

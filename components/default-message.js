@@ -1,18 +1,38 @@
 export default function DefaultMessage(props) {
-  return (
-    <div className="default-message">
-      <h2 className="default-header">Welcome to Mentor Weekly</h2>
-      {props.role === "mentor" ? (
+  function message() {
+    if (props.role === "mentor") {
+      return (
         <p className="default-p">
           Go to your <em>"pick a mentee"</em> page to check out available
           candidates.
         </p>
-      ) : (
+      );
+    } else if (props.role === "mentee") {
+      return (
+        <div>
+          <p className="default-p">
+            You will receive an email at the address you provided once we find
+            you the perfect mentor.
+          </p>
+          <p className="default-p">
+            Feel free to update your profile info anytime by clicking the
+            'update profile' button.
+          </p>
+        </div>
+      );
+    } else {
+      return (
         <p className="default-p">
-          You will receive an email at the address you provided once we find you
-          the perfect mentor.
+          You have been sent a verification email. Click the "verify" button in
+          your email to access your profile.
         </p>
-      )}
+      );
+    }
+  }
+  return (
+    <div className="default-message">
+      <h2 className="default-header">Welcome to Mentor Weekly</h2>
+      {message()}
       <style jsx>{`
         .default-message {
           background-color: white;

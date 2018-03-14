@@ -1,5 +1,9 @@
 import React from "react";
+import Router from "next/router";
 import Button from "../components/button";
+import Auth from "../services/auth";
+
+const auth = new Auth();
 
 export default class MentorForm extends React.Component {
   constructor(props) {
@@ -23,7 +27,8 @@ export default class MentorForm extends React.Component {
           lookingFor: this.props.user.lookingFor,
           availability: this.props.user.availability,
           background: this.props.user.background
-        }
+        },
+        inMemoryStorage: {}
       };
     } else {
       this.state = {
@@ -49,10 +54,11 @@ export default class MentorForm extends React.Component {
   }
 
   updateUserData(newData) {
-    fetch(`api/users/${newData.id ? newData.id : ""}`, {
-      method: `${newData.id ? "PUT" : "POST"}`,
+    fetch(`api/users/${newData.id}`, {
+      method: "PUT",
       body: JSON.stringify(newData),
       headers: new Headers({
+        Authorization: `Bearer ${auth.getAccessToken()}`,
         "Content-Type": "application/json"
       })
     })
@@ -62,7 +68,7 @@ export default class MentorForm extends React.Component {
         }
         return res.json();
       })
-      .then(() => (this.props.loggedin ? this.props.updateDashboard() : ""))
+      .then(() => this.props.updateDashboard())
       .catch(err =>
         this.setState({
           error: "Could not load user"
@@ -70,9 +76,17 @@ export default class MentorForm extends React.Component {
       );
   }
 
-  saveChanges(event) {
+  async saveChanges(event) {
     event.preventDefault();
-    this.updateUserData(this.state.user);
+    if (this.props.user) {
+      this.updateUserData(this.state.user);
+    } else {
+      await localStorage.setItem(
+        "new_user_form",
+        JSON.stringify(this.state.user)
+      );
+      auth.login();
+    }
     this.props.loggedin ? this.props.closeModal(event) : null;
   }
 
@@ -126,7 +140,10 @@ export default class MentorForm extends React.Component {
           }
         />
         <label htmlFor="contact" className="block">
-          which email address can we use to contact you about a mentorship?
+          what email address can we use to contact you about a mentorship?
+          {this.props.user
+            ? ""
+            : " (after submitting your form, use the 'sign up' tab in the Auth0 popup to create a password. A verification code will be sent to this address.)"}
         </label>
         <input
           placeholder={this.props.user ? "" : "ex: someone@yahoo.com"}
@@ -239,8 +256,10 @@ export default class MentorForm extends React.Component {
           }
         />
         <label htmlFor="photoUrl" className="block">
-          paste the url of the photo you want as your profile picture here (you
-          can add this later):
+          paste the url of the photo you want as your profile picture here
+          {this.props.user
+            ? "(square or portrait sized photos work best)"
+            : "(you can add this later)"}
         </label>
         <textarea
           placeholder={
@@ -264,6 +283,7 @@ export default class MentorForm extends React.Component {
             text="save changes"
             type="submit"
             onClick={e => this.saveChanges(e)}
+            backgroundColor="white"
           />
         ) : (
           <Button
@@ -281,7 +301,8 @@ export default class MentorForm extends React.Component {
             size="cancel"
             text="cancel"
             onClick={this.props.closeModal}
-            block="true"
+            block="block"
+            backgroundColor="white"
           />
         ) : (
           ""

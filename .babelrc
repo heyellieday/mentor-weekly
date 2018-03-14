@@ -1,4 +1,9 @@
 {
+  "env": {
+    "test": {
+      "presets": [["next/babel", { "preset-env": { "modules": "commonjs" } }]]
+    }
+  },
   "plugins": [
     [
       "wrap-in-js",
@@ -7,8 +12,6 @@
       }
     ]
   ],
-  "presets": [
-    "next/babel"
-  ],
+  "presets": ["env", "react", "next/babel"],
   "ignore": []
 }

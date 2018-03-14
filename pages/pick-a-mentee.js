@@ -1,8 +1,13 @@
 import React from "react";
+import Router from "next/router";
 import Dashboard from "../components/dashboard";
 import DefaultMessage from "../components/default-message";
 import MatchInfo from "../components/match-info";
 import UpdateProfileModal from "../components/update-profile-modal";
+import Auth from "../services/auth";
+
+const auth = new Auth();
+const { API_URL } = require("../config");
 
 export default class extends React.Component {
   constructor(props) {
@@ -37,34 +42,56 @@ export default class extends React.Component {
   }
 
   componentDidMount() {
+    if (!auth.isAuthenticated() && !process.browser) {
+      console.log("test bypassing Next Router");
+    } else if (!auth.isAuthenticated()) {
+      Router.push("/", "/", { shallow: true });
+    }
     this.getUserFromApi();
-    this.getMentees();
   }
 
   getUserFromApi() {
-    fetch(`api/users/5a5ce9cf734d1d3471841675`)
-      .then(res => {
-        if (!res.ok) {
-          return Promise.reject(res.statusText);
+    auth.getProfile((_, profile) => {
+      fetch("/api/users/" + profile.sub, {
+        method: "get",
+        headers: {
+          Authorization: `Bearer ${auth.getAccessToken()}`
         }
-        return res.json();
       })
-      .then(user =>
-        this.setState({
-          user: user,
-          error: ""
+        .then(res => {
+          if (!res.ok) {
+            return Promise.reject(res.statusText);
+          }
+          return res.json();
         })
-      )
-      .catch(err =>
-        this.setState({
-          error: "Could not load user"
-        })
-      );
+        .then(user =>
+          this.setState({
+            user: user,
+            error: ""
+          })
+        )
+        .then(
+          this.state.user.role === "mentee"
+            ? Router.push("/mentee-dashboard", "/mentee-dashboard", {
+                shallow: true
+              })
+            : this.getMentees()
+        )
+        .catch(err =>
+          this.setState({
+            error: "Could not load user"
+          })
+        );
+    });
   }
 
   getMentees() {
-    console.log("getting mentees");
-    fetch(`api/users/pick-a-mentee`)
+    fetch(`api/users/pick-a-mentee`, {
+      method: "get",
+      headers: {
+        Authorization: `Bearer ${auth.getAccessToken()}`
+      }
+    })
       .then(res => {
         if (!res.ok) {
           return Promise.reject(res.statusText);
@@ -79,7 +106,7 @@ export default class extends React.Component {
       )
       .catch(err =>
         this.setState({
-          error: "Could not load user"
+          error: "Could not load mentees"
         })
       );
   }
@@ -139,4 +166,3 @@ export default class extends React.Component {
     );
   }
 }
-//  <Header text={name} />

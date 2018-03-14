@@ -1,12 +1,4 @@
 export default function Button(props) {
-  function borderwidth() {
-    if (props.size === "small" || "large") {
-      return "1px";
-    } else {
-      return "2px";
-    }
-  }
-
   return (
     <span className="button-span">
       <div className="button-div">
@@ -23,12 +15,13 @@ export default function Button(props) {
           box-sizing: border-box;
           background-color: ${props.backgroundColor};
           color: ${props.color};
-          border: ${props.border
-            ? props.border
-            : borderwidth() + " solid " + props.color};
-          font: "Helvetica Neue", Helvetica, sans-serif;
+          border: ${props.border ? props.border : "1px solid " + props.color};
+          font-family: "Helvetica Neue", Helvetica, sans-serif;
           font-weight: 200;
           text-align: center;
+        }
+        .button:hover {
+          cursor: pointer;
         }
         .button-div {
           display: inline;

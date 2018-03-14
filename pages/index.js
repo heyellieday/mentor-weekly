@@ -10,7 +10,7 @@ import Login from "../components/login";
 import PhotoCredit from "../components/photo-credit";
 import Footer from "../components/footer";
 
-export default class extends React.Component {
+export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -53,12 +53,14 @@ export default class extends React.Component {
                 size="large"
                 color="Turquoise"
                 text="get involved"
+                backgroundColor="white"
               />
               <ButtonLink
                 linkTo="#infographic"
                 size="large"
                 color="Coral"
                 text="learn more"
+                backgroundColor="white"
               />
             </div>
             <div>
