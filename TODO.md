@@ -6,9 +6,9 @@
 
 ###Front-end:
 
-###API:
+* redesign signup form
 
-* have a friend sign up as a mentee, I sign up as a mentor and choose to test emails & system
+###API:
 
 ###Auth:
 
