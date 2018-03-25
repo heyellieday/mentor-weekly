@@ -110,8 +110,8 @@ router.post("/", (req, res) => {
   });
 });
 
-router.delete("/:userId", (req, res) => {
-  User.findByIdAndRemove(req.params.userId)
+router.delete("/:authId", (req, res) => {
+  User.findOneAndDelete({ authId: req.params.authId })
     .then(() => {
       res.status(204).json({ message: "success" });
     })
@@ -135,7 +135,7 @@ router.delete("/:mentorId/:menteeId", (req, res) => {
       return mentee.save();
     })
     .then(() => {
-      res.status(204).json({ message: "success" });
+      res.status(204).json({ message: "successfully deleted" });
     })
     .catch(err => {
       console.error(err);

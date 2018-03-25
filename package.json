@@ -1,7 +1,9 @@
 {
   "name": "mentor-weekly",
   "jest": {
-    "setupFiles": ["jest-localstorage-mock"]
+    "setupFiles": [
+      "jest-localstorage-mock"
+    ]
   },
   "private": true,
   "dependencies": {
@@ -40,6 +42,9 @@
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-jest": "^22.1.0",
+    "chai": "^4.1.2",
+    "chai-http": "^3.0.0",
+    "faker": "^4.1.0",
     "jest-localstorage-mock": "^2.2.0",
     "ll": "0.0.1",
     "react-addons-test-utils": "^15.6.2",
