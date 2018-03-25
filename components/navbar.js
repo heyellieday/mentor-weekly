@@ -107,7 +107,7 @@ export default function Navbar(props) {
           position: absolute;
           right: 0;
           padding: 13px;
-          width: 210px;
+          width: 212px;
           height: 39px;
           text-align: right;
         }
@@ -117,7 +117,7 @@ export default function Navbar(props) {
           top: 20px;
         }
         .mw-logo {
-          height: 27px;
+          height: 25px;
         }
 
         @media only screen and (min-width: 360px) {
