@@ -2,18 +2,18 @@ const mongoose = require("mongoose");
 
 const userSchema = mongoose.Schema({
   name: {
-    firstName: { type: String, required: true },
-    lastName: { type: String, required: true }
+    firstName: { type: String },
+    lastName: { type: String }
   },
   authId: { type: String, unique: true },
   photoUrl: { type: String, default: "/static/default-profile.png" },
   creationDate: { type: String, default: new Date() },
   role: { type: String, enum: ["mentor", "mentee"] },
-  goals: { type: String, required: true },
-  experience: { type: String, required: true },
-  skills: { type: String, required: true },
-  organization: { type: String, required: true },
-  contact: { type: String, required: true },
+  goals: { type: String},
+  experience: { type: String},
+  skills: { type: String},
+  organization: { type: String },
+  contact: { type: String },
   portfolioUrl: { type: String },
   mentees: [{ type: mongoose.Schema.Types.ObjectId, ref: "users" }],
   mentors: [{ type: mongoose.Schema.Types.ObjectId, ref: "users" }],

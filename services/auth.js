@@ -69,6 +69,7 @@ export default class Auth {
     localStorage.setItem("access_token", authResult.accessToken);
     localStorage.setItem("id_token", authResult.idToken);
     localStorage.setItem("expires_at", expiresAt);
+    localStorage.setItem("auth0_id", authResult.idTokenPayload.sub);
 
     // navigate to the home route
   };
