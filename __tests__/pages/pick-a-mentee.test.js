@@ -20,20 +20,5 @@ describe("<PickAMentee />", () => {
   it("Renders without crashing", () => {
     shallow(<PickAMentee />);
   });
-  // it("Help page contains dashboard component", () => {
-  //   const wrapper = shallow(<Help />);
-  //   console.log(wrapper);
-  //   expect(wrapper.text()).toEqual("<Dashboard />");
-  // });
-  // it('Help page shows title "get some help"', () => {
-  //   const wrapper = mount(<Help />);
-  //   console.log(wrapper);
-  //   expect(wrapper.contains("get some help")).toEqual(true);
-  //   expect(
-  //     wrapper.contains(
-  //       "Use this form to get in contact with someone at Mentor Weekly. We are happy to help!"
-  //     )
-  //   ).toEqual(true);
-  //   expect(wrapper.contains("please describe your issue here:")).toEqual(true);
-  // });
+
 });

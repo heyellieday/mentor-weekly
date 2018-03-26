@@ -56,7 +56,7 @@ export default class Auth {
         });
       } else if (err) {
         Router.push("/", "/", { shallow: true });
-        console.log(err);
+        console.log(`ERROR: ${err}`);
       }
     });
   };

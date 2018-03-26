@@ -28,7 +28,6 @@ describe("<Help />", () => {
   });
   it("Help page shows correct text", () => {
     const wrapper = mount(<Help />);
-    console.log(wrapper);
     expect(wrapper.contains("get some help")).toEqual(true);
     expect(
       wrapper.contains(
