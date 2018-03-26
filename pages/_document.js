@@ -1,6 +1,7 @@
 import Document, { Head, Main, NextScript } from "next/document";
 import flush from "styled-jsx/server";
 import stylesheet from "../styles/application.scss";
+import 'whatwg-fetch';
 
 export default class MyDocument extends Document {
   static getInitialProps({ renderPage }) {
