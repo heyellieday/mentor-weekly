@@ -1,8 +1,13 @@
 import React from "react";
+import Router from "next/router";
 import Dashboard from "../components/dashboard";
 import DefaultMessage from "../components/default-message";
 import MatchInfo from "../components/match-info";
 import UpdateProfileModal from "../components/update-profile-modal";
+import Auth from "../services/auth";
+
+const auth = new Auth();
+const { API_URL } = require("../config");
 
 export default class extends React.Component {
   constructor(props) {
@@ -37,28 +42,48 @@ export default class extends React.Component {
   }
 
   componentDidMount() {
+    if (!auth.isAuthenticated() && !process.browser) {
+      console.log("test bypassing Next Router");
+    } else if (!auth.isAuthenticated()) {
+      Router.push("/", "/", { shallow: true });
+    }
     this.getUserFromApi();
   }
 
   getUserFromApi() {
-    fetch(`api/users/5a5e49754405f765b9ed27c9`)
-      .then(res => {
-        if (!res.ok) {
-          return Promise.reject(res.statusText);
+    auth.getProfile((_, profile) => {
+      fetch("/api/users/" + profile.sub, {
+        method: "get",
+        headers: {
+          authorization: `Bearer ${auth.getAccessToken()}`
         }
-        return res.json();
       })
-      .then(user =>
-        this.setState({
-          user: user,
-          error: ""
+        .then(res => {
+          if (!res.ok) {
+            return Promise.reject(res.statusText);
+          }
+          return res.json();
         })
-      )
-      .catch(err =>
-        this.setState({
-          error: "Could not load user"
-        })
-      );
+        .then(user =>
+          this.setState({
+            user: user,
+            error: ""
+          })
+        )
+        .then(
+          () =>
+            this.state.user.role === "mentor"
+              ? Router.push("/mentor-dashboard", "/mentor-dashboard", {
+                  shallow: true
+                })
+              : null
+        )
+        .catch(err =>
+          this.setState({
+            error: "Could not load user"
+          })
+        );
+    });
   }
 
   openModal(event) {
@@ -87,7 +112,7 @@ export default class extends React.Component {
           {this.state.user.mentors[0] ? (
             mentorInfoCards
           ) : (
-            <DefaultMessage role="mentee" />
+            <DefaultMessage role={this.state.user.role} />
           )}
         </Dashboard>
         {this.state.updateModalIsOpen ? (
@@ -103,4 +128,3 @@ export default class extends React.Component {
     );
   }
 }
-//  <Header text={name} />

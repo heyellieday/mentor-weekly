@@ -1,4 +1,7 @@
 import Button from "../components/button";
+import Auth from "../services/auth";
+
+const auth = new Auth();
 
 export default class Helpform extends React.Component {
   constructor(props) {
@@ -22,20 +25,19 @@ export default class Helpform extends React.Component {
       this.emailInput.value &&
       this.subjectInput.value &&
       this.issueInput.value;
-    console.log(validated);
     if (validated) {
-      console.log(data);
       this.sendEmailRequest(data);
     } else {
       alert("Be sure to fill out every field so we can send your message.");
     }
   }
 
-  sendEmailRequest(data) {
+  sendEmailRequest(user) {
     fetch(`api/help`, {
       method: "POST",
-      body: JSON.stringify(data),
+      body: JSON.stringify(user),
       headers: new Headers({
+        Authorization: `Bearer ${auth.getAccessToken()}`,
         "Content-Type": "application/json"
       })
     })

@@ -54,6 +54,7 @@ export default function Infographic(props) {
         .text {
           font-weight: 100;
           font-size: 1.1em;
+          letter-spacing: 1px;
         }
 
         @media only screen and (max-width: 575px) {

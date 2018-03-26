@@ -35,7 +35,7 @@ export default function Bubblequote(props) {
           border-radius: 15px;
           height: 260px;
           width: 100%;
-          padding: 25px;
+          padding: 15px;
         }
         .text {
           position: relative;
@@ -46,6 +46,11 @@ export default function Bubblequote(props) {
           font-weight: normal;
         }
 
+        @media only screen and (min-width: 350px) {
+          .bubblequote {
+            padding: 25px;
+          }
+        }
         @media only screen and (min-width: 560px) {
           .bubblequote-div {
             height: 500px;

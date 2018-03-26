@@ -3,12 +3,18 @@ import Button from "../components/button";
 import ButtonLink from "../components/button-link";
 import DefaultMessage from "../components/default-message";
 import DeletePrompt from "../components/delete-prompt";
+import Auth from "../services/auth";
+
+const auth = new Auth();
 
 export default class MatchInfo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      removeMenteeOpen: false
+      removeMenteeOpen: false,
+      user: {},
+      menteeId: this.props.user.authId,
+      error: ""
     };
   }
 
@@ -20,11 +26,13 @@ export default class MatchInfo extends React.Component {
     }
   }
 
-  pickMentee() {
+  pickMentee(event) {
+    event.preventDefault();
     fetch(`api/users/${this.props.mentorId}/${this.props.user.id}`, {
       method: "PUT",
       body: JSON.stringify({ id: this.props.mentorId }),
       headers: new Headers({
+        Authorization: `Bearer ${auth.getAccessToken()}`,
         "Content-Type": "application/json"
       })
     })
@@ -32,23 +40,16 @@ export default class MatchInfo extends React.Component {
         if (!res.ok) {
           return Promise.reject(res.statusText);
         }
-        // console.log(this.this.props.user);
         this.props.updateDashboard();
-        //  return res.json();
       })
       .catch(err => console.log(err));
   }
 
   removeMentee() {
-    console.log(
-      "mentor id: ",
-      this.props.mentorId,
-      "mentee id: ",
-      this.props.user._id
-    );
     fetch(`api/users/${this.props.mentorId}/${this.props.user._id}`, {
       method: "DELETE",
       headers: new Headers({
+        Authorization: `Bearer ${auth.getAccessToken()}`,
         "Content-Type": "application/json"
       })
     })
@@ -57,6 +58,7 @@ export default class MatchInfo extends React.Component {
           return Promise.reject(res.statusText);
         }
         this.props.updateDashboard();
+        this.setState({ removeMenteeOpen: false });
       })
       .catch(err => console.log(err));
   }
@@ -97,10 +99,14 @@ export default class MatchInfo extends React.Component {
           <b>Availability: </b>
           {this.props.user.availability}
         </p>
-        <p>
-          <b>Contact: </b>
-          {this.props.user.contact}
-        </p>
+        {this.props.pickMentee ? (
+          ""
+        ) : (
+          <p>
+            <b>Contact: </b>
+            {this.props.user.contact}
+          </p>
+        )}
       </div>
     );
   }
@@ -181,7 +187,7 @@ export default class MatchInfo extends React.Component {
                 <Button
                   size="small"
                   text="add mentee"
-                  onClick={() => this.pickMentee()}
+                  onClick={e => this.pickMentee(e)}
                   color="white"
                   backgroundColor="turquoise"
                 />
@@ -224,6 +230,7 @@ export default class MatchInfo extends React.Component {
           width: 300px;
           text-align: center;
           margin: 0 auto 60px auto;
+          overflow: scroll;
         }
         .profile-photo-container{
           width: 150px;

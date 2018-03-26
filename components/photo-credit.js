@@ -86,6 +86,9 @@ export default function PhotoCredit(props) {
           border: none;
           font-weight: 100;
         }
+        button:hover {
+          cursor: pointer;
+        }
         a{
           color: turquoise;
         }

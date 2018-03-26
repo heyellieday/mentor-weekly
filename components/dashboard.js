@@ -13,6 +13,14 @@ export default function Dashboard(props) {
       <h1 className={props.pickMentee ? "title title-teal" : "title"}>
         {props.title}
       </h1>
+      {props.pickMentee ? (
+        <h2 className="message">
+          Click 'add mentee' button to add that professional as your mentee.
+          They will receive an email introducing you as their new mentor.
+        </h2>
+      ) : (
+        ""
+      )}
       <div className="children">{props.children}</div>
       <style jsx>{`
         .dashboard {
@@ -34,13 +42,19 @@ export default function Dashboard(props) {
         }
         .title-teal {
           color: white;
-          font-width: normal;
         }
         .children {
-          height: 100%;
+          height: ${props.pickMentee ? "65%" : "75%"};
           right: 0;
           position: relative;
           margin: 0 auto;
+        }
+        .message {
+          color: white;
+          font-weight: 100;
+          font-size: 1.3em;
+          width: 300px;
+          margin: 0 auto 60px auto;
         }
 
         @media only screen and (min-width: 600px) {
@@ -51,9 +65,8 @@ export default function Dashboard(props) {
             right: 0;
             position: fixed;
           }
-          .title {
-            display: inline-block;
-            margin: 60px auto;
+          .title,
+          .message {
             padding-left: 300px;
           }
           .children {
@@ -61,6 +74,16 @@ export default function Dashboard(props) {
             position: fixed;
             overflow: auto;
             margin-bottom: 30px;
+          }
+        }
+        @media only screen and (min-width: 800px) {
+          .message {
+            width: 400px;
+          }
+        }
+        @media only screen and (min-width: 1000px) {
+          .message {
+            width: 590px;
           }
         }
       `}</style>

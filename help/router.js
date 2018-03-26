@@ -6,7 +6,6 @@ const router = express.Router();
 const jsonParser = bodyParser.json();
 
 router.post("/", (req, res) => {
-  console.log(req.body);
   const requiredFields = ["firstName", "lastName", "email", "subject", "issue"];
   for (let i = 0; i < requiredFields.length; i++) {
     const field = requiredFields[i];
@@ -21,9 +20,11 @@ router.post("/", (req, res) => {
     to: process.env.ADMIN_EMAIL,
     from: "help@mentorweekly.com",
     subject: req.body.subject,
-    //text: "and easy to do anywhere, even with Node.js",
-    html: `<div>
-            <p><b>You received an email from Mentor Weekly's Help Center:</b></p>
+    text: `You received an email from Mentor Weekly's Help Center: ${
+      req.body.firstName
+    } ${req.body.lastName} at ${req.body.email} asked: '${req.body.issue}'`,
+    html: `<div style="font:20px 100 'Helvetica Neue', Helvetica; font-weight:100;">
+            <p><b>You received an email from <a href="https://mentor-weekly.now.sh/">Mentor Weekly</a>'s Help Center:</b></p>
             <hr>
             <p><b>from: </b>${req.body.firstName} ${req.body.lastName} at ${
       req.body.email
