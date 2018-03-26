@@ -1,17 +1,52 @@
 import Button from "../components/button";
 import MenteeForm from "../components/mentee-form";
 import MentorForm from "../components/mentor-form";
+import Auth from "../services/auth";
+
+const auth = new Auth();
 
 export default class Signup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isMentorForm: true
-    };
+      isMentorForm: true,
+      user: {
+        name: {
+          firstName: "",
+          lastName: ""
+        },
+        role: "mentor",
+        contact: "",
+        goals: "",
+        organization: "",
+        experience: "",
+        skills: "",
+        portfolioUrl: "",
+        photoUrl: "",
+        lookingFor: "",
+        availability: "",
+        background: ""
+      }
+    }
   }
 
   form(value) {
     this.setState({ isMentorForm: value });
+    if (isMentorForm) {
+      this.setState({ role: "mentor" });
+    } else {
+      this.setState({ role: "mentee" });
+    }
+  }
+
+  async saveChanges(event) {
+    event.preventDefault();
+    await localStorage.setItem(
+      "new_user_form",
+      JSON.stringify(this.state.user)
+    );
+    await localStorage.setItem("role", this.state.user.role)
+    auth.login();
   }
 
   render() {
@@ -40,7 +75,14 @@ export default class Signup extends React.Component {
             />
             <label htmlFor="signup">being a mentee</label>
           </div>
-          {this.state.isMentorForm ? <MentorForm /> : <MenteeForm />}
+          <Button
+            block="true"
+            color="white"
+            type="submit"
+            backgroundColor="turquoise"
+            text="join mentor weekly"
+            onClick={e => this.saveChanges(e)}
+          />
         </form>
         <style jsx>{`
           h2 {

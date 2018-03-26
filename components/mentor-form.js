@@ -8,7 +8,6 @@ const auth = new Auth();
 export default class MentorForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
     if (this.props.user) {
       this.state = {
         user: {
@@ -28,7 +27,6 @@ export default class MentorForm extends React.Component {
           availability: this.props.user.availability,
           background: this.props.user.background
         },
-        inMemoryStorage: {}
       };
     } else {
       this.state = {
@@ -37,6 +35,7 @@ export default class MentorForm extends React.Component {
             firstName: "",
             lastName: ""
           },
+          authId: localStorage.getItem("auth0_id"),
           role: "mentor",
           contact: "",
           goals: "",

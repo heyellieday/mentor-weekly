@@ -20,6 +20,7 @@ export default class extends React.Component {
           firstName: "",
           lastName: ""
         },
+        authId: "",
         photoUrl: "",
         creationDate: "",
         role: "",
@@ -78,13 +79,14 @@ export default class extends React.Component {
                 })
               : null
         )
-        .catch(err =>
+        .catch(err => {
           this.setState({
             error: "Could not load user"
           })
-        );
+        });
     });
   }
+
 
   openModal(event) {
     event.preventDefault();

@@ -7,7 +7,6 @@ const auth = new Auth();
 export default class MenteeForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
     if (this.props.user) {
       this.state = {
         user: {
@@ -35,6 +34,7 @@ export default class MenteeForm extends React.Component {
             firstName: "",
             lastName: ""
           },
+          authId: localStorage.getItem("auth0_id"),
           role: "mentee",
           contact: "",
           goals: "",
