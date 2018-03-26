@@ -20,7 +20,7 @@ describe("<DefaultMessage />", () => {
   it("Renders the text", () => {
     const text = "Welcome to Mentor Weekly";
     const message =
-      "You will receive an email at the address you provided once we find you the perfect mentor.";
+      "You will receive an email at the address you provided once we find you the perfect mentor.Feel free to update your profile info anytime by clicking the 'update profile' button.";
     const wrapper = shallow(<DefaultMessage role="mentee" />);
     expect(wrapper.find("h2").text()).toEqual(text);
     expect(wrapper.find("p").text()).toEqual(message);
