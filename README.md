@@ -14,11 +14,24 @@ Mentor Weekly was built with React, NodeJS, and Express. The project also uses i
 
 This project uses [Next.js](https://github.com/zeit/next.js/) and was deployed with [now](https://zeit.co/now).
 
+Landing page photos courtesy of [WOCinTech](https://www.wocintechchat.com/) CC BY 4.0.
+
 ## Development Setup:
 
 * npm install
 * source .env
 * npm run dev
+
+## Mentor Weekly API:
+
+* POST /api/users/ - creates a new user
+* GET /api/users/:authId - fetches user data based on Auth0 sign-in ID
+* GET /api/users/pick-a-mentee - gets list of mentees looking for a mentor
+* DELETE /api/users/:authId - delete user account
+* DELETE /api/users/:mentorId/:menteeId - mentor clears 1 mentor/mentee connection from their own and a mentee's account
+* PUT /api/users/:userId - updates user data
+* PUT /api/users/:mentorId/:menteeId - mentor adds a mentor/mentee connection to their own and a mentee's account.  This request also triggers an introduction email being sent to both parties via SendGrid.
+* POST /api/help - Sends the user's help request email to a Mentor Weekly admin member via SendGrid.
 
 ## Mockups
 
