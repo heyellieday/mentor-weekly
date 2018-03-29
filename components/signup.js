@@ -32,10 +32,10 @@ export default class Signup extends React.Component {
 
   form(value) {
     this.setState({ isMentorForm: value });
-    if (isMentorForm === true) {
-      this.setState({ role: "mentor" });
+    if (value === true) {
+      this.setState(Object.assign({}, this.state, { user: {...this.state.user, role: "mentor" }}));
     } else {
-      this.setState({ role: "mentee" });
+      this.setState(Object.assign({}, this.state, { user: {...this.state.user, role: "mentee" }}));
     }
   }
 

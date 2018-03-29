@@ -84,6 +84,7 @@
 * send email using sendgrid to mentees & mentors when chosen? (introduction email, what to expect)
 * is it safe to have a GET all users req in router? -no
 * redesign signup form
+* rewrite mentor instructions on dashboard card
 
 ###Auth:
 
