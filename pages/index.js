@@ -6,7 +6,7 @@ import Infographic from "../components/infographic";
 import Largequote from "../components/largequote";
 import Bubblequote from "../components/bubblequote";
 import Signup from "../components/signup";
-import Login from "../components/login";
+import DemoLogin from "../components/demo-login";
 import PhotoCredit from "../components/photo-credit";
 import Footer from "../components/footer";
 
@@ -36,10 +36,10 @@ export default class App extends React.Component {
     return (
       <div>
         <div className="wrap">
-          <Navbar loggedin={false} onClick={() => this.togglePopUp()} />
+          <Navbar loggedin={false} demoPopUp={() => this.togglePopUp()} />
           <div className="landing-page">
             <div className="landing-image-div">
-              {this.state.popUpIsOpen ? <Login /> : ""}
+              {this.state.popUpIsOpen ? <DemoLogin /> : ""}
               <div className="title-div">
                 <h1 className="title">mentor weekly</h1>
                 <h2 className="tagline">

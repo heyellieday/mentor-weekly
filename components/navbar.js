@@ -7,7 +7,7 @@ const auth = new Auth();
 export default function Navbar(props) {
   return (
     <div className={props.loggedin ? "nav" : "nav landing-nav"}>
-      <div className="logo">
+      <div className="logo-box">
         <img
           className="mw-logo"
           src="../static/mentor-weekly-logo.svg"
@@ -30,7 +30,14 @@ export default function Navbar(props) {
             border="none"
             role={props.user.role}
           />
-        ) : null}
+        ) : <Button
+            size="small"
+            color="#303030"
+            backgroundColor="white"
+            text="demo"
+            onClick={props.demoPopUp}
+            border="none"
+          />}
         {props.loggedin && props.user.role === "mentor" ? (
           <ButtonLink
             linkTo="/pick-a-mentee"
@@ -107,26 +114,29 @@ export default function Navbar(props) {
           position: absolute;
           right: 0;
           padding: 13px;
-          width: 212px;
+          width: 100%;
           height: 39px;
           text-align: right;
         }
-        .logo {
+        .logo-box {
           position: absolute;
           left: 5px;
           top: 20px;
         }
         .mw-logo {
-          height: 25px;
+          display: none;
         }
 
-        @media only screen and (min-width: 360px) {
-          .mw-logo {
-            height: 40px;
+        @media only screen and (min-width: 400px) {
+          .landing-right {
+            width: 310px;
           }
-          .logo {
-            left: 30px;
-            top: 15px;
+        }
+
+        @media only screen and (min-width: 420px) {
+          .mw-logo {
+            display: inline;
+            height: 25px;
           }
         }
 
@@ -144,7 +154,14 @@ export default function Navbar(props) {
             text-align: right;
           }
           .landing-right {
-            width: 500px;
+            width: 450px;
+          }
+          .logo-box {
+            left: 30px;
+            top: 15px;
+          }
+          .mw-logo{
+            height: 40px
           }
         }
       `}</style>
