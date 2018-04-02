@@ -143,44 +143,6 @@ router.delete("/:mentorId/:menteeId", (req, res) => {
     });
 });
 
-router.put("/:userId", (req, res) => {
-  if (
-    !(req.params.userId && req.body.id && req.params.userId === req.body.id)
-  ) {
-    res.status(400).json({
-      error: "Request path id and request body id values must match"
-    });
-  }
-
-  const updated = {};
-  const updateableFields = [
-    "name",
-    "photoUrl",
-    "role",
-    "goals",
-    "experience",
-    "skills",
-    "organization",
-    "contact",
-    "portfolioUrl",
-    "lookingFor",
-    "background",
-    "availability",
-    "potentialMentees",
-    "mentees",
-    "mentors"
-  ];
-  updateableFields.forEach(field => {
-    if (field in req.body) {
-      updated[field] = req.body[field];
-    }
-  });
-
-  User.findByIdAndUpdate(req.params.userId, { $set: updated }, { new: true })
-    .then(updatedUser => res.json(updatedUser))
-    .catch(err => res.status(500).json({ message: "Something went wrong" }));
-});
-
 router.put("/:mentorId/:menteeId", (req, res) => {
   //if body and param ids all match,
   //add new mentee id to mentor "mentees" list,
@@ -188,8 +150,7 @@ router.put("/:mentorId/:menteeId", (req, res) => {
   //then send welcome email to both
   let mentor;
   let mentee;
-  const loginUrl =
-    "https://mentorweekly.auth0.com/login?client=b0TkP7ovjzFrJGI7l0w1AAjZKsJzVL_H&protocol=oauth2&redirect_uri=https%3A%2F%2Fmentor-weekly.now.sh%2Fauth&response_type=token%20id_token&scope=openid%20profile&audience=http%3A%2F%2Flocalhost%3A8080%2F&nonce=R5.YmjdjP5pqFdIzAKHnsUA62znvZB.7&auth0Client=eyJuYW1lIjoiYXV0aDAuanMiLCJ2ZXJzaW9uIjoiOS4yLjAifQ%3D%3D&state=GmqGoegOMBKsRHt8vw20vc-TXAmgjvAI";
+  const loginUrl = "https://mentorweekly.com";
   function MatchEmailInfo(props) {
     const user = props;
 
@@ -310,7 +271,9 @@ router.put("/:mentorId/:menteeId", (req, res) => {
     !(req.params.mentorId && req.body.id && req.params.mentorId === req.body.id)
   ) {
     return res.status(400).json({
-      error: "Request path id and request body id values must match"
+      error: `Request path id, ${req.params.mentorId} and request body id, ${
+        req.body.id
+      } values must match`
     });
   }
 
@@ -353,7 +316,7 @@ router.put("/:mentorId/:menteeId", (req, res) => {
                 <p><a href="${API_URL}/mentor-dashboard">Your dashboard</a> has been updated with your new mentorship info.</p>
                 <p>
                   If you have questions, feel free to
-                  <a href=${loginUrl}>log in</a>
+                  <a href="${loginUrl}">log in</a>
                   and email us through the
                   <a href="${API_URL}/help">Help Page<a/>
                 </p>
@@ -371,6 +334,44 @@ router.put("/:mentorId/:menteeId", (req, res) => {
       updatedMentee => res.sendStatus(201)
       //.json([updatedMentor, updatedMentee.apiRepr()])
     )
+    .catch(err => res.status(500).json({ message: "Something went wrong" }));
+});
+
+router.put("/:userId", (req, res) => {
+  if (
+    !(req.params.userId && req.body.id && req.params.userId === req.body.id)
+  ) {
+    res.status(400).json({
+      error: "Request path id and request body id values must match. sadness"
+    });
+  }
+
+  const updated = {};
+  const updateableFields = [
+    "name",
+    "photoUrl",
+    "role",
+    "goals",
+    "experience",
+    "skills",
+    "organization",
+    "contact",
+    "portfolioUrl",
+    "lookingFor",
+    "background",
+    "availability",
+    "potentialMentees",
+    "mentees",
+    "mentors"
+  ];
+  updateableFields.forEach(field => {
+    if (field in req.body) {
+      updated[field] = req.body[field];
+    }
+  });
+
+  User.findByIdAndUpdate(req.params.userId, { $set: updated }, { new: true })
+    .then(updatedUser => res.json(updatedUser))
     .catch(err => res.status(500).json({ message: "Something went wrong" }));
 });
 
