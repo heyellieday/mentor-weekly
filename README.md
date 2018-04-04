@@ -2,11 +2,8 @@
 
 [Mentor Weekly](https://mentor-weekly.now.sh/) is a free platform that connects tech mentors to up-and-coming engineers.
 
-Try the live demo at https://mentor-weekly.now.sh/.
+Try the live demo at https://mentor-weekly-demo.now.sh/.
 
-Demo login: _mentorweeklydemo@gmail.com_
-
-Password: _password_
 
 ## Technologies Used
 
