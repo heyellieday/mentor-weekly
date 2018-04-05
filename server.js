@@ -33,12 +33,10 @@ nextApp.prepare().then(() => {
   app.use(morgan("common"));
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());
-  app.use("/api/users/pick-a-mentee", jwtCheck, usersRouter);
-  app.use("/api/users/:authId", jwtCheck, usersRouter);
-  app.use("/api/users/:userId", jwtCheck, usersRouter);
-  app.use("/api/users/:mentorId/:menteeId", jwtCheck, usersRouter);
+  app.post("/api/users/", usersRouter);
+  app.get("/api/users/pick-a-mentee", jwtCheck, usersRouter);
+  app.use("/api/users", jwtCheck, usersRouter);
   app.use("/api/help", jwtCheck, helpRouter);
-  app.use("/api/users/", usersRouter);
 
   app.get("*", (req, res) => {
     handle(req, res);

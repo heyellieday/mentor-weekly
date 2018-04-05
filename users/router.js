@@ -110,17 +110,6 @@ router.post("/", (req, res) => {
   });
 });
 
-router.delete("/:authId", (req, res) => {
-  User.findOneAndDelete({ authId: req.params.authId })
-    .then(() => {
-      res.status(204).json({ message: "success" });
-    })
-    .catch(err => {
-      console.error(err);
-      res.status(500).json({ error: "something went terribly wrong" });
-    });
-});
-
 router.delete("/:mentorId/:menteeId", (req, res) => {
   //remove mentor from mentee "mentors" list,
   //then remove mentee from mentors "mentees" list,
@@ -143,42 +132,15 @@ router.delete("/:mentorId/:menteeId", (req, res) => {
     });
 });
 
-router.put("/:userId", (req, res) => {
-  if (
-    !(req.params.userId && req.body.id && req.params.userId === req.body.id)
-  ) {
-    res.status(400).json({
-      error: "Request path id and request body id values must match"
+router.delete("/:authId", (req, res) => {
+  User.findOneAndDelete({ authId: req.params.authId })
+    .then(() => {
+      res.status(204).json({ message: "success" });
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({ error: "something went terribly wrong" });
     });
-  }
-
-  const updated = {};
-  const updateableFields = [
-    "name",
-    "photoUrl",
-    "role",
-    "goals",
-    "experience",
-    "skills",
-    "organization",
-    "contact",
-    "portfolioUrl",
-    "lookingFor",
-    "background",
-    "availability",
-    "potentialMentees",
-    "mentees",
-    "mentors"
-  ];
-  updateableFields.forEach(field => {
-    if (field in req.body) {
-      updated[field] = req.body[field];
-    }
-  });
-
-  User.findByIdAndUpdate(req.params.userId, { $set: updated }, { new: true })
-    .then(updatedUser => res.json(updatedUser))
-    .catch(err => res.status(500).json({ message: "Something went wrong" }));
 });
 
 router.put("/:mentorId/:menteeId", (req, res) => {
@@ -371,6 +333,44 @@ router.put("/:mentorId/:menteeId", (req, res) => {
       updatedMentee => res.sendStatus(201)
       //.json([updatedMentor, updatedMentee.apiRepr()])
     )
+    .catch(err => res.status(500).json({ message: "Something went wrong" }));
+});
+
+router.put("/:userId", (req, res) => {
+  if (
+    !(req.params.userId && req.body.id && req.params.userId === req.body.id)
+  ) {
+    res.status(400).json({
+      error: "Request path id and request body id values must match"
+    });
+  }
+
+  const updated = {};
+  const updateableFields = [
+    "name",
+    "photoUrl",
+    "role",
+    "goals",
+    "experience",
+    "skills",
+    "organization",
+    "contact",
+    "portfolioUrl",
+    "lookingFor",
+    "background",
+    "availability",
+    "potentialMentees",
+    "mentees",
+    "mentors"
+  ];
+  updateableFields.forEach(field => {
+    if (field in req.body) {
+      updated[field] = req.body[field];
+    }
+  });
+
+  User.findByIdAndUpdate(req.params.userId, { $set: updated }, { new: true })
+    .then(updatedUser => res.json(updatedUser))
     .catch(err => res.status(500).json({ message: "Something went wrong" }));
 });
 
