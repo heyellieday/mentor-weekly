@@ -331,6 +331,9 @@ export default class MenteeForm extends React.Component {
             display: block;
             clear: both;
           }
+          input, textarea {
+            padding: 3px 0;
+          }
           input {
             margin: 5px auto 20px auto;
             border: 1px solid white;
@@ -348,7 +351,6 @@ export default class MenteeForm extends React.Component {
             font-weight: 200;
             font-size: 16px;
             color: coral;
-            padding: 1px;
             height: 16px;
           }
           input::placeholder,

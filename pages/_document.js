@@ -36,6 +36,7 @@ export default class MyDocument extends Document {
           />
           <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
           <link rel="icon" type="image/x-icon" href="/static/logo.ico?v=2" />
+          <title>Mentor Weekly</title>
         </Head>
         <body>
           <Main />
