@@ -1,6 +1,10 @@
 const path = require('path')
 const glob = require('glob')
 
+if (process.env.NODE_ENV !== 'production') {
+  require('now-env');
+}
+
 module.exports = {
   webpack: (config, { dev }) => {
     config.module.rules.push(

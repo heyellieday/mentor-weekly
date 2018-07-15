@@ -20,7 +20,7 @@ const jwtCheck = jwt({
     cache: true,
     rateLimit: true,
     jwksRequestsPerMinute: 5,
-    jwksUri: "https://mentor-weekly.auth0.com/.well-known/jwks.json"
+    jwksUri: "https://mentorweekly.auth0.com/.well-known/jwks.json"
   }),
   audience: API_AUDIENCE,
   issuer: process.env.AUTH0_DOMAIN,

@@ -1,1 +1,0 @@
- now -e DATABASE_URL="mongodb://<username>:<password>.mlab.com:<number>/<dbname>" -e SENDGRID_API_KEY="SG.this.that" -e ADMIN_EMAIL="<DeliverHelpMessagesToThisAddress>" -e AUTH0_JWKS="https://DOMAIN.auth0.com/.well-known/jwks.json" -e AUTH0_DOMAIN="https://DOMAIN.auth0.com/" -e API_AUDIENCE="<AuthApiMentorWeeklyUrl>" -e API_URL="<MentorWeeklyUrl>" -e AUTH0_CLIENT_ID="Auth0Id"

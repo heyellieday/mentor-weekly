@@ -6,7 +6,7 @@ const { API_AUDIENCE, API_URL, AUTH0_CLIENT_ID } = require("../config");
 export default class Auth {
   constructor() {
     this.auth0 = new auth0.WebAuth({
-      domain: "mentor-weekly.auth0.com",
+      domain: "mentorweekly.auth0.com",
       clientID: AUTH0_CLIENT_ID,
       redirectUri: `${API_URL}/auth`,
       audience: API_AUDIENCE,
