@@ -2,7 +2,7 @@
 .git
 .env
 deploy.sh
-now.json
+now-secrets.json
 
 # dependencies
 node_modules
